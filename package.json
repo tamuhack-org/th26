@@ -10,6 +10,7 @@
     "format": "prettier --write \"**/*.{astro,md,ts,tsx,js,jsx}\""
   },
   "dependencies": {
+    "@fontsource/bbh-sans-hegarty": "^5.2.1",
     "@fontsource/stack-sans-text": "^5.2.1",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",

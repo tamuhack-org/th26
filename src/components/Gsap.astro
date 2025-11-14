@@ -3,65 +3,61 @@ import Blueberry from '../assets/landing/blueberry.svg';
 import Strawberry from '../assets/landing/strawberry.svg';
 ---
 
-<div id="landing-container">
+<div
+    class="flex min-h-screen items-center justify-center"
+    id="landing-container"
+>
     <h1 class="sr-only">TAMUhack 2026</h1>
-    <div id="heading__tamuhack">
-        <div class="line line-1">
-            <span class="char char-t">t</span>
-            <img class="char char-a-strawberry" src={Strawberry.src} alt="A" />
-            <span class="char char-m">m</span>
-            <span class="char char-u">u</span>
+    <div
+        id="heading__tamuhack"
+        class="font-family-bbh text-brown grid grid-cols-2 grid-rows-3 gap-x-4 text-4xl uppercase opacity-100 sm:text-8xl"
+    >
+        <div
+            class="line line-1 row-start-1 row-end-2 flex items-center justify-center"
+        >
+            <span class="char char-t inline-block leading-none font-bold"
+                >t</span
+            >
+            <img
+                class="char char-a-strawberry -mx-4 h-32 w-auto"
+                src={Strawberry.src}
+                alt="A"
+            />
+            <span class="char char-m inline-block leading-none font-bold"
+                >m</span
+            >
+            <span class="char char-u inline-block leading-none font-bold"
+                >u</span
+            >
         </div>
-        <div class="line line-2">
-            <span class="char char-h">h</span>
-            <span class="char char-c">a</span>
-            <img class="char char-a-blueberry" src={Blueberry.src} alt="a" />
-            <span class="char char-k will-change-transform">k</span>
+        <div
+            class="line line-2 row-start-2 row-end-3 flex items-center justify-center"
+        >
+            <span class="char char-h inline-block leading-none font-bold"
+                >h</span
+            >
+            <span class="char char-c inline-block leading-none font-bold"
+                >a</span
+            >
+            <img
+                class="char char-a-blueberry -mx-4 h-32 w-auto"
+                src={Blueberry.src}
+                alt="a"
+            />
+            <span
+                class="char char-k inline-block leading-none font-bold will-change-transform"
+                >k</span
+            >
         </div>
+        <div class="row-start-2 row-end-3 flex items-center" id="twenty">
+            20
+        </div>
+        <div class="col-start-2 row-start-3 row-end-4" id="twenty-six">26</div>
     </div>
 </div>
 
 <style>
-    #landing-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-
-    #heading__tamuhack {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        opacity: 1;
-    }
-
-    .line {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .char {
-        display: inline-block;
-        font-size: 6rem;
-        font-weight: bold;
-        line-height: 1;
-    }
-
-    .char-a-strawberry,
-    .char-a-blueberry {
-        height: 8rem;
-        margin-inline: -1rem;
-        width: auto;
-    }
-
     @media (max-width: 768px) {
-        .char {
-            font-size: 4rem;
-        }
-
         .char-a-strawberry,
         .char-a-blueberry {
             height: 4rem;
@@ -133,6 +129,11 @@ import Strawberry from '../assets/landing/strawberry.svg';
             ease: 'elastic.out(1, 0.4)',
             duration: 1,
         });
+        tl.to('.char-a-blueberry', {
+            rotation: 360,
+            repeat: -1,
+            repeatDelay: 2,
+        });
         return tl;
     };
 
@@ -158,6 +159,26 @@ import Strawberry from '../assets/landing/strawberry.svg';
         return tl;
     };
 
+    const animateTwenty = () => {
+        const tl = gsap.timeline({ defaults });
+        tl.from('#twenty', {
+            opacity: 0,
+            yPercent: 100,
+        });
+        return tl;
+    };
+
+    const animateTwentySix = () => {
+        const tl = gsap.timeline({ defaults });
+        tl.from('#twenty-six', {
+            opacity: 0,
+            textContent: 14,
+            duration: 3,
+            snap: { textContent: 1 }, // increment by 1
+        });
+        return tl;
+    };
+
     // Main timeline
     const mainTimeline = gsap.timeline({ defaults });
 
@@ -173,4 +194,6 @@ import Strawberry from '../assets/landing/strawberry.svg';
     mainTimeline.add(animateBlueberry(), 1.1);
     mainTimeline.add(animateC(), 1.3);
     mainTimeline.add(animateK(), 1.5);
+    mainTimeline.add(animateTwenty(), 1.5);
+    mainTimeline.add(animateTwentySix(), 1.5);
 </script>

@@ -11,10 +11,11 @@ import Banana from '../assets/landing/banana.svg';
     <h1 class="sr-only">TAMUhack 2026</h1>
     <div
         id="heading__tamuhack"
-        class="font-family-bbh text-brown grid grid-cols-2 grid-rows-3 gap-x-4 text-4xl uppercase opacity-100 sm:text-8xl leading-none content-center"
+        class="font-family-bbh text-brown grid grid-cols-2 grid-rows-3 content-center gap-x-4 text-4xl leading-none uppercase opacity-100 sm:text-8xl"
     >
         <div
-            class="row-start-1 row-end-2 flex items-center justify-center -mb-[.3em]"
+            class="row-start-1 row-end-2 -mb-[.3em] flex items-center justify-center"
+            aria-hidden="true"
         >
             <span class="char char-t inline-block leading-none font-bold"
                 >t</span
@@ -33,6 +34,7 @@ import Banana from '../assets/landing/banana.svg';
         </div>
         <div
             class="line line-2 row-start-2 row-end-3 flex items-center justify-between"
+            aria-hidden="true"
         >
             <span class="char char-h inline-block leading-none font-bold"
                 >h</span
@@ -40,24 +42,28 @@ import Banana from '../assets/landing/banana.svg';
             <span class="char char-a inline-block leading-none font-bold"
                 >a</span
             >
-            <img
-                class="char char-c-banana w-auto"
-                src={Banana.src}
-                alt="c"
-            />
+            <img class="char char-c-banana w-auto" src={Banana.src} alt="c" />
             <span
                 class="char char-k inline-block leading-none font-bold will-change-transform"
                 >k</span
             >
         </div>
-        <div class="row-start-2 row-end-3 flex items-center" id="twenty">
+        <div
+            class="row-start-2 row-end-3 flex items-center"
+            id="twenty"
+            aria-hidden="true"
+        >
             2<img
                 class="char char-0-blueberry inline-block w-auto"
                 src={Blueberry.src}
                 alt="0"
             />
         </div>
-        <div class="col-start-2 row-start-3 row-end-4 -mt-[.2em]" id="twenty-six">
+        <div
+            class="col-start-2 row-start-3 row-end-4 -mt-[.2em]"
+            id="twenty-six"
+            aria-hidden="true"
+        >
             26
         </div>
     </div>
@@ -67,7 +73,7 @@ import Banana from '../assets/landing/banana.svg';
     .char-a-strawberry,
     .char-c-banana,
     .char-0-blueberry {
-        height: .75em;
+        height: 0.75em;
     }
 </style>
 

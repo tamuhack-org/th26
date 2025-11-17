@@ -1,0 +1,199 @@
+<div id="physics-container"></div>
+
+<style>
+    #physics-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<script>
+    import * as PIXI from 'pixi.js';
+
+    import('@dimforge/rapier2d').then((RAPIER) => {
+        const windowSizeX = 1000;
+        const windowSizeY = 800;
+        const border = 100;
+
+        // TODO: IDT the walls work because my logic is off. It's extending past the scene
+        const scaleFactor = 30;
+        let gravity = new RAPIER.Vector2(0.0, -9.81 * scaleFactor);
+        let world = new RAPIER.World(gravity);
+
+        const sprites = [];
+
+        let groundBodyDesc = RAPIER.RigidBodyDesc.fixed().setTranslation(
+            0,
+            -windowSizeY + border,
+        );
+        let groundBody = world.createRigidBody(groundBodyDesc);
+        let groundColliderDesc = RAPIER.ColliderDesc.cuboid(windowSizeX, 10);
+        world.createCollider(groundColliderDesc, groundBody);
+
+        let leftWallBodyDesc = RAPIER.RigidBodyDesc.fixed().setTranslation(
+            -border,
+            0,
+        );
+        let leftWallBody = world.createRigidBody(leftWallBodyDesc);
+        let leftWallColliderDesc = RAPIER.ColliderDesc.cuboid(10, windowSizeY);
+        world.createCollider(leftWallColliderDesc, leftWallBody);
+
+        let rightWallBodyDesc = RAPIER.RigidBodyDesc.fixed().setTranslation(
+            windowSizeX - border,
+            0,
+        );
+        let rightWallBody = world.createRigidBody(rightWallBodyDesc);
+        let rightWallColliderDesc = RAPIER.ColliderDesc.cuboid(10, windowSizeY);
+        world.createCollider(rightWallColliderDesc, rightWallBody);
+
+        const svgs = [
+            'apple.png',
+            'apple.png',
+            'apple.png',
+        ];
+
+        const cursorBody = world.createRigidBody(
+            RAPIER.RigidBodyDesc.kinematicPositionBased().setTranslation(0, 0),
+        );
+
+        let mouseJoint = null;
+        let mousePosition = { x: 0, y: 0 };
+
+        (async () => {
+            const app = new PIXI.Application();
+            await app.init({
+                width: windowSizeX,
+                height: windowSizeY,
+                backgroundAlpha: 0,
+            });
+
+            const container = document.getElementById('physics-container');
+            if (container) container.appendChild(app.canvas);
+
+            await PIXI.Assets.load(svgs);
+
+            const shift = 100
+            const centerx = 100
+            const centery = 200
+            const rad = 100
+            for (let j = 0; j < 3; ++j) {
+                let x = 1 * shift - centerx + Math.random();
+                let y = j * shift + centery + 3.0;
+
+                let bodyDesc = RAPIER.RigidBodyDesc.dynamic().setTranslation(
+                    x,
+                    y,
+                );
+                let body = world.createRigidBody(bodyDesc);
+                let colliderDesc = RAPIER.ColliderDesc.ball(rad);
+                world.createCollider(colliderDesc, body);
+
+                const texture = PIXI.Assets.get(svgs[j]);
+                let circle = new PIXI.Sprite(texture);
+
+                circle.anchor.set(0.5);
+                circle.width = rad * 2;
+                circle.height = rad * 2;
+
+                sprites.push(circle);
+                app.stage.addChild(circle);
+
+                body.userData = { graphic: circle };
+            }
+
+            const updateMousePos = (clientX, clientY) => {
+                const rect = app.canvas.getBoundingClientRect();
+                const offsetX = clientX - rect.left;
+                const offsetY = clientY - rect.top;
+                // Map screen pixels to your physics center-origin system
+                mousePosition.x = offsetX - windowSizeX / 2;
+                mousePosition.y = -(offsetY - windowSizeY / 2);
+            };
+
+            app.canvas.addEventListener('mousemove', (e) => {
+                updateMousePos(e.clientX, e.clientY);
+            });
+
+            app.canvas.addEventListener('mousedown', (e) => {
+                updateMousePos(e.clientX, e.clientY);
+
+                let point = new RAPIER.Vector2(
+                    mousePosition.x,
+                    mousePosition.y,
+                );
+
+                let hit = world.projectPoint(point, true);
+
+                if (hit) {
+                    let collider = hit.collider;
+                    let hitBody = collider.parent();
+
+                    if (
+                        hitBody &&
+                        hitBody.bodyType() === RAPIER.RigidBodyType.Dynamic
+                    ) {
+                        // 2. Calculate offset (where on the ball did we click?)
+                        let bodyTranslation = hitBody.translation();
+                        let anchorBody = {
+                            x: point.x - bodyTranslation.x,
+                            y: point.y - bodyTranslation.y,
+                        };
+
+                        let params = RAPIER.JointData.revolute(
+                            { x: 0.0, y: 0.0 }, // Anchor on cursor (center)
+                            anchorBody, // Anchor on the ball (offset)
+                        );
+
+                        mouseJoint = world.createImpulseJoint(
+                            params,
+                            cursorBody,
+                            hitBody,
+                            true,
+                        );
+
+                        hitBody.wakeUp();
+                    }
+                }
+            });
+            app.canvas.addEventListener('mouseup', () => {
+                if (mouseJoint) {
+                    world.removeImpulseJoint(mouseJoint);
+                    mouseJoint = null;
+                }
+            });
+
+            app.canvas.addEventListener('mouseleave', () => {
+                if (mouseJoint) {
+                    world.removeImpulseJoint(mouseJoint);
+                    mouseJoint = null;
+                }
+            });
+
+            app.ticker.add(() => {
+                cursorBody.setNextKinematicTranslation({
+                    x: mousePosition.x,
+                    y: mousePosition.y,
+                });
+
+                world.step();
+
+                let spriteIndex = 0;
+                world.forEachRigidBody((body) => {
+                    if (body.bodyType() === RAPIER.RigidBodyType.Dynamic) {
+                        const position = body.translation();
+                        const rotation = body.rotation();
+
+                        if (spriteIndex < sprites.length) {
+                            const sprite = sprites[spriteIndex];
+                            sprite.position.x = position.x + windowSizeX / 2;
+                            sprite.position.y = -position.y + windowSizeY / 2;
+                            sprite.rotation = -rotation;
+                            spriteIndex++;
+                        }
+                    }
+                });
+            });
+        })();
+    });
+</script>

@@ -10,16 +10,20 @@
     "format": "prettier --write \"**/*.{astro,md,ts,tsx,js,jsx}\""
   },
   "dependencies": {
+    "@dimforge/rapier2d": "^0.19.3",
     "@fontsource/bbh-sans-hegarty": "^5.2.1",
     "@fontsource/stack-sans-text": "^5.2.1",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
     "gsap": "^3.13.0",
-    "tailwindcss": "^4.1.16"
+    "pixi.js": "^8.14.1",
+    "tailwindcss": "^4.1.16",
+    "vite-plugin-top-level-await": "^1.6.0"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1"
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "vite-plugin-wasm": "^3.5.0"
   }
 }

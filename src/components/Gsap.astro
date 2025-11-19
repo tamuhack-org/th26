@@ -16,7 +16,7 @@ const ellipse = await getImage({ src: BgImage });
     <h1 class="sr-only">TAMUhack 2026</h1>
     <div
         id="heading__tamuhack"
-        class="font-family-bbh text-brown grid grid-cols-2 grid-rows-3 content-center gap-x-2 text-4xl leading-none tracking-wider uppercase opacity-100 sm:gap-x-4 sm:text-8xl p-8"
+        class="font-family-bbh text-brown grid grid-cols-[1fr_auto] content-center gap-x-2 text-6xl leading-none tracking-wider uppercase opacity-100 sm:gap-x-4 sm:text-8xl p-8"
         style={`
           background-image: url(${ellipse.src});
           background-repeat: no-repeat;
@@ -25,7 +25,7 @@ const ellipse = await getImage({ src: BgImage });
         `}
     >
         <div
-            class="row-start-1 row-end-2 -mb-[.3em] flex items-center justify-center"
+            class="row-start-1 row-end-2 -mb-[.2em] flex items-center justify-center"
             aria-hidden="true"
         >
             <span class="char char-t inline-block leading-none font-bold"
@@ -59,9 +59,9 @@ const ellipse = await getImage({ src: BgImage });
                 >k</span
             >
         </div>
-        <div class="font-family-stack row-start-3 row-end-4 text-right text-xs sm:text-2xl">
-            <p>january 24-25</p>
-            <p>msc 2500</p>
+        <div class="tracking-normal font-semibold lowercase font-family-stack row-start-3 row-end-4 text-right text-base sm:text-2xl">
+            <p>January 24-25</p>
+            <p>MSC 2500</p>
         </div>
         <div
             class="row-start-2 row-end-3 flex items-center"

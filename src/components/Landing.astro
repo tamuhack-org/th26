@@ -8,25 +8,25 @@ import RedBlob from '../assets/landing/red-blob.svg';
 import MangoBird from '../assets/landing/mango-bird.svg';
 ---
 
-<div
-    class="grid grid-cols-1 grid-rows-2 xl:grid-cols-2"
->
+<div class="grid grid-cols-1 grid-rows-2 xl:grid-cols-2">
     <div
         class="mx-auto self-end justify-self-start xl:col-start-2 xl:col-end-3 xl:row-start-1 xl:row-end-2"
     >
         <Gsap />
     </div>
     <div class="xl:col-start-2 xl:col-end-3 xl:row-start-2 xl:row-end-4">
-        <p>Buttons</p> 
+        <p>Buttons</p>
     </div>
     <div
-        class="relative aspect-square overflow-hidden xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-3"
+        class="relative aspect-square w-4/5 overflow-hidden xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-3 xl:w-full"
     >
-        <TomatoCat class="absolute top-[12%]" />
-        <MangoBlob class="absolute top-[30%] left-[35%]" />
-        <BlueberryBlob class="absolute bottom-[40%] left-3" />
-        <BlueberryBunny class="absolute right-1/2 bottom-[35%]" />
-        <RedBlob class="absolute right-1/2 bottom-[14%]" />
-        <MangoBird class="absolute right-0 bottom-0" />
+        <TomatoCat class="absolute top-[12%] h-auto w-5/12" />
+        <MangoBlob class="absolute top-[30%] left-[45%] h-auto w-1/4" />
+        <BlueberryBlob class="absolute bottom-[30%] left-3 h-auto w-1/10" />
+        <BlueberryBunny
+            class="absolute right-2/5 bottom-[35%] z-50 h-auto w-2/7"
+        />
+        <RedBlob class="absolute right-1/2 bottom-[14%] h-auto w-1/4" />
+        <MangoBird class="absolute right-0 bottom-0 h-auto w-4/9" />
     </div>
 </div>

@@ -9,9 +9,7 @@ import { getImage } from 'astro:assets';
 const ellipse = await getImage({ src: BgImage });
 ---
 
-<div
-    class="flex items-center justify-center"
->
+<div class="flex items-center justify-center">
     <h1 class="sr-only">TAMUhack 2026</h1>
     <div
         id="heading__tamuhack"
@@ -58,7 +56,9 @@ const ellipse = await getImage({ src: BgImage });
                 >k</span
             >
         </div>
-        <div class="tracking-normal font-semibold lowercase font-family-stack row-start-3 row-end-4 text-right text-base sm:text-2xl">
+        <div
+            class="font-family-stack row-start-3 row-end-4 text-right text-base font-semibold tracking-normal lowercase sm:text-2xl"
+        >
             <p>January 24-25</p>
             <p>MSC 2500</p>
         </div>
@@ -220,15 +220,20 @@ const ellipse = await getImage({ src: BgImage });
     mainTimeline.set('#heading__tamuhack', { autoAlpha: 1 });
 
     // Add all character animations with time offsets for overlapping animations
-    mainTimeline.add(animateT());
-    mainTimeline.add(animateStrawberry(), 0.3);
-    mainTimeline.add(animateM(), 0.5);
-    mainTimeline.add(animateU(), 0.7);
-    mainTimeline.add(animateH(), 0.9);
-    mainTimeline.add(animateA(), 1.1);
-    mainTimeline.add(animateBanana(), 1.3);
-    mainTimeline.add(animateK(), 1.5);
-    mainTimeline.add(animateTwenty(), 1.5);
-    mainTimeline.add(animateBlueberry(), 1.7);
-    mainTimeline.add(animateTwentySix(), 1.5);
+    gsap.matchMedia().add(
+        '(prefers-reduced-motion: no-preference)',
+        (_context) => {
+            mainTimeline.add(animateT(), 0.1);
+            mainTimeline.add(animateStrawberry(), 0.3);
+            mainTimeline.add(animateM(), 0.5);
+            mainTimeline.add(animateU(), 0.7);
+            mainTimeline.add(animateH(), 0.9);
+            mainTimeline.add(animateA(), 1.1);
+            mainTimeline.add(animateBanana(), 1.3);
+            mainTimeline.add(animateK(), 1.5);
+            mainTimeline.add(animateTwenty(), 1.5);
+            mainTimeline.add(animateBlueberry(), 1.7);
+            mainTimeline.add(animateTwentySix(), 1.5);
+        },
+    );
 </script>

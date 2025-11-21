@@ -10,13 +10,12 @@ const ellipse = await getImage({ src: BgImage });
 ---
 
 <div
-    class="flex min-h-screen items-center justify-center"
-    id="landing-container"
+    class="flex items-center justify-center"
 >
     <h1 class="sr-only">TAMUhack 2026</h1>
     <div
         id="heading__tamuhack"
-        class="font-family-bbh text-brown grid grid-cols-[1fr_auto] content-center gap-x-2 text-6xl leading-none tracking-wider uppercase opacity-100 sm:gap-x-4 sm:text-8xl p-8"
+        class="font-family-bbh text-brown grid grid-cols-[1fr_auto] content-center gap-x-2 text-6xl leading-none tracking-wider uppercase opacity-100 sm:gap-x-4 sm:text-8xl"
         style={`
           background-image: url(${ellipse.src});
           background-repeat: no-repeat;

@@ -11,7 +11,10 @@ import OrangeBlob from '@assets/landing/orange-blob.svg';
 import ApplyMentor from './ApplyMentor.astro';
 ---
 
-<section id="landing" class="mt-5 grid grid-cols-1 grid-rows-[auto_1fr] sm:grid-cols-2">
+<section
+    id="landing"
+    class="mt-5 grid grid-cols-1 grid-rows-[auto_1fr] sm:grid-cols-2"
+>
     <div
         class="flex flex-col gap-6 self-start justify-self-center sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:row-end-2 sm:-ml-[15%]"
     >
@@ -22,6 +25,7 @@ import ApplyMentor from './ApplyMentor.astro';
     </div>
     <div
         class="relative z-0 -mt-24 aspect-square w-full overflow-hidden sm:col-start-1 sm:col-end-2 sm:row-start-1 sm:row-end-3 sm:mt-0 sm:overflow-visible"
+        aria-hidden="true"
     >
         <TomatoCat class="absolute -left-10 h-auto w-5/12" />
         <MangoBlob

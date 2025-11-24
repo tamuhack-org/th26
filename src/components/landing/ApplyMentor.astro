@@ -1,7 +1,7 @@
 ---
-import { Picture } from 'astro:assets';
 import applyButton from '@assets/apply-button.png';
 import mentorButton from '@assets/mentor-button.png';
+import Sticker from './Sticker.astro';
 ---
 
 <div class="flex gap-3">
@@ -11,23 +11,25 @@ import mentorButton from '@assets/mentor-button.png';
 		target="_blank"
 		rel="noopener"
 	>
-		<Picture
-			src={applyButton}
-			alt="Apply button"
-			formats={['avif', 'webp', 'png']}
+		<Sticker
+			imageSrc={applyButton}
+			label="Apply button"
+			peelDirection={-25}
+			backColor="#DEC299"
 			class="w-25 sm:w-30"
 		/>
 	</a>
 	<a
-		class="cursor-pointer mt-12 sm:mt-15 "
+		class="mt-12 cursor-pointer sm:mt-15"
 		href="https://tamuhack.org/mentor"
 		target="_blank"
 		rel="noopener"
 	>
-		<Picture
-			src={mentorButton}
-			alt="Mentor button"
-			formats={['avif', 'webp', 'png']}
+		<Sticker
+			imageSrc={mentorButton}
+			label="Mentor button"
+			peelDirection={-25}
+			backColor="#DEC299"
 			class="w-25 sm:w-30"
 		/>
 	</a>

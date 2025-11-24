@@ -1,17 +1,9 @@
-<svg width="396" height="336" viewBox="0 0 396 336" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_fg_12069_3)">
-<ellipse cx="197.88" cy="167.961" rx="149.948" ry="115.249" transform="rotate(15.1048 197.88 167.961)" fill="#EF9C26" fill-opacity="0.3"/>
-</g>
+<svg width="332" height="265" viewBox="0 0 332 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M328.415 176.228C309.802 245.19 221.976 281.462 132.251 257.245C42.526 233.027 -15.1212 157.49 3.49222 88.5282C22.1057 19.5664 109.931 -16.7059 199.656 7.51178C289.381 31.7294 347.029 107.266 328.415 176.228Z" fill="url(#paint0_radial_12638_61)"/>
 <defs>
-<filter id="filter0_fg_12069_3" x="0" y="0" width="395.76" height="335.922" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="20.36" result="effect1_foregroundBlur_12069_3"/>
-<feTurbulence type="fractalNoise" baseFrequency="0.73529410362243652 0.73529410362243652" numOctaves="3" seed="369" />
-<feDisplacementMap in="effect1_foregroundBlur_12069_3" scale="100" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
-<feMerge result="effect2_texture_12069_3">
-<feMergeNode in="displacedImage"/>
-</feMerge>
-</filter>
+<radialGradient id="paint0_radial_12638_61" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(165.954 132.378) rotate(105.105) scale(129.335 168.275)">
+<stop offset="0.572115" stop-color="#FBDDB4"/>
+<stop offset="1" stop-color="#FBDDB4" stop-opacity="0"/>
+</radialGradient>
 </defs>
 </svg>

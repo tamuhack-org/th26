@@ -5,6 +5,7 @@ import '@fontsource/bbh-sans-hegarty';
 
 import Header from '@components/Header.astro';
 import MenuButton from '@components/MenuButton.astro';
+import Footer from '@components/footer/Footer.astro';
 ---
 
 <!doctype html>
@@ -16,12 +17,15 @@ import MenuButton from '@components/MenuButton.astro';
         <meta name="generator" content={Astro.generator} />
         <title>TAMUhack 2026</title>
     </head>
-    <body class="relative mx-auto max-w-500">
-        <Header />
-        <MenuButton />
-        <main>
-            <slot />
-        </main>
+    <body>
+        <div class="relative mx-auto max-w-500">
+            <Header />
+            <MenuButton />
+            <main>
+                <slot />
+            </main>
+        </div>
+        <Footer />
     </body>
 
     <style>

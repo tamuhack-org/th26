@@ -1,6 +1,5 @@
 ---
-import { Picture } from 'astro:assets';
-import FooterTransition from '@assets/footer-transition.png';
+import FooterTransition from '@assets/footer-transition.svg';
 import LinkSection from './LinkSection.astro';
 import {
 	resources,
@@ -10,13 +9,11 @@ import {
 } from './footer-links.js';
 ---
 
-<Picture
-	src={FooterTransition}
-	alt="Seal and cat on wave"
-	class="h-[31svw] w-full object-cover sm:h-auto sm:object-fill"
+<FooterTransition 
+	class="h-[37svw] w-full sm:h-auto"
 	aria-hidden={true}
 />
-<div class="bg-[#3455c3] px-8 py-4 text-white lg:px-16">
+<div class="bg-[#3455c3] px-8 py-4 text-white lg:px-16 -mt-1">
 	<div class="mx-auto max-w-[2000px]">
 		<footer class="items-center lg:flex lg:justify-between">
 			<div class="text-center opacity-90 lg:text-start">

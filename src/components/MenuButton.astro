@@ -1,13 +1,38 @@
-<div class="fixed bottom-10 sm:left-10 z-100 w-full flex justify-center sm:justify-start">
-    <button class="menu-button uppercase">
-        Menu & Resources
-    </button>
+---
+import PostcardBg from '@assets/landing/postcard-bg.svg';
+---
+
+<div class="fixed bottom-10 sm:left-10 z-100 w-full flex justify-center sm:justify-start pointer-events-none">
+    <div id="menu-container" class="relative pointer-events-auto group">
+        <!-- Popup -->
+        <div id="menu-popup" class="md:rotate-3 absolute bottom-full left-1/2 sm:left-4 -translate-x-1/2 sm:translate-x-0 pb-6 invisible">
+            <div class="popup-content w-72 relative shadow-2xl origin-bottom">
+                <img src={PostcardBg.src} alt="" class="absolute inset-0 w-full h-full object-cover" />
+                <div class="relative z-10 p-3">
+                    <div class="bg-[#FFFAF0] p-6 flex flex-col gap-4 border-2 border-[#77534D]">
+                        <nav class="flex flex-col gap-3">
+                            <a href="/" class="text-lg md:text-xl font-medium text-[#77534D] hover:text-[#D7A953] transition-colors">home</a>
+                            <a href="#about" class="text-lg md:text-xl font-medium text-[#77534D] hover:text-[#D7A953] transition-colors">general info</a>
+                            <a href="#schedule" class="text-lg md:text-xl font-medium text-[#77534D] hover:text-[#D7A953] transition-colors">schedule</a>
+                            <a href="#prizes" class="text-lg md:text-xl font-medium text-[#77534D] hover:text-[#D7A953] transition-colors">prizes</a>
+                            <a href="#faq" class="text-lg md:text-xl font-medium text-[#77534D] hover:text-[#D7A953] transition-colors">faq</a>
+                            <a href="#resources" class="text-lg md:text-xl font-medium text-[#77534D] hover:text-[#D7A953] transition-colors">resources</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Button -->
+        <button id="menu-btn" class="menu-button md:rotate-3 hover:scale-105 uppercase cursor-pointer relative z-10 transition-all duration-100">
+            Menu & Resources
+        </button>
+    </div>
 </div>
 
 <style>
     .menu-button {
         display: flex;
-        transform: rotate(5deg);
         padding: 14px 24px;
         justify-content: center;
         align-items: center;
@@ -22,3 +47,43 @@
         color: rgb(119, 83, 77);
     }
 </style>
+
+<script>
+    import gsap from 'gsap';
+
+    const container = document.getElementById('menu-container');
+    const popup = document.getElementById('menu-popup');
+    const popupContent = popup?.querySelector('.popup-content');
+
+    if (container && popup && popupContent) {
+        gsap.set(popup, { autoAlpha: 0 });
+        gsap.set(popupContent, { scale: 0.8, y: 20 });
+        
+        const tl = gsap.timeline({ paused: true });
+        
+        tl.to(popup, { 
+            duration: 0.1, 
+            autoAlpha: 1,
+            ease: "power2.out"
+        })
+        .to(popupContent, { 
+            duration: 0.2, 
+            scale: 1, 
+            y: 0,
+            ease: "back.out(1)" 
+        }, "<");
+
+        const openMenu = () => tl.play();
+        const closeMenu = () => tl.reverse();
+
+        container.addEventListener('mouseenter', openMenu);
+        container.addEventListener('mouseleave', closeMenu);
+        
+        container.addEventListener('focusin', openMenu);
+        container.addEventListener('focusout', (e) => {
+            if (!container.contains(e.relatedTarget as Node)) {
+                closeMenu();
+            }
+        });
+    }
+</script>

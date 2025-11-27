@@ -44,12 +44,12 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
 
         <div class="bottom-section">
     <div>
-        <p class="info-text text-red">Bethancourt Ballroom <br /> 730 Olsen Blvd <br />  College Station, TX 77485</p> 
+        <p class="info-text text-red"><span class="bold-text">Bethancourt Ballroom</span><br /> 730 Olsen Blvd <br />  College Station, TX 77485</p> 
       </div>
 
       <div>
         <p class="info-text text-blue">
-        Interested in hardware?<br />Hardware will begin Jan. 15 and<br />teams will have a week to create<br />their projects.<br />More details coming soon!</p>
+        <span class="bold-text">Interested in hardware?</span><br />Hardware will begin Jan. 15 and<br />teams will have a week to create<br />their projects.<br />More details coming soon!</p>
       </div>
     </div>
 
@@ -154,9 +154,13 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
 
 .info-text {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 500;
   margin: 0;
   text-align: left;
+}
+
+.bold-text {
+  font-weight: 700;
 }
 
 .text-red {

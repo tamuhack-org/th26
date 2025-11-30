@@ -95,6 +95,9 @@ const ellipse = await getImage({ src: BgImage });
 <script>
     import gsap from 'gsap';
     import { SplitText } from 'gsap/SplitText';
+
+    gsap.registerPlugin(SplitText);
+
     console.clear();
 
     const defaults = {

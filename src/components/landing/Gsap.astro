@@ -13,7 +13,7 @@ const ellipse = await getImage({ src: BgImage });
     <h1 class="sr-only">TAMUhack 2026</h1>
     <div
         id="heading__tamuhack"
-        class="font-family-bbh text-brown grid grid-cols-[1fr_auto] content-center gap-x-2 text-6xl leading-none tracking-wider uppercase opacity-100 sm:gap-x-4 xl:text-8xl 2xl:text-9xl -mt-[6%] pt-[6%] -mb-[6%] pb-[6%] -ml-[6%] pl-[6%] "
+        class="font-family-bbh text-brown -mt-[6%] -mb-[6%] -ml-[6%] grid grid-cols-[1fr_auto] content-center gap-x-2 pt-[6%] pb-[6%] pl-[6%] text-6xl leading-none tracking-wider uppercase opacity-100 sm:gap-x-4 xl:text-8xl 2xl:text-9xl"
         style={`
           background-image: url(${ellipse.src});
           background-repeat: no-repeat;
@@ -29,7 +29,7 @@ const ellipse = await getImage({ src: BgImage });
                 >t</span
             >
             <img
-                class="char char-a-strawberry inline-block w-auto mr-2"
+                class="char char-a-strawberry mr-2 inline-block w-auto"
                 src={Strawberry.src}
                 alt="A"
             />
@@ -58,6 +58,7 @@ const ellipse = await getImage({ src: BgImage });
         </div>
         <div
             class="font-family-stack row-start-3 row-end-4 text-right text-lg/snug font-semibold tracking-normal lowercase xl:text-2xl/9 2xl:text-4xl/12"
+            id="date-location"
         >
             <p>January 24-25</p>
             <p>MSC 2500</p>
@@ -93,6 +94,7 @@ const ellipse = await getImage({ src: BgImage });
 
 <script>
     import gsap from 'gsap';
+    import { SplitText } from 'gsap/SplitText';
     console.clear();
 
     const defaults = {
@@ -213,6 +215,23 @@ const ellipse = await getImage({ src: BgImage });
         return tl;
     };
 
+    const animateDateLocation = () => {
+        const tl = gsap.timeline({ defaults });
+        const split = new SplitText('#date-location', {
+            type: 'lines',
+            lineClass: 'line',
+        });
+
+        tl.from(split.lines, {
+            opacity: 0,
+            yPercent: 20,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: 'power2.out',
+        });
+        return tl;
+    };
+
     // Main timeline
     const mainTimeline = gsap.timeline({ defaults });
 
@@ -234,6 +253,7 @@ const ellipse = await getImage({ src: BgImage });
             mainTimeline.add(animateTwenty(), 1.5);
             mainTimeline.add(animateBlueberry(), 1.7);
             mainTimeline.add(animateTwentySix(), 1.5);
+            mainTimeline.add(animateDateLocation(), 2);
         },
     );
 </script>

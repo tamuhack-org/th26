@@ -1,9 +1,9 @@
 export const resources = [
-		//   {
-		//       name: 'Hacker Guide',
-		//       link: 'https://drive.google.com/file/d/1gUGimWC_s4eOu4OGOS6Hj2IqaOg9oWPt/view',
-		// // TODO: update link
-		//   },
+    //   {
+    //       name: 'Hacker Guide',
+    //       link: 'https://drive.google.com/file/d/1gUGimWC_s4eOu4OGOS6Hj2IqaOg9oWPt/view',
+    // // TODO: update link
+    //   },
     {
         name: 'HelpR',
         link: 'https://helpr.tamuhack.org/',
@@ -12,16 +12,16 @@ export const resources = [
         name: 'Code of Conduct',
         link: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
     },
-		//   {
-		//       name: 'Misconduct Reporting',
-		//       link: 'https://tamuhack.org/misconduct',
-		// // TODO: update misconduct form
-		//   },
-		//   {
-		//       name: 'Devpost',
-		//       link: 'https://tamuhack-2025.devpost.com/',
-		// //TODO: create devpost
-		//   },
+    //   {
+    //       name: 'Misconduct Reporting',
+    //       link: 'https://tamuhack.org/misconduct',
+    // // TODO: update misconduct form
+    //   },
+    //   {
+    //       name: 'Devpost',
+    //       link: 'https://tamuhack-2025.devpost.com/',
+    // //TODO: create devpost
+    //   },
 ];
 
 export const socials = [
@@ -71,7 +71,7 @@ export const otherHackathons = [
 ];
 
 export const workshops = [
-	//TODO: update these links when we redo workshop slides
+    //TODO: update these links when we redo workshop slides
     {
         name: 'Intro to Hackathons',
         link: 'https://docs.google.com/presentation/d/1r142lnKlA043jyYcFnjSFebxcm52usJ9MIVpLyUWQI4/edit?usp=sharing',

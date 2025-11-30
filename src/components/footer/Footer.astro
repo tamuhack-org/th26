@@ -1,6 +1,5 @@
 ---
-import FooterTransition from '@assets/footer/footer-transition.svg';
-import { waveEnd, sealEnd, catEnd } from '@assets/footer/footer-end-path'; // End svg paths of wave, seal, and cat assets
+import FooterTransition from '@assets/footer-transition.svg';
 import LinkSection from './LinkSection.astro';
 import {
 	resources,
@@ -12,21 +11,14 @@ import {
 
 <div
 	id="footer-container"
-	data-wave-end={waveEnd}
-	data-seal-end={sealEnd}
-	data-cat-end={catEnd}
 >
 	<FooterTransition aria-hidden={true} />
 	<script>
 		import { gsap } from 'gsap';
 		import { ScrollTrigger } from 'gsap/ScrollTrigger';
+		import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 
-		gsap.registerPlugin(ScrollTrigger);
-
-		const el = document.querySelector('#footer-container');
-		const waveEnd = (el as HTMLElement).dataset.waveEnd!;
-		const sealEnd = (el as HTMLElement).dataset.sealEnd!;
-		const catEnd = (el as HTMLElement).dataset.catEnd!;
+		gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
 
 		let mm = gsap.matchMedia(),
 			breakpoint = 40; // in rem
@@ -53,9 +45,9 @@ import {
 				});
 
 				mainTimeline
-					.to('.animate-wave', { attr: { d: waveEnd } })
-					.to('.animate-seal', { attr: { d: sealEnd } }, '<')
-					.to('.animate-cat', { attr: { d: catEnd } }, '<');
+					.to('.wave-start', { morphSVG: '.wave-end' })
+					.to('.seal-start', { morphSVG: '.seal-end' }, '<')
+					.to('.cat-start', { morphSVG: '.cat-end' }, '<');
 			},
 		);
 	</script>

@@ -1,6 +1,7 @@
 ---
 import PostcardBg from '@assets/landing/postcard-bg.svg';
 import stamp from '@assets/landing/stamp.svg';
+import strawberry from '@assets/landing/strawberry.svg';
 import { Image } from 'astro:assets';
 ---
 
@@ -24,12 +25,17 @@ import { Image } from 'astro:assets';
                     <div
                         class="flex gap-16 border-2 border-[#77534D] bg-[#FFFAF0] p-6"
                     >
-                        <Image src={stamp} alt="Stamp" class="hidden md:block absolute top-8 right-8 w-16 md:w-20" />
+                        <Image
+                            src={stamp}
+                            alt="Stamp"
+                            class="absolute top-8 right-8 hidden w-16 md:block md:w-20"
+                        />
                         <nav class="relative flex flex-col gap-3 pl-6">
                             <div
                                 id="nav-indicator"
-                                class="absolute top-0 left-0 h-4 w-4 rounded-full bg-[#77534D] opacity-0"
+                                class="absolute top-0 left-0 opacity-0"
                             >
+                                <img src={strawberry.src} class="h-auto w-4" />
                             </div>
                             <a
                                 href="/"

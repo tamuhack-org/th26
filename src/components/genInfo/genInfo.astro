@@ -10,7 +10,6 @@ import middleSectionOranges from '@assets/genInfo/middle-section-oranges.png';
 import middleSectionTiger from '@assets/genInfo/middle-section-tiger.png';
 import bananaSticker from '@assets/genInfo/sticker-banana.png';
 import starSticker from '@assets/genInfo/sticker-star.png';
-import squiggle from '@assets/genInfo/squiggle.svg';
 import heart from '@assets/genInfo/sticker-heart.png';
 import laptopTiger from '@assets/genInfo/laptop-tigers.png';
 ---
@@ -52,7 +51,20 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
                 <div class="tag tag-orange">
                     <p>800+ attendees</p>
                 </div>
-                <img src={squiggle.src} class="sticker sticker-banana" />
+                <svg
+                    width="34"
+                    height="25"
+                    viewBox="0 0 34 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="sticker squiggle"
+                    id="squiggle"
+                >
+                    <path
+                        d="M1.34033 9.15907C4.14758 0.135754 17.3818 -1.46839 20.5901 6.75285C23.7984 14.9741 16.828 20.4078 13.1709 16.9792C9.96261 13.9714 19.5875 6.75269 27.0066 8.75795C34.4258 10.7632 35.2279 22.5937 24.6004 23.3958"
+                        stroke="#EF9C26"
+                        stroke-width="2.80725"></path>
+                </svg>
                 <img src={starSticker.src} class="sticker sticker-star" />
             </div>
 
@@ -159,11 +171,11 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         z-index: 2;
     }
 
-  .headline {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
+    .headline {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
 
     .intro {
         font-size: 2.5rem;
@@ -263,15 +275,21 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
     }
 
     .sticker-banana {
-        width: 17%;
+        width: 23%;
+        top: 0%;
+        right: -10%;
+    }
+
+    .squiggle {
+        transform: scale(1.4);
         top: 20%;
         right: -5%;
     }
 
     .sticker-star {
-        width: 15%;
-        top: 50%;
-        left: -5%;
+        width: 20%;
+        top: 45%;
+        left: -8%;
         transform: translateY(-50%);
     }
 
@@ -429,3 +447,28 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         }
     }
 </style>
+
+<script>
+    import gsap from 'gsap';
+    import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
+    console.clear();
+
+    const defaults = {
+        ease: 'power2.out',
+        duration: 1,
+    };
+
+    gsap.set('#squiggle path', { drawSVG: '0%' });
+
+    gsap.to('#squiggle path', {
+        drawSVG: '100%',
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: '#squiggle',
+            start: 'top 65%',
+        },
+    });
+</script>

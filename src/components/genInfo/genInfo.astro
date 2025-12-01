@@ -558,9 +558,9 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.svg';
     }).from(
         '.event-title',
         {
-            x: 20,
+            x: 15,
             opacity: 0,
-            filter: 'blur(5px)',
+            filter: 'blur(4px)',
             duration: 0.6,
             ease: 'power2.out',
         },
@@ -572,12 +572,12 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.svg';
             trigger: '.tag-brown',
             start: 'top 65%',
         },
-        rotate: 15,
-        y: -20,
+        rotate: 10,
+        y: -15,
         opacity: 0,
         transformOrigin: '50% 0%', // TY chat for hinge point
-        duration: 1.4,
-        ease: 'elastic.out(1, 0.5)',
+        duration: 1.3,
+        ease: 'elastic.out(0.7, 0.5)',
     });
     const icons = ['.icon-heart', '.sticker-banana', '.sticker-star'];
     gsap.fromTo(

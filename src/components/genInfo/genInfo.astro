@@ -6,42 +6,43 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
 ---
 
 <section class="hero">
-  <div class="content">
-    <div class="headline">
-      <p class="intro">TAMUhack is a</p>
-      <div class="title-row">
-        <span class="icons">
-          <img src={banana.src} class="icon" />
-          <img src={strawberry.src} class="icon" />
-          <img src={blueberry.src} class="icon" />
-        </span>
-        <h1 class="event-title">24-hour event</h1>
-      </div>
+  <div class="top-section">
+        <div class="headline">
+        <p class="intro">TAMUhack is a</p>
+        <div class="title-row">
+            <span class="icons">
+            <img src={banana.src} class="icon" />
+            <img src={strawberry.src} class="icon" />
+            <img src={blueberry.src} class="icon" />
+            </span>
+            <h1 class="event-title">24-hour event</h1>
+        </div>
+        </div>
+
+        <p class="intro">
+        where teams create innovative <span class="text-blue">software &</span>
+        <br />
+        <span class="text-blue">hardware</span> solutions to
+        </p>
+
+        <div class="tag tag-brown">
+            <p>real-world problems</p>
+        </div>
+
+        <p class="intro">
+        in a community of mentorship.
+        </p>
     </div>
 
-    <p class="intro">
-      where teams create innovative <span class="text-blue">software &</span>
-      <br />
-      <span class="text-blue">hardware</span> solutions to
-    </p>
-
-    <div class="tag tag-brown">
-        <p>real-world problems</p>
+    <div class="middle-section">
+        <div class="tag tag-yellow">
+            <p>$15,000+ in prizes</p>
+        </div>
+        <div class="tag tag-orange">
+            <p>800+ attendees</p>
+        </div>
     </div>
-
-    <p class="intro">
-      in a community of mentorship.
-    </p>
-
-    <div class="tag tag-yellow">
-        <p>$15,000+ in prizes</p>
-    </div>
-
-    <div class="tag tag-orange">
-        <p>800+ attendees</p>
-    </div>
-    </div>
-
+    
     <div class="bottom-section">
       <div class="location-tilt">
         <p class="info-text text-red"><span class="bold-text">Bethancourt Ballroom</span><br /> 730 Olsen Blvd <br />  College Station, TX 77485</p> 
@@ -51,12 +52,9 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
         <p class="info-text text-blue"><span class="bold-text">Interested in hardware?</span><br />Hardware will begin Jan. 15 and<br />teams will have a week to create<br />their projects.<br />More details coming soon!</p>
       </div>
     </div>
-
-      
 </section>
 
 <style>
-
 .hero{
     position: relative;
     min-height: 100vh;
@@ -66,7 +64,19 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
     max-height: 100vh;
 }
 
-  .content {
+  .top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .middle-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -164,7 +174,7 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0;
-  text-align: left;
+  //text-align: left;
 }
 
 .bold-text {

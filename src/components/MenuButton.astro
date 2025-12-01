@@ -1,5 +1,6 @@
 ---
 import PostcardBg from '@assets/landing/postcard-bg.svg';
+import stamp from '@assets/landing/stamp.svg';
 import { Image } from 'astro:assets';
 ---
 
@@ -23,6 +24,7 @@ import { Image } from 'astro:assets';
                     <div
                         class="flex gap-16 border-2 border-[#77534D] bg-[#FFFAF0] p-6"
                     >
+                        <Image src={stamp} alt="Stamp" class="hidden md:block absolute top-8 right-8 w-16 md:w-20" />
                         <nav class="relative flex flex-col gap-3 pl-6">
                             <div
                                 id="nav-indicator"
@@ -35,32 +37,33 @@ import { Image } from 'astro:assets';
                                 >home</a
                             >
                             <a
-                                href="#about"
+                                href="#general-info"
                                 class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
                                 >general info</a
                             >
                             <a
-                                href="#schedule"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
                                 >schedule</a
                             >
                             <a
-                                href="#prizes"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
                                 >prizes</a
                             >
                             <a
-                                href="#faq"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
                                 >faq</a
                             >
                             <a
-                                href="#resources"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
                                 >resources</a
                             >
                         </nav>
                         <div class="hidden w-0.5 bg-[#77534D] md:block"></div>
+                        <div class="hidden flex-1 flex-col gap-6 pt-28 md:flex">
+                            <div class="h-0.5 w-full bg-[#77534D]"></div>
+                            <div class="h-0.5 w-full bg-[#77534D]"></div>
+                            <div class="h-0.5 w-full bg-[#77534D]"></div>
+                        </div>
                     </div>
                 </div>
             </div>

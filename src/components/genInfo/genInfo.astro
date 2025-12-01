@@ -81,7 +81,7 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         </div>
     </div>
 
-    <div class="bottom-section mt-8 lg:mt-4">
+    <div class="bottom-section mt-16">
         <Image
             src={questionSeals}
             alt="Blueberry seals questioning life right now"
@@ -119,6 +119,13 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
             </div>
         </div>
     </div>
+    <p class="text-brown text-sm mt-16 max-w-[80ch] mx-auto">
+        <strong>Note: </strong>Acceptances will be sent out on a rolling basis.
+        If you are accepted, you must check in before 11 AM or your acceptance
+        will be forfeited. We will have a waitlist line for students who are not
+        accepted. After 11 AM, we will admit people from the waitlist line until
+        the MSC capacity has been reached.
+    </p>
 </section>
 
 <style>
@@ -412,35 +419,33 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         }
 
         .tag {
-        display: inline-block;
-        padding: 0.5rem 1.25rem;
-        border-radius: 0.5rem;
-        font-weight: 500;
-        font-size: 3rem;
-      }
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 3rem;
+        }
 
-      .hero {
-        font-size: 3rem;
-    }
+        .hero {
+            font-size: 3rem;
+        }
 
-    .event-title {
-        font-size: 3.5rem;
-    }
+        .event-title {
+            font-size: 3.5rem;
+        }
 
-    .sticker-banana {
-        width: 17%;
-        top: 0%;
-        right: -8%;
-    }
+        .sticker-banana {
+            width: 17%;
+            top: 0%;
+            right: -8%;
+        }
 
-    .sticker-star {
-        width: 15%;
-        top: 40%;
-        left: -5%;
-        transform: translateY(-50%);
-    }
-
-
+        .sticker-star {
+            width: 15%;
+            top: 40%;
+            left: -5%;
+            transform: translateY(-50%);
+        }
     }
 
     @media (min-width: 630px) {
@@ -487,7 +492,7 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
             flex-direction: column-reverse;
             align-items: center;
         }
-        
+
         .bottom-section > div {
             display: flex;
             flex-direction: column;
@@ -498,11 +503,10 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
     }
 
     @media (min-width: 1400px) {
-    .bottom-section {
-        gap: 8rem;
+        .bottom-section {
+            gap: 8rem;
+        }
     }
-}
-
 </style>
 
 <script>

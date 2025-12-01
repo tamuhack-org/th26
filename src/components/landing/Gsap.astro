@@ -165,7 +165,7 @@ const ellipse = await getImage({ src: BgImage });
         const tl = gsap.timeline({ defaults });
         tl.from('.char-c-banana', {
             autoAlpha: 0,
-            rotation: -360,
+            rotation: -200,
             scale: 0,
             ease: 'elastic.out(1, 0.4)',
             duration: 1,
@@ -178,9 +178,9 @@ const ellipse = await getImage({ src: BgImage });
         const tl = gsap.timeline({ defaults });
         tl.from('.char-k', {
             autoAlpha: 0,
-            rotation: -120,
-            ease: 'elastic.out(1, 0.4)',
-            duration: 2,
+            rotation: -100,
+            ease: 'elastic.out(0.6, 0.4)',
+            duration: 1.6,
         });
         return tl;
     };

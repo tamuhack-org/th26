@@ -27,24 +27,41 @@ import ApplyMentor from './ApplyMentor.astro';
         class="relative z-0 -mt-24 aspect-square w-full overflow-hidden sm:col-start-1 sm:col-end-2 sm:row-start-1 sm:row-end-3 sm:mt-0 sm:overflow-visible"
         aria-hidden="true"
     >
-        <TomatoCat class="absolute -left-10 h-auto w-5/12" />
+        <TomatoCat class="landing-item absolute -left-10 h-auto w-5/12" />
         <MangoBlob
-            class="absolute top-[18%] left-[45%] hidden h-auto w-1/4 sm:block"
+            class="landing-item absolute top-[18%] left-[45%] hidden h-auto w-1/4 sm:block"
         />
         <BlueberryBlob
-            class="absolute bottom-[52%] left-[5%] hidden h-auto w-1/10 sm:block"
+            class="landing-item absolute bottom-[52%] left-[5%] hidden h-auto w-1/10 sm:block"
         />
         <BlueberryBunny
-            class="absolute bottom-[35%] -left-1 z-50 h-auto w-2/7 sm:bottom-[45%] sm:left-[25%]"
+            class="landing-item absolute bottom-[35%] -left-1 z-50 h-auto w-2/7 sm:bottom-[45%] sm:left-[25%]"
         />
         <OrangeBlob
-            class="absolute bottom-[32%] left-1/2 hidden h-auto w-1/10 sm:block"
+            class="landing-item absolute bottom-[32%] left-1/2 hidden h-auto w-1/10 sm:block"
         />
         <RedBlob
-            class="absolute bottom-[30%] left-[15%] hidden h-auto w-1/4 sm:block"
+            class="landing-item absolute bottom-[30%] left-[15%] hidden h-auto w-1/4 sm:block"
         />
         <MangoBird
-            class="absolute bottom-[20%] left-[30%] h-auto w-4/9 sm:-right-10 sm:bottom-[12%] sm:left-auto"
+            class="landing-item absolute bottom-[20%] left-[30%] h-auto w-4/9 sm:-right-10 sm:bottom-[12%] sm:left-auto"
         />
     </div>
 </section>
+
+<script>
+    import { gsap } from "gsap";
+
+    gsap.from(".landing-item", {
+        duration: 1.5,
+        scale: 0,
+        opacity: 0,
+        y: 50,
+        ease: "elastic.out(1, 0.5)",
+        stagger: {
+            amount: 1,
+            from: "random"
+        },
+        delay: 0.5
+    });
+</script>

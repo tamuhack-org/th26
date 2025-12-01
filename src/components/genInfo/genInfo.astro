@@ -78,7 +78,6 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
                 <img src={bananaSticker.src} class="sticker sticker-banana" />
             </div>
         </div>
-
         <div class="middle-section-assets">
             <img src={laptopTiger.src} />
         </div>
@@ -152,9 +151,7 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         align-items: flex-start;
         gap: 0.75rem;
         max-width: none;
-        aspect-ratio: 2 / 1;
         width: 100%;
-        height: 100%;
         position: relative;
         z-index: 2;
         margin-top: 5%;
@@ -180,7 +177,7 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         max-width: 500px;
         width: 100%;
         height: 100%;
-        margin-top: -5%;
+        margin-top: 30%;
         position: relative;
         z-index: 2;
     }
@@ -365,11 +362,13 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            max-width: 500px;
+            max-width: 700px;
             width: 100%;
             height: 100%;
-            margin-top: -5%;
+            margin-top: -15%;
+            margin-left: 5%;
             position: relative;
+            transform: translateY(5%);
             z-index: 2;
         }
 
@@ -398,11 +397,10 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
 
         .middle-section-tags {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            gap: 0.75rem;
-            width: 100%;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 2rem;
             position: relative;
             z-index: 2;
         }
@@ -414,7 +412,40 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         .heart-mobile {
             display: none;
         }
-        
+
+        .tag {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        font-size: 3rem;
+      }
+
+      .hero {
+        font-size: 3rem;
+    }
+
+    .event-title {
+        font-size: 3.5rem;
+    }
+
+    .sticker-banana {
+        width: 17%;
+        top: 0%;
+        right: -8%;
+    }
+
+    .sticker-star {
+        width: 15%;
+        top: 40%;
+        left: -5%;
+        transform: translateY(-50%);
+    }
+
+
+    }
+
+    @media (min-width: 630px) {
         .info-text {
             font-size: 2rem;
         }

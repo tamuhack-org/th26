@@ -309,11 +309,13 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
 
     .bottom-section {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2rem;
+        flex-direction: row;
+        justify-content: center;
+        gap: 4rem;
         position: relative;
-        margin-top: 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .info-text {
@@ -465,6 +467,13 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
             position: relative;
         }
     }
+
+    @media (min-width: 1400px) {
+    .bottom-section {
+        gap: 8rem;
+    }
+}
+
 </style>
 
 <script>

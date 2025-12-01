@@ -1,24 +1,192 @@
-<div class="fixed bottom-10 sm:left-10 z-100 w-full flex justify-center sm:justify-start">
-    <button class="menu-button uppercase">
-        Menu & Resources
-    </button>
+---
+import PostcardBg from '@assets/landing/postcard-bg.svg';
+import stamp from '@assets/landing/stamp.svg';
+import strawberry from '@assets/landing/strawberry.svg';
+import { Image } from 'astro:assets';
+---
+
+<div
+    class="pointer-events-none fixed bottom-14 z-100 flex w-full justify-center sm:left-14 sm:justify-start"
+>
+    <div id="menu-container" class="group pointer-events-auto relative">
+        <div
+            id="menu-popup"
+            class="invisible absolute bottom-full left-1/2 -translate-x-1/2 pb-6 sm:left-4 sm:translate-x-0 md:rotate-3"
+        >
+            <div
+                class="popup-content relative w-72 origin-bottom shadow-2xl md:w-[500px]"
+            >
+                <Image
+                    src={PostcardBg}
+                    alt="Postcard border"
+                    class="absolute inset-0 h-full w-full object-cover"
+                />
+                <div class="relative z-10 p-3">
+                    <div
+                        class="flex gap-16 border-2 border-[#77534D] bg-[#FFFAF0] p-6"
+                    >
+                        <Image
+                            src={stamp}
+                            alt="Stamp"
+                            class="absolute top-8 right-8 hidden w-16 md:block md:w-20"
+                        />
+                        <nav class="relative flex flex-col gap-3 pl-6">
+                            <div
+                                id="nav-indicator"
+                                class="absolute top-0 left-0 opacity-0"
+                            >
+                                <img src={strawberry.src} class="h-auto w-4" />
+                            </div>
+                            <a
+                                href="/"
+                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                >home</a
+                            >
+                            <a
+                                href="#general-info"
+                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                >general info</a
+                            >
+                            <a
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
+                                >schedule</a
+                            >
+                            <a
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
+                                >prizes</a
+                            >
+                            <a
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
+                                >faq</a
+                            >
+                            <a
+                                class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
+                                >resources</a
+                            >
+                        </nav>
+                        <div class="hidden w-0.5 bg-[#77534D] md:block"></div>
+                        <div class="hidden flex-1 flex-col gap-6 pt-28 md:flex">
+                            <div class="h-0.5 w-full bg-[#77534D]"></div>
+                            <div class="h-0.5 w-full bg-[#77534D]"></div>
+                            <div class="h-0.5 w-full bg-[#77534D]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <button
+            id="menu-btn"
+            class="menu-button relative z-10 cursor-pointer uppercase transition-all duration-100 md:rotate-3"
+        >
+            Menu & Resources
+        </button>
+    </div>
 </div>
 
 <style>
     .menu-button {
         display: flex;
-        transform: rotate(5deg);
         padding: 14px 24px;
         justify-content: center;
         align-items: center;
         gap: 10px;
         flex-shrink: 0;
         border-radius: 41.438px;
-        border: 2.655px solid #77534D;
-        background: linear-gradient(282deg, rgba(255, 255, 255, 0.14) 14.64%, rgba(215, 169, 83, 0.14) 89.11%), #FFFAF0;
-        box-shadow: 1px 3px 0 0 rgba(255, 255, 255, 0.93) inset, 3px 5px 5px 0 rgba(0, 0, 0, 0.2);
+        border: 2.655px solid #77534d;
+        background:
+            linear-gradient(
+                282deg,
+                rgba(255, 255, 255, 0.14) 14.64%,
+                rgba(215, 169, 83, 0.14) 89.11%
+            ),
+            #fffaf0;
+        box-shadow:
+            1px 3px 0 0 rgba(255, 255, 255, 0.93) inset,
+            3px 5px 5px 0 rgba(0, 0, 0, 0.2);
         font-size: 18px;
         font-weight: 500;
         color: rgb(119, 83, 77);
     }
 </style>
+
+<script>
+    import gsap from 'gsap';
+
+    const container = document.getElementById('menu-container');
+    const popup = document.getElementById('menu-popup');
+    const popupContent = popup?.querySelector('.popup-content');
+
+    if (container && popup && popupContent) {
+        gsap.set(popup, { autoAlpha: 0 });
+        gsap.set(popupContent, { scale: 0.8, y: 20 });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(popup, {
+            duration: 0.1,
+            autoAlpha: 1,
+            ease: 'power2.out',
+        }).to(
+            popupContent,
+            {
+                duration: 0.2,
+                scale: 1,
+                y: 0,
+                ease: 'back.out(1)',
+            },
+            '<',
+        );
+
+        const openMenu = () => tl.play();
+        const closeMenu = () => tl.reverse();
+
+        container.addEventListener('mouseenter', openMenu);
+        container.addEventListener('mouseleave', closeMenu);
+
+        container.addEventListener('focusin', openMenu);
+        container.addEventListener('focusout', (e) => {
+            if (!container.contains(e.relatedTarget as Node)) {
+                closeMenu();
+            }
+        });
+
+        // Nav indicator logic
+        const nav = popup.querySelector('nav');
+        const indicator = document.getElementById('nav-indicator');
+        const links = nav?.querySelectorAll('a');
+
+        if (nav && indicator && links) {
+            const updateIndicator = (link: HTMLElement) => {
+                const relativeY =
+                    link.offsetTop +
+                    link.offsetHeight / 2 -
+                    indicator.offsetHeight / 2;
+
+                gsap.to(indicator, {
+                    y: relativeY,
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                });
+            };
+
+            links.forEach((link) => {
+                link.addEventListener('mouseenter', () =>
+                    updateIndicator(link as HTMLElement),
+                );
+                link.addEventListener('focus', () =>
+                    updateIndicator(link as HTMLElement),
+                );
+            });
+
+            nav.addEventListener('mouseleave', () => {
+                gsap.to(indicator, {
+                    opacity: 0,
+                    duration: 0.2,
+                });
+            });
+        }
+    }
+</script>

@@ -30,16 +30,16 @@ export const socials = [
         link: 'https://www.instagram.com/tamuhack',
     },
     {
-        name: 'TikTok',
-        link: 'https://www.tiktok.com/@tamuhack',
-    },
-    {
         name: 'LinkedIn',
         link: 'https://www.linkedin.com/company/tamuhack',
     },
     {
         name: 'Discord',
         link: 'https://tamuhack.org/discord',
+    },
+    {
+        name: 'TikTok',
+        link: 'https://www.tiktok.com/@tamuhack',
     },
 ];
 

@@ -27,7 +27,7 @@ import ApplyMentor from './ApplyMentor.astro';
         class="relative z-0 -mt-24 aspect-square w-full overflow-hidden sm:col-start-1 sm:col-end-2 sm:row-start-1 sm:row-end-3 sm:mt-0 sm:overflow-visible"
         aria-hidden="true"
     >
-        <TomatoCat class="landing-item absolute -left-10 h-auto w-5/12" />
+        <TomatoCat class="landing-item absolute -left-10 h-auto w-7/16" />
         <MangoBlob
             class="landing-item absolute top-[18%] left-[45%] hidden h-auto w-1/4 sm:block"
         />
@@ -35,7 +35,7 @@ import ApplyMentor from './ApplyMentor.astro';
             class="landing-item absolute bottom-[52%] left-[5%] hidden h-auto w-1/10 sm:block"
         />
         <BlueberryBunny
-            class="landing-item absolute bottom-[35%] -left-1 z-50 h-auto w-2/7 sm:bottom-[45%] sm:left-[25%]"
+            class="landing-item absolute bottom-[35%] -left-1 z-50 h-auto w-3/10 sm:bottom-[45%] sm:left-[25%]"
         />
         <OrangeBlob
             class="landing-item absolute bottom-[32%] left-1/2 hidden h-auto w-1/10 sm:block"
@@ -50,18 +50,32 @@ import ApplyMentor from './ApplyMentor.astro';
 </section>
 
 <script>
-    import { gsap } from "gsap";
+    import { gsap } from 'gsap';
+    gsap.utils.toArray('.landing-item').forEach((item) => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
 
-    gsap.from(".landing-item", {
-        duration: 1.5,
-        scale: 0,
-        opacity: 0,
-        y: 50,
-        ease: "elastic.out(1, 0.5)",
-        stagger: {
-            amount: 1,
-            from: "random"
-        },
-        delay: 0.5
+            // cursor position relative to center of item
+            const relX = e.clientX - (rect.left + rect.width / 2);
+            const relY = e.clientY - (rect.top + rect.height / 2);
+
+            // move item a fraction toward cursor
+            gsap.to(item, {
+                x: relX * 0.15, // 0.15 = how strong the effect is
+                y: relY * 0.15,
+                duration: 0.4,
+                ease: 'power2.out',
+            });
+        });
+
+        item.addEventListener('mouseleave', () => {
+            // reset same as reverse()
+            gsap.to(item, {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                ease: 'power3.out',
+            });
+        });
     });
 </script>

@@ -41,20 +41,20 @@ import squiggle from '@assets/genInfo/squiggle.svg';
 
     <div class="middle-section">
         <div class="middle-section-tags">
-        <div class="tag-wrapper">
-            <div class="tag tag-yellow">
-                <p>$15,000+ in prizes</p>
-            </div>
-            <img src={bananaSticker.src} class="sticker sticker-banana" />
-        </div>
-            
-            <div class="tag-wrapper">
+            <div class="tag-wrapper-orange">
                 <div class="tag tag-orange">
                     <p>800+ attendees</p>
                 </div>
                 <img src={squiggle.src} class="sticker sticker-banana" />
                 <img src={starSticker.src} class="sticker sticker-star" />
             </div>
+
+            <div class="tag-wrapper-yellow">
+              <div class="tag tag-yellow">
+                  <p>$15,000+ in prizes</p>
+              </div>
+              <img src={bananaSticker.src} class="sticker sticker-banana" />
+          </div>
         </div>
 
         <div class="middle-section-assets">
@@ -111,12 +111,14 @@ import squiggle from '@assets/genInfo/squiggle.svg';
     height: 100%;
     position: relative;
     z-index: 2;
+    margin-top: 5%;
+    justify-content: center;
   }
 
   .middle-section-tags {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.75rem;
     max-width: none;
     width: 100%;
@@ -126,7 +128,7 @@ import squiggle from '@assets/genInfo/squiggle.svg';
   }
 
   .middle-section-assets {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     max-width: 500px;
@@ -224,11 +226,24 @@ import squiggle from '@assets/genInfo/squiggle.svg';
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     margin-top: 1.75rem;
     white-space: nowrap;
+    align-self: flex-start;
   }
 
 .tag-wrapper {
     position: relative;
     width: fit-content;
+}
+
+.tag-wrapper-orange {
+  align-self: flex-start;
+  position: relative;
+  width: fit-content;
+}
+
+.tag-wrapper-yellow {
+  align-self: flex-end;
+  position: relative;
+  width: fit-content;
 }
 
 .sticker {
@@ -291,19 +306,51 @@ import squiggle from '@assets/genInfo/squiggle.svg';
   width: auto;
 }
 
-@media (max-width: 630px) {
+@media (min-width: 630px) {
   .middle-section-assets {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    margin-top: -5%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tag-wrapper-orange {
+  position: relative;
+  width: fit-content;
+  align-self: unset;
+}
+
+  .tag-wrapper-yellow {
+    position: relative;
+    width: fit-content;
+    align-self: unset;
   }
 
   .middle-section {
-    margin-top: 5%;
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.75rem;
+    max-width: none;
+    width: 100%;
+    position: relative;
+    z-index: 2;
   }
 
   .middle-section-tags {
-    flex-direction: column-reverse;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+    position: relative;
+    z-index: 2;
   }
 
 }

@@ -562,4 +562,33 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.svg';
         },
         '-=0.6',
     );
+
+    gsap.from('.tag-brown', {
+        scrollTrigger: {
+            trigger: '.tag-brown',
+            start: 'top 65%',
+        },
+        rotate: 15,
+        y: -20,
+        opacity: 0,
+        transformOrigin: '50% 0%', // TY chat for hinge point
+        duration: 1.4,
+        ease: 'elastic.out(1, 0.5)',
+    });
+
+    const signTags = ['.tag-orange', '.tag-yellow'];
+
+    gsap.from(signTags, {
+        scrollTrigger: {
+            trigger: '.middle-section-tags',
+            start: 'top 75%',
+        },
+        y: -50,
+        opacity: 0,
+        rotation: (i) => (i % 2 === 0 ? 10 : -10),
+        transformOrigin: '50% 0%',
+        duration: 1,
+        stagger: 0.2,
+        ease: 'back.out(2.5)',
+    });
 </script>

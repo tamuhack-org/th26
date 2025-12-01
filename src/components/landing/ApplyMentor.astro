@@ -4,7 +4,7 @@ import mentorButton from '@assets/landing/mentor-button.png';
 import Sticker from './Sticker.astro';
 ---
 
-<div class="relative z-50 flex gap-3">
+<div class="apply-mentor-container relative z-50 flex gap-3">
     <a
         class="cursor-pointer"
         href="https://start.tamuhack.com"
@@ -34,3 +34,13 @@ import Sticker from './Sticker.astro';
         />
     </a>
 </div>
+
+<script>
+    import { gsap } from 'gsap';
+
+    gsap.fromTo(
+        '.apply-mentor-container > a',
+        { scale: 0 },
+        { scale: 1, duration: 1.5, ease: 'elastic.out', delay: 0.75, stagger: 0.2 }
+    );
+</script>

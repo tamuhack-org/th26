@@ -580,20 +580,20 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.svg';
         ease: 'elastic.out(1, 0.5)',
     });
 
-    const signTags = ['.tag-orange', '.tag-yellow'];
+    const signTags = ['.tag-yellow', '.tag-orange'];
 
     gsap.from(signTags, {
         scrollTrigger: {
             trigger: '.middle-section-tags',
-            start: 'top 75%',
+            start: 'top 65%',
         },
-        y: -50,
+        y: -40,
         opacity: 0,
         rotation: (i) => (i % 2 === 0 ? 10 : -10),
         transformOrigin: '50% 0%',
-        duration: 1,
-        stagger: 0.2,
-        ease: 'back.out(2.5)',
+        duration: 0.6,
+        stagger: 0.5,
+        ease: 'back.out(1.4)',
     });
 
     // erm we need to select the hw/sw text only, probs should've added an id

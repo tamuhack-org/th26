@@ -12,6 +12,7 @@ import middleSectionTiger from '@assets/genInfo/middle-section-tiger.png';
 import bananaSticker from '@assets/genInfo/sticker-banana.png';
 import starSticker from '@assets/genInfo/sticker-star.png';
 import squiggle from '@assets/genInfo/squiggle.svg';
+import heart from '@assets/genInfo/sticker-heart.png';
 ---
 
 <section id="about" class="hero">
@@ -35,7 +36,7 @@ import squiggle from '@assets/genInfo/squiggle.svg';
         </span>
 
         <span>
-        in a community of mentorship.
+        in a community <img src={heart.src} class="icon-heart heart-mobile" /> of mentorship. <img src={heart.src} class="icon-heart heart-desktop" />
         </span>
     </div>
 
@@ -184,6 +185,12 @@ import squiggle from '@assets/genInfo/squiggle.svg';
     display: inline-block;
   }
 
+  .icon-heart {
+    height: 2em;
+    display: inline-block;
+    width: auto;
+  }
+
   .event-title {
     font-weight: 500;
     color: #e63b2e; /* Red-orange */
@@ -306,6 +313,14 @@ import squiggle from '@assets/genInfo/squiggle.svg';
   width: auto;
 }
 
+.heart-desktop {
+  display: none;
+}
+
+.heart-mobile {
+  display: inline;
+}
+
 @media (min-width: 630px) {
   .middle-section-assets {
     display: flex;
@@ -351,6 +366,14 @@ import squiggle from '@assets/genInfo/squiggle.svg';
     width: 100%;
     position: relative;
     z-index: 2;
+  }
+
+  .heart-desktop {
+    display: inline;
+  }
+
+  .heart-mobile {
+    display: none;
   }
 
 }

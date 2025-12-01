@@ -6,6 +6,12 @@ import strawberry from '@assets/landing/strawberry.svg';
 
 import strawberrysimple from '@assets/genInfo/strawberry.svg';
 import blueberrysimple from '@assets/genInfo/blueberry.svg';
+
+import middleSectionOranges from '../../assets/genInfo/middle-section-oranges.png';
+import middleSectionTiger from '../../assets/genInfo/middle-section-tiger.png';
+import bananaSticker from '../../assets/genInfo/sticker-banana.png';
+import starSticker from '../../assets/genInfo/sticker-star.png';
+import blueberrysimple from '@assets/genInfo/blueberry.svg';
 ---
 
 <section id="about" class="hero">
@@ -34,11 +40,25 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     </div>
 
     <div class="middle-section">
-        <div class="tag tag-yellow">
-            <p>$15,000+ in prizes</p>
+        <div class="middle-section-tags">
+        <div class="tag-wrapper">
+            <div class="tag tag-yellow">
+                <p>$15,000+ in prizes</p>
+            </div>
+            <img src={bananaSticker.src} class="sticker sticker-banana" />
         </div>
-        <div class="tag tag-orange">
-            <p>800+ attendees</p>
+            
+            <div class="tag-wrapper">
+                <div class="tag tag-orange">
+                    <p>800+ attendees</p>
+                </div>
+                <img src={starSticker.src} class="sticker sticker-star" />
+            </div>
+        </div>
+
+        <div class="middle-section-assets">
+            <img src={middleSectionTiger.src} />
+            <img src={middleSectionOranges.src} />
         </div>
     </div>
     
@@ -52,7 +72,7 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
         <img src={blueberrysimple.src} class="icon-simple" alt="Blueberry simple" />
         <p class="info-text text-blue"><span class="bold-text">Interested in hardware?</span><br />Hardware will begin Jan. 15 and<br />teams will have a week to create<br />their projects.
         </p>
-        <p class="text-blue">More details coming soon!</p>
+        <p class="text-blue text-base">More details coming soon!</p>
       </div>
     </div>
 </section>
@@ -64,6 +84,7 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     padding-left: 2rem;
     padding-right: 2rem;
     padding-bottom: 2rem;
+    font-size: 1.5rem;
 }
 
   .top-section {
@@ -75,11 +96,23 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     height: 100%;
     position: relative;
     z-index: 2;
-    font-size: 1.5rem;
     color: #774A4E;
   }
 
   .middle-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+    max-width: none;
+    aspect-ratio: 2 / 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .middle-section-tags {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -89,6 +122,45 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     height: 100%;
     position: relative;
     z-index: 2;
+  }
+
+  .middle-section-assets {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    margin-top: -5%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .middle-section-assets img:first-child {
+    position: relative;
+    top: 0;
+    left: 35%;
+    width: 60%;
+  }
+
+  .middle-section-assets img:last-child {
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    width: 75%;
+  }
+
+  .headline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .intro {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #4a4a4a;
+    margin: 0;
   }
 
   .title-row {
@@ -124,7 +196,6 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     display: inline-block;
     padding: 0.5rem 1.25rem;
     border-radius: 0.5rem;
-    font-size: 1.5rem;
     font-weight: 500;
   }
 
@@ -142,6 +213,7 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     transform: rotate(3deg);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     margin-top: 2.0rem;
+    white-space: nowrap;
   }
 
   .tag-orange {
@@ -150,7 +222,30 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     transform: rotate(-3deg);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     margin-top: 1.75rem;
+    white-space: nowrap;
   }
+
+.tag-wrapper {
+    position: relative;
+    width: fit-content;
+}
+
+.sticker {
+    position: absolute;
+}
+
+.sticker-banana {
+    width: 17%;
+    top: 20%;
+    right: -5%;
+}
+
+.sticker-star {
+    width: 15%;
+    top: 50%;
+    left: -5%;
+    transform: translateY(-50%);
+}
 
 .bottom-section {
   display: flex;
@@ -186,8 +281,8 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
     /* transform: rotate(-1deg); */
 }
 
-.location-tilt {
-    /* transform: rotate(1.5deg); */
+.location-tilt {   
+     /* transform: rotate(1.5deg); */
 }
 
 .icon-simple {
@@ -195,4 +290,20 @@ import blueberrysimple from '@assets/genInfo/blueberry.svg';
   width: auto;
 }
 
+@media (max-width: 630px) {
+  .middle-section-assets {
+    display: none;
+  }
+
+  .middle-section {
+    margin-top: 5%;
+    justify-content: center;
+  }
+
+  .middle-section-tags {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+}
 </style>

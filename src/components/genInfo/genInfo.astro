@@ -1,37 +1,33 @@
 
 ---
-import banana from '../../assets/genInfo/banana.svg';
-import blueberry from '../../assets/genInfo/blueberry.svg';
-import strawberry from '../../assets/genInfo/strawberry.svg';
+import banana from '@assets/landing/banana.svg';
+import blueberry from '@assets/landing/blueberry.svg';
+import strawberry from '@assets/landing/strawberry.svg';
 ---
 
 <section class="hero">
   <div class="top-section">
-        <div class="headline">
-        <p class="intro">TAMUhack is a</p>
+        <span>TAMUhack is a</span>
         <div class="title-row">
-            <span class="icons">
-            <img src={banana.src} class="icon" />
-            <img src={strawberry.src} class="icon" />
-            <img src={blueberry.src} class="icon" />
-            </span>
-            <h1 class="event-title">24-hour event</h1>
-        </div>
+            <img src={banana.src} class="icon" alt="Banana" />
+            <img src={strawberry.src} class="icon" alt="Strawberry"/>
+            <img src={blueberry.src} class="icon" alt="Blueberry"/>
+            <span class="event-title">24-hour event</span>
         </div>
 
-        <p class="intro">
+        <span>
         where teams create innovative <span class="text-blue">software &</span>
         <br />
         <span class="text-blue">hardware</span> solutions to
-        </p>
+        </span>
 
-        <div class="tag tag-brown">
-            <p>real-world problems</p>
-        </div>
+        <span class="tag tag-brown">
+            real-world problems
+        </span>
 
-        <p class="intro">
+        <span>
         in a community of mentorship.
-        </p>
+        </span>
     </div>
 
     <div class="middle-section">
@@ -58,7 +54,7 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
 .hero{
     position: relative;
     min-height: 100vh;
-    padding: 3rem 4rem;
+    padding: 0rem 2rem;
     overflow: auto;
     max-width: 1920px;
     max-height: 100vh;
@@ -68,12 +64,13 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
     max-width: none;
     width: 100%;
     height: 100%;
     position: relative;
     z-index: 2;
+    font-size: 1.5rem;
+    color: #774A4E;
   }
 
   .middle-section {
@@ -88,19 +85,6 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
     z-index: 2;
   }
 
-  .headline {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .intro {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #4a4a4a;
-    margin: 0;
-  }
-
   .title-row {
     display: flex;
     align-items: center;
@@ -109,24 +93,25 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
 
   .icons {
     display: flex;
+    align-items: center;
     gap: 0.25rem;
   }
 
   .icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    height: 1em;
+    width: auto;
+    display: inline-block;
   }
 
   .event-title {
-    font-size: 3rem;
-    font-weight: 700;
+    font-weight: 500;
     color: #e63b2e; /* Red-orange */
     margin: 0;
+    font-size: 1.875rem;
   }
 
   .text-blue {
     color: #3457C3;
-    font-weight: 600;
   }
 
   .tag {
@@ -142,6 +127,7 @@ import strawberry from '../../assets/genInfo/strawberry.svg';
     color: #FFF6E5;
     transform: rotate(-3deg);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    margin-block: 1rem;
   }
 
   .tag-yellow {

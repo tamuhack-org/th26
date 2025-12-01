@@ -85,34 +85,40 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
     </div>
 
     <div class="bottom-section">
-    <Image src={questionSeals} alt="Blueberry seals questioning life right now" />
-        <div class="location-tilt">
-            <img
-                src={strawberrysimple.src}
-                class="icon-simple"
-                alt="Strawberry simple"
-            />
-            <p class="info-text text-red">
-                <span class="semibold-text">Bethancourt Ballroom</span><br /> 730
-                Olsen Blvd <br /> College Station, TX 77485
-            </p>
-        </div>
+        <Image
+            src={questionSeals}
+            alt="Blueberry seals questioning life right now"
+            class={'hidden lg:block'}
+        />
+        <div>
+            <div class="location-tilt">
+                <img
+                    src={strawberrysimple.src}
+                    class="icon-simple"
+                    alt="Strawberry simple"
+                />
+                <p class="info-text text-red">
+                    <span class="semibold-text">Bethancourt Ballroom</span><br
+                    /> 730 Olsen Blvd <br /> College Station, TX 77485
+                </p>
+            </div>
 
-        <div class="hardware-tilt">
-            <img
-                src={blueberrysimple.src}
-                class="icon-simple"
-                alt="Blueberry simple"
-            />
-            <div>
-                <p class="info-text text-blue">
-                    <span class="bold-text">Interested in hardware?</span><br
-                    />Hardware will begin Jan. 15 and<br />teams will have a
-                    week to create<br />their projects.
-                </p>
-                <p class="text-blue text-base sm:text-lg">
-                    More details coming soon!
-                </p>
+            <div class="hardware-tilt">
+                <img
+                    src={blueberrysimple.src}
+                    class="icon-simple"
+                    alt="Blueberry simple"
+                />
+                <div>
+                    <p class="info-text text-blue">
+                        <span class="bold-text">Interested in hardware?</span
+                        ><br />Hardware will begin Jan. 15 and<br />teams will
+                        have a week to create<br />their projects.
+                    </p>
+                    <p class="text-blue text-base sm:text-lg">
+                        More details coming soon!
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -406,36 +412,17 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
         .heart-mobile {
             display: none;
         }
-    }
-
-    @media (max-width: 630px) {
-        .middle-section-assets {
-            display: none;
-        }
-
-        .middle-section {
-            margin-top: 5%;
-            justify-content: center;
-        }
-
-        .middle-section-tags {
-            flex-direction: column-reverse;
-            align-items: center;
-        }
-    }
-
-    @media (min-width: 630px) {
+        
         .info-text {
             font-size: 2rem;
         }
 
         .bottom-section {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            flex-direction: row;
+            justify-content: space-around;
             gap: 2rem;
             position: relative;
-            margin-top: 2rem;
         }
 
         .location-tilt {
@@ -452,6 +439,30 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
             flex-direction: row-reverse;
             gap: 1rem;
             transform: rotate(-1deg);
+        }
+    }
+
+    @media (max-width: 630px) {
+        .middle-section-assets {
+            display: none;
+        }
+
+        .middle-section {
+            margin-top: 5%;
+            justify-content: center;
+        }
+
+        .middle-section-tags {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+        
+        .bottom-section > div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem;
+            position: relative;
         }
     }
 </style>

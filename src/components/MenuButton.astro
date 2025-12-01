@@ -117,8 +117,9 @@ import { Image } from 'astro:assets';
     const container = document.getElementById('menu-container');
     const popup = document.getElementById('menu-popup');
     const popupContent = popup?.querySelector('.popup-content');
+    const menuBtn = document.getElementById('menu-btn');
 
-    if (container && popup && popupContent) {
+    if (container && popup && popupContent && menuBtn) {
         gsap.set(popup, { autoAlpha: 0 });
         gsap.set(popupContent, { scale: 0.8, y: 20 });
 
@@ -139,15 +140,44 @@ import { Image } from 'astro:assets';
             '<',
         );
 
+        let isClickedOpen = false;
+
         const openMenu = () => tl.play();
-        const closeMenu = () => tl.reverse();
+        const closeMenu = () => {
+            tl.reverse();
+            isClickedOpen = false;
+        };
 
+        // Click to toggle
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isClickedOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+                isClickedOpen = true;
+            }
+        });
+
+        // Hover behavior (only closes if not clicked open)
         container.addEventListener('mouseenter', openMenu);
-        container.addEventListener('mouseleave', closeMenu);
+        container.addEventListener('mouseleave', () => {
+            if (!isClickedOpen) {
+                closeMenu();
+            }
+        });
 
+        // Focus behavior (only closes if not clicked open)
         container.addEventListener('focusin', openMenu);
         container.addEventListener('focusout', (e) => {
-            if (!container.contains(e.relatedTarget as Node)) {
+            if (!isClickedOpen && !container.contains(e.relatedTarget as Node)) {
+                closeMenu();
+            }
+        });
+
+        // Click outside to close
+        document.addEventListener('click', (e) => {
+            if (isClickedOpen && !container.contains(e.target as Node)) {
                 closeMenu();
             }
         });

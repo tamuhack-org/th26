@@ -3,9 +3,12 @@
 import banana from '@assets/landing/banana.svg';
 import blueberry from '@assets/landing/blueberry.svg';
 import strawberry from '@assets/landing/strawberry.svg';
+
+import strawberrysimple from '@assets/genInfo/strawberry.svg';
+import blueberrysimple from '@assets/genInfo/blueberry.svg';
 ---
 
-<section class="hero">
+<section id="about" class="hero">
   <div class="top-section">
         <span>TAMUhack is a</span>
         <div class="title-row">
@@ -41,11 +44,15 @@ import strawberry from '@assets/landing/strawberry.svg';
     
     <div class="bottom-section">
       <div class="location-tilt">
-        <p class="info-text text-red"><span class="bold-text">Bethancourt Ballroom</span><br /> 730 Olsen Blvd <br />  College Station, TX 77485</p> 
+        <img src={strawberrysimple.src} class="icon-simple" alt="Strawberry simple" />
+        <p class="info-text text-red"><span class="semibold-text">Bethancourt Ballroom</span><br /> 730 Olsen Blvd <br />  College Station, TX 77485</p> 
       </div>
 
       <div class="hardware-tilt">
-        <p class="info-text text-blue"><span class="bold-text">Interested in hardware?</span><br />Hardware will begin Jan. 15 and<br />teams will have a week to create<br />their projects.<br />More details coming soon!</p>
+        <img src={blueberrysimple.src} class="icon-simple" alt="Blueberry simple" />
+        <p class="info-text text-blue"><span class="bold-text">Interested in hardware?</span><br />Hardware will begin Jan. 15 and<br />teams will have a week to create<br />their projects.
+        </p>
+        <p class="text-blue">More details coming soon!</p>
       </div>
     </div>
 </section>
@@ -54,10 +61,9 @@ import strawberry from '@assets/landing/strawberry.svg';
 .hero{
     position: relative;
     min-height: 100vh;
-    padding: 0rem 2rem;
-    overflow: auto;
-    max-width: 1920px;
-    max-height: 100vh;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
 }
 
   .top-section {
@@ -147,24 +153,25 @@ import strawberry from '@assets/landing/strawberry.svg';
   }
 
 .bottom-section {
-  position: absolute; 
-  right: 4rem;
-  bottom: 3rem; 
   display: flex;
   flex-direction: column;
   align-items: flex-start; 
   gap: 2rem;
+  position: relative;
+  margin-top: 2rem;
 }
 
 .info-text {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 0;
-  //text-align: left;
+  font-size: 1.25rem;
+  margin-top: 1rem;
 }
 
 .bold-text {
   font-weight: 700;
+}
+
+.semibold-text {
+  font-weight: 600;
 }
 
 .text-red {
@@ -176,12 +183,16 @@ import strawberry from '@assets/landing/strawberry.svg';
 }
 
 .hardware-tilt {
-    transform: rotate(-1deg);
-    margin-top: 2.0rem;
+    /* transform: rotate(-1deg); */
 }
 
 .location-tilt {
-    transform: rotate(1.5deg);
+    /* transform: rotate(1.5deg); */
+}
+
+.icon-simple {
+  height: 3em;
+  width: auto;
 }
 
 </style>

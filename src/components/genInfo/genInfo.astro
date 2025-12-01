@@ -1,10 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+
 import banana from '@assets/landing/banana.svg';
 import blueberry from '@assets/landing/blueberry.svg';
 import strawberry from '@assets/landing/strawberry.svg';
 
 import strawberrysimple from '@assets/genInfo/strawberry.svg';
 import blueberrysimple from '@assets/genInfo/blueberry.svg';
+import questionSeals from '@assets/genInfo/question-seals.svg';
 
 import middleSectionOranges from '@assets/genInfo/middle-section-oranges.png';
 import middleSectionTiger from '@assets/genInfo/middle-section-tiger.png';
@@ -82,6 +85,7 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
     </div>
 
     <div class="bottom-section">
+    <Image src={questionSeals} alt="Blueberry seals questioning life right now" />
         <div class="location-tilt">
             <img
                 src={strawberrysimple.src}
@@ -100,12 +104,16 @@ import laptopTiger from '@assets/genInfo/laptop-tigers.png';
                 class="icon-simple"
                 alt="Blueberry simple"
             />
-            <p class="info-text text-blue">
-                <span class="bold-text">Interested in hardware?</span><br
-                />Hardware will begin Jan. 15 and<br />teams will have a week to
-                create<br />their projects.
-            </p>
-            <p class="text-blue text-base">More details coming soon!</p>
+            <div>
+                <p class="info-text text-blue">
+                    <span class="bold-text">Interested in hardware?</span><br
+                    />Hardware will begin Jan. 15 and<br />teams will have a
+                    week to create<br />their projects.
+                </p>
+                <p class="text-blue text-base sm:text-lg">
+                    More details coming soon!
+                </p>
+            </div>
         </div>
     </div>
 </section>

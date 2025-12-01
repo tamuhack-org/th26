@@ -1,10 +1,6 @@
 ---
 import '../styles/global.css';
-import '@fontsource/stack-sans-text/400.css';
-import '@fontsource/stack-sans-text/500.css';
-import '@fontsource/stack-sans-text/600.css';
-import '@fontsource/stack-sans-text/700.css';
-import '@fontsource/bbh-sans-hegarty';
+import { Font } from 'astro:assets';
 
 import Header from '@components/Header.astro';
 import MenuButton from '@components/MenuButton.astro';
@@ -19,6 +15,16 @@ import Footer from '@components/footer/Footer.astro';
         <link rel="icon" type="image/png" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
         <title>TAMUhack 2026</title>
+        <Font
+            cssVariable="--font-stack-sans"
+            preload={[
+                { weight: '400' },
+                { weight: '500' },
+                { weight: '600' },
+                { weight: '700' }
+            ]}
+        />
+        <Font cssVariable="--font-bbh-sans" preload />
     </head>
     <body>
         <div class="relative mx-auto max-w-500">
@@ -42,7 +48,7 @@ import Footer from '@components/footer/Footer.astro';
         body {
             width: 100%;
             min-height: 100%;
-            font-family: 'Stack Sans Text', sans-serif;
+            font-family: var(--font-stack-sans), sans-serif;
             --background: #fff6e5;
 
             background-color: var(--background);

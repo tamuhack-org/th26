@@ -6,7 +6,7 @@ import { Image } from 'astro:assets';
 ---
 
 <div
-    class="pointer-events-none fixed bottom-14 z-100 flex w-full justify-center sm:left-14 sm:justify-start"
+    class="pointer-events-none fixed bottom-6 sm:bottom-14 z-100 flex w-full justify-center sm:left-14 sm:justify-start"
 >
     <div id="menu-container" class="group pointer-events-auto relative">
         <div
@@ -79,7 +79,7 @@ import { Image } from 'astro:assets';
         <!-- Button -->
         <button
             id="menu-btn"
-            class="menu-button relative z-10 cursor-pointer uppercase transition-all duration-100 md:rotate-3"
+            class="menu-button relative z-10 cursor-pointer uppercase transition-all duration-100 md:rotate-3 hover:scale-105"
         >
             Menu & Resources
         </button>
@@ -143,10 +143,14 @@ import { Image } from 'astro:assets';
 
         let isClickedOpen = false;
 
-        const openMenu = () => tl.play();
+        const openMenu = () => {
+            tl.play();
+            menuBtn.classList.add('scale-105');
+        };
         const closeMenu = () => {
             tl.reverse();
             isClickedOpen = false;
+            menuBtn.classList.remove('scale-105');
         };
 
         // Click to toggle

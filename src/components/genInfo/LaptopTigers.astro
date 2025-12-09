@@ -443,9 +443,8 @@
 
     if (laptopTigers && tigers.length > 0 && redTriangles.length > 0) {
         laptopTigers.addEventListener('mouseenter', () => {
-            // Animate tigers - slight movement and rotation
             tigers.forEach((tiger, index) => {
-                const direction = index === 0 ? -1 : 1; // Left tiger moves left, right tiger moves right
+                const direction = index === 0 ? -1 : 1;
                 gsap.to(tiger, {
                     x: direction * 3,
                     y: -2,
@@ -458,7 +457,6 @@
                 });
             });
 
-            // Animate red triangles - floating movement
             redTriangles.forEach((triangle, index) => {
                 gsap.to(triangle, {
                     x: index === 0 ? 3 : -2,
@@ -475,7 +473,6 @@
         });
 
         laptopTigers.addEventListener('mouseleave', () => {
-            // Stop all animations and return to original positions
             tigers.forEach((tiger) => {
                 gsap.killTweensOf(tiger);
                 gsap.to(tiger, {

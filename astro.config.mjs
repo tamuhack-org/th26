@@ -19,7 +19,15 @@ export default defineConfig({
         name: "BBH Sans Hegarty",
         cssVariable: "--font-bbh-sans",
         display: "block"
-      }
+      },
+      {
+        provider: fontProviders.fontsource(),
+        name: "Libre Franklin",
+        cssVariable: "--font-libre-franklin",
+        weights: [600,900],
+        fallbacks: ["sans-serif"],
+        styles: ["normal"],
+      },
     ]
   },
   vite: {

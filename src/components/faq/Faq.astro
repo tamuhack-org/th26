@@ -1,0 +1,21 @@
+---
+import FaqCard from './FaqCard.astro';
+import { Picture } from 'astro:assets';
+import faqtitle from '@assets/faq/faq-title.png';
+import faqjuice from '@assets/faq/faq-juice.png';
+---
+
+<section
+    id="faq"
+    class="text-brown mx-auto my-32 grid max-w-screen-2xl gap-16 px-16 lg:grid-cols-[1fr_3fr]"
+>
+    <h2 class="sr-only">Frequently Asked Questions</h2>
+    <div class="sticky hidden flex-col items-center gap-4 p-4 lg:flex">
+        <Picture src={faqtitle} alt="" />
+        <div class="w-1/2">
+            <Picture src={faqjuice} alt="" />
+        </div>
+        <p>Everything you need to know about participating in TAMUhack.</p>
+    </div>
+    <FaqCard />
+</section>

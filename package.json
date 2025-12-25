@@ -13,8 +13,10 @@
     "@fontsource/bbh-sans-hegarty": "^5.2.1",
     "@fontsource/libre-franklin": "^5.2.8",
     "@fontsource/stack-sans-text": "^5.2.1",
+    "@iconify-json/tabler": "^1.2.25",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
+    "astro-icon": "^1.1.5",
     "gsap": "^3.13.0",
     "tailwindcss": "^4.1.16"
   },

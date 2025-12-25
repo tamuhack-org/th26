@@ -1,5 +1,10 @@
+---
+import SectionItem from './SectionItem.astro';
+import sections from './questions.json';
+---
+
 <div
-    class="border-brown font-family-franklin border-4 bg-white p-4 font-semibold"
+    class="border-brown font-family-franklin rounded-sm border-4 bg-white p-4 font-semibold"
 >
     <h2 aria-hidden="true" class="mb-2 text-5xl font-black">
         Frequently Asked
@@ -10,8 +15,19 @@
     <h2 class="text-4xl font-black" aria-hidden="true">Questions</h2>
     <h3
         aria-hidden="true"
-        class="border-brown mt-2 border-t-16 border-b-4 py-1 text-right text-xl font-black"
+        class="border-brown mt-2 border-t-16 py-1 text-right text-xl font-black"
     >
         % Daily Value*
     </h3>
+    {
+        sections.map((section) => (
+            <SectionItem title={section.title} questions={section.questions} />
+        ))
+    }
+    <div class="bg-brown h-4 w-full"></div>
+    <p class="text-lg pt-4 pb-2">
+        *Can't find what you're looking for? <a
+            href="mailto:hello@tamuhack.com"
+            class="underline">Contact Our Team</a>
+    </p>
 </div>

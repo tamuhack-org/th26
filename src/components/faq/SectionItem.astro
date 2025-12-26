@@ -2,19 +2,19 @@
 import QuestionItem from './QuestionItem.astro';
 
 interface Props {
-	title: string;
-	questions: { question: string; answers: string[] }[];
+    title: string;
+    questions: { question: string; answers: string[] }[];
 }
 
 const { title, questions } = Astro.props;
 ---
 
 <div class="border-brown border-t-4 py-2">
-	<div class="flex justify-between text-3xl font-black pb-3">
-		<h2>{title}</h2>
-		<h2 aria-hidden="true">{questions.length}%</h2>
-	</div>
-	<div class="ml-9">
-		{questions.map((question) => <QuestionItem question={question} />)}
-	</div>
+    <div class="flex justify-between pb-3 text-2xl font-black sm:text-3xl">
+        <h2>{title}</h2>
+        <h2 aria-hidden="true">{questions.length}%</h2>
+    </div>
+    <div class="ml-9">
+        {questions.map((question) => <QuestionItem question={question} />)}
+    </div>
 </div>

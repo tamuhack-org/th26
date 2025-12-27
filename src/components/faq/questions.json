@@ -5,13 +5,14 @@
             {
                 "question": "Who can attend?",
                 "answers": [
-                    "All students can sign up to be a hacker. Regardless of your experience, education, or background, as long as you are excited about learning, building, and having fun, we’d love for you to attend. If you are currently under the age of 18, please contact our team at [hello@tamuhack.com](mailto:hello@tamuhack.com) to fill out a waiver form."
+                    "Any student aged 18+ can sign up to be a hacker. Regardless of your experience, education, or background, as long as you are excited about learning, building, and having fun, we’d love for you to attend.",
+                    "If you are currently under the age of 18, unfortunately we will not be able to host you at TAMUhack 2026, but we hope to see you next year!"
                 ]
             },
             {
                 "question": "When is the deadline to apply to TAMUhack?",
                 "answers": [
-                    "The deadline for registration is January 19, at 23:59. We'll be doing rolling admissions until that date. Our capacity is limited, so make sure to apply early!",
+                    "The deadline for registration is January 14, at 23:59. We'll be doing rolling admissions until that date. Our capacity is limited, so make sure to apply early!",
                     "NOTE: Acceptances will be sent out on a rolling basis. If you are accepted, you must check in before 11 AM or your acceptance will be forfeited. We will have a waitlist line for students who are not accepted. After 11AM, we will admit people from the waitlist line until the MSC capacity has been reached."
                 ]
             },
@@ -55,7 +56,7 @@
             {
                 "question": "I got waitlisted. What does that mean?",
                 "answers": [
-                    "Due to space limitations of the MSC, we are only able to accept 700 hackers. We will have a waitlist line for students who are not accepted. Starting at 11AM, we will admit people from the waitlist line until the MSC capacity has been reached."
+                    "Due to space limitations of the MSC, we are only able to accept 800 hackers. We will have a waitlist line for students who are not accepted. Starting at 11AM, we will admit people from the waitlist line until the MSC capacity has been reached."
                 ]
             },
             {
@@ -67,7 +68,7 @@
             {
                 "question": "Where can I park?",
                 "answers": [
-                    "There are two parking lots available near the MSC for parking during the event. The first is [Lot 100t at 133-155 John Kimbrough Blvd, College Station, TX 77845](https://maps.app.goo.gl/hDTcND9qJaruVjKm9). The second is [Lot 74 at 530 Olsen Bl, College Station, TX 77845](https://maps.app.goo.gl/8jCHSJo7GvumZQ8C8). Both lots are free to park in during the event."
+                    "There are four parking lots available near the MSC for parking during the event. The first is [Lot 67 at 119-179 Olsen Blvd, College Station, TX 77840](https://maps.app.goo.gl/qprPBydxtWRkUfqH7). The second is [Lot 70 at 301 Olsen Bl, College Station, TX 77845](https://maps.app.goo.gl/uXXS4fNmf1TCr3DL9). The third is [Lot 98 at Horticulture Rd, College Station, TX 77845](https://maps.app.goo.gl/fyXauhgrRjqzf2nk6). The fourth is [Lot 114 at 264-272 Adriance Lab Rd, College Station, TX 77845](https://maps.app.goo.gl/ZSKvdRAtPJTXikTXA). All lots are free to park in during the event."
                 ]
             }
         ]
@@ -78,7 +79,7 @@
             {
                 "question": "What do I need to submit?",
                 "answers": [
-                    "All teams are REQUIRED to complete a Devpost submission for their project by 11:59 AM on 01/26/24 to be considered for judging. Submitting a video demo on Devpost is MANDATORY!"
+                    "All teams are REQUIRED to complete a Devpost submission for their project by 11:59 AM on 01/25/26 to be considered for judging. Submitting a video demo on Devpost is MANDATORY!"
                 ]
             },
             {
@@ -99,9 +100,9 @@
         "title": "Hardware",
         "questions": [
             {
-                "question": "How is TAMUhack 2025 making hardware different than previous years?",
+                "question": "How does the hardware track at TAMUhack 2026 work?",
                 "answers": [
-                    "TAMUhack's Hardware track is back with a twist, where participants collaboratively design, build, and prototype hardware-based solutions within a timeframe of one week. The hardware track will be a week-long hackathon, and hackers are allowed to use personal/outside hardware resources, but it's your responsibility to provide that."
+                    "TAMUhack's hardware track is back with a twist, where participants collaboratively design, build, and prototype hardware-based solutions within a timeframe of one week. The hardware track will be a week-long hackathon, and hackers are allowed to use personal/outside hardware resources, but it's your responsibility to provide that."
                 ]
             },
             {
@@ -120,6 +121,7 @@
                 "question": "I want to participate, but I don't have any hardware. What should I do?",
                 "answers": [
                     "TAMUhack is partnering with IEEE to provide dedicated hardware tracks for hackers. We will be loaning hardware supplies on a first-come-first-serve basis. We will have a dedicated hardware room available throughout the week where you'll be able to rent out our hardware. You'll need to provide your team name and project idea.",
+                    "In addition, TAMUhack is partnering with [Starforge](https://www.starforgefoundry.com/) to provide a space for hackers to 3D print, weld, and more!",
                     "NOTE: Hackers are not limited to just the resources that we provide, using personal/outside hardware resources is allowed."
                 ]
             },
@@ -132,7 +134,7 @@
             {
                 "question": "This sounds exciting! When can I start?",
                 "answers": [
-                    "Teams may begin working on January 21st and have until January 26th, when teams will showcase their project at the venue in specific challenges or the general track."
+                    "Teams may begin working on January 19th and have until January 25th, when teams will showcase their project at the venue in specific challenges or the general track."
                 ]
             }
         ]

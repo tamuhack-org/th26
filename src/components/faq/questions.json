@@ -38,13 +38,14 @@
             {
                 "question": "How do teams work?",
                 "answers": [
-                    "Teams are limited to 1-4 hackers. If you have a team in mind, make sure all members submit an application before the deadline. If you don't have a team and would like to be a part of one, no worries! We'll have a dedicated time for team formation after the opening ceremony. Teams are only finalized when the final Devpost submission is due."
+                    "Teams are limited to 1-4 hackers. If you have a team in mind, make sure all members submit an application before the deadline. If you don't have a team and would like to be a part of one, no worries! We'll have a dedicated time for team formation before the opening ceremony. Teams are only finalized when the final Devpost submission is due."
                 ]
             },
             {
                 "question": "Will there be travel reimbursements?",
                 "answers": [
-                    "We will be providing travel reimbursements to traveling hackers on a case-by-case basis. We'll send out a form after the event asking for proof of travel and Venmo/Zelle info."
+                    "We will be providing travel reimbursements to traveling hackers on a case-by-case basis. We'll send out a form after the event asking for proof of travel and Venmo/Zelle info.",
+                    "NOTE: We cannot guarantee being able to cover the full cost of travel. For more details, reach out to us at  [hello@tamuhack.org](mailto:hello@tamuhack.org)."
                 ]
             },
             {

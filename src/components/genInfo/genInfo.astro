@@ -520,59 +520,91 @@ import LaptopTigers from './LaptopTigers.astro';
         duration: 1,
     };
 
-    gsap.set('#squiggle path', { drawSVG: '0%' });
-
-    gsap.to('#squiggle path', {
-        drawSVG: '100%',
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '#squiggle',
-            start: 'top 65%',
-        },
-    });
-
-    const tl24 = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.title-row',
-            start: 'top 75%',
-            once: true,
-        },
-    });
-
-    tl24.from('.icon', {
-        y: 50,
-        opacity: 0,
-        scale: 0.5,
-        filter: 'grayscale(100%)', // maybe change, start b/w
-        rotation: 15,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
-    }).from(
-        '.event-title',
-        {
-            x: 15,
-            opacity: 0,
-            filter: 'blur(4px)',
-            duration: 0.6,
+    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.set('#squiggle path', { drawSVG: '0%' });
+        gsap.to('#squiggle path', {
+            drawSVG: '100%',
+            duration: 1,
             ease: 'power2.out',
-        },
-        '-=0.6',
-    );
+            scrollTrigger: {
+                trigger: '#squiggle',
+                start: 'top 65%',
+            },
+        });
+        const tl24 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.title-row',
+                start: 'top 75%',
+                once: true,
+            },
+        });
 
-    gsap.from('.tag-brown', {
-        scrollTrigger: {
-            trigger: '.tag-brown',
-            start: 'top 65%',
-        },
-        rotate: 10,
-        y: -15,
-        opacity: 0,
-        transformOrigin: '50% 0%', // TY chat for hinge point
-        duration: 1.3,
-        ease: 'elastic.out(0.7, 0.5)',
+        tl24.from('.icon', {
+            y: 50,
+            opacity: 0,
+            scale: 0.5,
+            filter: 'grayscale(100%)', // maybe change, start b/w
+            rotation: 15,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'back.out(1.7)',
+        }).from(
+            '.event-title',
+            {
+                x: 15,
+                opacity: 0,
+                filter: 'blur(4px)',
+                duration: 0.6,
+                ease: 'power2.out',
+            },
+            '-=0.6',
+        );
+        gsap.from('.tag-brown', {
+            scrollTrigger: {
+                trigger: '.tag-brown',
+                start: 'top 65%',
+            },
+            rotate: 10,
+            y: -15,
+            opacity: 0,
+            transformOrigin: '50% 0%', // TY chat for hinge point
+            duration: 1.3,
+            ease: 'elastic.out(0.7, 0.5)',
+        });
+        const signTags = ['.tag-yellow', '.tag-orange'];
+
+        gsap.from(signTags, {
+            scrollTrigger: {
+                trigger: '.middle-section-tags',
+                start: 'top 65%',
+            },
+            y: -40,
+            opacity: 0,
+            rotation: (i) => (i % 2 === 0 ? 10 : -10),
+            transformOrigin: '50% 0%',
+            duration: 0.6,
+            stagger: 0.5,
+            ease: 'back.out(1.4)',
+        });
+
+        // erm we need to select the hw/sw text only, probs should've added an id
+        const fluidText = document.querySelectorAll('.top-section .text-blue');
+
+        gsap.from(fluidText, {
+            scrollTrigger: {
+                trigger: fluidText,
+                start: 'top 80%', // Triggers slightly earlier so it meets the user's eye
+                once: true,
+            },
+            y: 30,
+            opacity: 0,
+            filter: 'blur(8px)',
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+        });
     });
+
     const icons = ['.icon-heart', '.sticker-banana', '.sticker-star'];
     gsap.fromTo(
         icons,
@@ -592,36 +624,4 @@ import LaptopTigers from './LaptopTigers.astro';
             },
         },
     );
-    const signTags = ['.tag-yellow', '.tag-orange'];
-
-    gsap.from(signTags, {
-        scrollTrigger: {
-            trigger: '.middle-section-tags',
-            start: 'top 65%',
-        },
-        y: -40,
-        opacity: 0,
-        rotation: (i) => (i % 2 === 0 ? 10 : -10),
-        transformOrigin: '50% 0%',
-        duration: 0.6,
-        stagger: 0.5,
-        ease: 'back.out(1.4)',
-    });
-
-    // erm we need to select the hw/sw text only, probs should've added an id
-    const fluidText = document.querySelectorAll('.top-section .text-blue');
-
-    gsap.from(fluidText, {
-        scrollTrigger: {
-            trigger: fluidText,
-            start: 'top 80%', // Triggers slightly earlier so it meets the user's eye
-            once: true,
-        },
-        y: 30,
-        opacity: 0,
-        filter: 'blur(8px)',
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-    });
 </script>

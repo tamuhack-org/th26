@@ -25,11 +25,13 @@
     <script>
         import { gsap } from 'gsap';
 
-        gsap.from('#mlh-trust-badge', {
-            y: -150,
-            delay: 0.5,
-            duration: 1,
-            ease: 'power2.out',
+        gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+            gsap.from('#mlh-trust-badge', {
+                y: -150,
+                delay: 0.5,
+                duration: 1,
+                ease: 'power2.out',
+            });
         });
     </script>
 </header>

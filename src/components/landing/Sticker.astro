@@ -83,13 +83,15 @@ const cssVars = {
         will-change: clip-path;
     }
 
-    .sticker-container:hover .sticker-main {
-        clip-path: polygon(
-            var(--sticker-start) var(--sticker-peelback-hover),
-            var(--sticker-end) var(--sticker-peelback-hover),
-            var(--sticker-end) var(--sticker-end),
-            var(--sticker-start) var(--sticker-end)
-        );
+    @media (prefers-reduced-motion: no-preference) {
+        .sticker-container:hover .sticker-main {
+            clip-path: polygon(
+                var(--sticker-start) var(--sticker-peelback-hover),
+                var(--sticker-end) var(--sticker-peelback-hover),
+                var(--sticker-end) var(--sticker-end),
+                var(--sticker-start) var(--sticker-end)
+            );
+        }
     }
 
     /* --- IMAGES --- */
@@ -123,14 +125,16 @@ const cssVars = {
         will-change: clip-path, top;
     }
 
-    .sticker-container:hover .flap {
-        clip-path: polygon(
-            var(--sticker-start) var(--sticker-start),
-            var(--sticker-end) var(--sticker-start),
-            var(--sticker-end) var(--sticker-peelback-hover),
-            var(--sticker-start) var(--sticker-peelback-hover)
-        );
-        top: calc(-100% + 2 * var(--sticker-peelback-hover) - 1px);
+    @media (prefers-reduced-motion: no-preference) {
+        .sticker-container:hover .flap {
+            clip-path: polygon(
+                var(--sticker-start) var(--sticker-start),
+                var(--sticker-end) var(--sticker-start),
+                var(--sticker-end) var(--sticker-peelback-hover),
+                var(--sticker-start) var(--sticker-peelback-hover)
+            );
+            top: calc(-100% + 2 * var(--sticker-peelback-hover) - 1px);
+        }
     }
 
     .flap-solid {

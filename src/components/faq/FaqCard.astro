@@ -47,21 +47,26 @@ import sections from './questions.json';
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
-        defaults: {
-            y: 30,
-            opacity: 0,
-            duration: 0.4,
-            ease: 'power2.out',
-        },
-        scrollTrigger: {
-            trigger: '#faq',
-            start: 'top 80%',
-        },
-    });
+    gsap.matchMedia().add(
+        '(prefers-reduced-motion: no-preference)',
+        (context) => {
+            const tl = gsap.timeline({
+                defaults: {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'power2.out',
+                },
+                scrollTrigger: {
+                    trigger: '#faq',
+                    start: 'top 80%',
+                },
+            });
 
-    tl.from(['.anim-line', '.anim-text'], {}).from(
-        ['.anim-line-2', '.anim-text-2'],
-        {},
+            tl.from(['.anim-line', '.anim-text'], {}).from(
+                ['.anim-line-2', '.anim-text-2'],
+                {},
+            );
+        },
     );
 </script>

@@ -45,6 +45,8 @@ const parseLinks = (text: string) => {
 <script>
     import { gsap } from 'gsap';
 
+    let breakpoint = 40; // in rem
+
     // use select all since this script will just be written in the dom once by astro
     // -- kept in this file for reference
     const details = document.querySelectorAll('details.accordion-item');
@@ -58,27 +60,6 @@ const parseLinks = (text: string) => {
         if (!summary || !content || !icon || !question) return;
 
         let isAnimating = false;
-
-        // shift to right on hover
-        targetDetail.addEventListener('mouseenter', () => {
-            gsap.to([question, content], {
-                x: 10,
-                duration: 0.3,
-                ease: 'power2.out',
-            });
-        });
-
-        targetDetail.addEventListener('mouseleave', () => {
-            const isOpen = targetDetail.hasAttribute('open');
-
-            if (!isOpen) {
-                gsap.to([question, content], {
-                    x: 0,
-                    duration: 0.3,
-                    ease: 'power2.out',
-                });
-            }
-        });
 
         // animate on click
         summary.addEventListener('click', (e) => {
@@ -127,6 +108,37 @@ const parseLinks = (text: string) => {
 
                 gsap.to(icon, { rotateX: 180, duration: 0.25 });
             }
+        });
+
+        gsap.matchMedia().add(`(min-width: ${breakpoint}rem)`, () => {
+            const onEnter = () => {
+                gsap.to([question, content], {
+                    x: 10,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                });
+            };
+
+            const onLeave = () => {
+                const isOpen = targetDetail.hasAttribute('open');
+
+                if (!isOpen) {
+                    gsap.to([question, content], {
+                        x: 0,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    });
+                }
+            };
+            // shift to right on hover
+            targetDetail.addEventListener('mouseenter', onEnter);
+
+            targetDetail.addEventListener('mouseleave', onLeave);
+
+            return () => {
+                targetDetail.removeEventListener('mouseenter', onEnter);
+                targetDetail.removeEventListener('mouseleave', onLeave);
+            };
         });
     });
 </script>

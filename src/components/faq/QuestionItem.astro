@@ -15,20 +15,18 @@ const parseLinks = (text: string) => {
 };
 ---
 
-<details
-    class="accordion-item border-brown group overflow-hidden border-t py-3"
->
+<div class="bg-brown anim-line-2 h-px" aria-hidden="true"></div>
+<details class="accordion-item overflow-hidden">
     <summary
-        class="flex cursor-pointer list-none justify-between text-lg font-bold transition-colors"
+        class="anim-text-2 flex cursor-pointer list-none justify-between py-3 text-lg font-bold"
     >
-        <h2>{question.question}</h2>
-        <div class="chevron-icon">
+        <h2 class="question">{question.question}</h2>
+        <div class="chevron-icon" aria-hidden="true">
             <Icon name="tabler:chevron-down" class="text-3xl" />
         </div>
     </summary>
-
     <div class="accordion-content">
-        <div class="flex flex-col gap-4 pt-3 pr-5 sm:pr-30">
+        <div class="flex flex-col gap-4 pr-5 pb-3 sm:pr-30">
             {
                 question.answers.map((answer) => (
                     <p set:html={parseLinks(answer)} />
@@ -53,13 +51,36 @@ const parseLinks = (text: string) => {
 
     details.forEach((targetDetail) => {
         const summary = targetDetail.querySelector('summary');
+        const question = targetDetail.querySelector('.question');
         const content = targetDetail.querySelector('.accordion-content');
         const icon = targetDetail.querySelector('.chevron-icon');
 
-        if (!summary || !content || !icon) return;
+        if (!summary || !content || !icon || !question) return;
 
         let isAnimating = false;
 
+        // shift to right on hover
+        targetDetail.addEventListener('mouseenter', () => {
+            gsap.to([question, content], {
+                x: 10,
+                duration: 0.3,
+                ease: 'power2.out',
+            });
+        });
+
+        targetDetail.addEventListener('mouseleave', () => {
+            const isOpen = targetDetail.hasAttribute('open');
+
+            if (!isOpen) {
+                gsap.to([question, content], {
+                    x: 0,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                });
+            }
+        });
+
+        // animate on click
         summary.addEventListener('click', (e) => {
             e.preventDefault();
 
@@ -77,6 +98,13 @@ const parseLinks = (text: string) => {
                     onComplete: () => {
                         targetDetail.removeAttribute('open');
                         isAnimating = false;
+                        if (!targetDetail.matches(':hover')) {
+                            gsap.to([question, content], {
+                                x: 0,
+                                duration: 0.3,
+                                ease: 'power2.out',
+                            });
+                        }
                     },
                 });
 

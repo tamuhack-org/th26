@@ -9,8 +9,11 @@ interface Props {
 const { title, questions } = Astro.props;
 ---
 
-<div class="border-brown border-t-4 py-2">
-    <div class="flex justify-between pb-3 text-2xl font-black sm:text-3xl">
+<div class="bg-brown anim-line-2 h-1 w-full" aria-hidden="true"></div>
+<div class="py-2">
+    <div
+        class="anim-text-2 flex justify-between pb-3 text-2xl font-black sm:text-3xl"
+    >
         <h2>{title}</h2>
         <h2 aria-hidden="true">{questions.length}%</h2>
     </div>

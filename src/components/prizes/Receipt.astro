@@ -1,0 +1,105 @@
+---
+import jaggededge from '@assets/prizes/jagged-edge.png';
+import PrizesBarcode from '@assets/prizes/prizes-barcode.svg';
+import { Category, type Prize, type PrizeTuple } from './prizes.ts';
+
+interface Props {
+    prize: Prize;
+}
+
+const { prize } = Astro.props;
+
+const jaggedBgUrl = `url(${jaggededge.src})`;
+
+let barColor = 'bg-[#E3442F]'; // red bar for software -- default
+
+if (prize.placement === 'first') {
+    if (prize.type === Category.HARDWARE) {
+        barColor =
+            'bg-linear-[90deg,#84FAB0_6%,#8FD3F4_26%,#A18CD1_43%,#FBC2EB_61%,#FFE7FD_83%,#FF9ABC]'; // gradient bar for first place hardware prize
+    } else {
+        barColor =
+            'bg-linear-[90deg,#FF9A9E,#FAD0C4_25%,#FBC2EB_39%,#A18CD1_57%,#8FD3F4_79%,#84FAB0_94%]'; // gradient bar for first place software prizes
+    }
+} else if (prize.type === Category.HARDWARE) {
+    barColor = 'bg-[#3457C3]'; // blue bar for hardware prizes
+}
+
+const getPrizeDetails = (prizeTuple: PrizeTuple): string => {
+    if (typeof prizeTuple[1] === 'number') {
+        return 'Price:';
+    }
+
+    return 'Placement:';
+};
+---
+
+<div
+    class="text-brown prize-shadow jagged-edge relative flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
+>
+    <div class:list={['h-1.5', barColor]} aria-hidden="true"></div>
+
+    <h2 class="sr-only">
+        {(prize.placement ? prize.placement + ' place ' : '') + prize.track}
+    </h2>
+
+    <div class="flex justify-between">
+        <div
+            class="font-family-bbh text-xl capitalize min-[28rem]:text-2xl"
+            aria-hidden="true"
+        >
+            <h2 class="first-letter:uppercase" aria-hidden="true">
+                {prize.placement ? prize.placement + ' place' : ''}
+            </h2>
+            <h2 aria-hidden="true">{prize.track}</h2>
+        </div>
+        <div class="mt-2 flex-none" aria-hidden="true">
+            <PrizesBarcode class="w-18.5 text-amber-900" />
+        </div>
+    </div>
+    <p class="text-center text-sm">{prize.description}</p>
+    <p
+        class="pointer-events-none overflow-hidden text-sm text-nowrap"
+        aria-hidden="true"
+    >
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        -
+    </p>
+    <dl aria-label="List of prizes">
+        {
+            prize.prizes.map((prize) => (
+                <div class="flex justify-between uppercase">
+                    <dt>{prize[0]}</dt>
+                    <dd>
+                        <span class="sr-only">
+                            {typeof prize[1] === 'number'
+                                ? 'Price'
+                                : 'Placement'}
+                            :
+                        </span>
+                        {prize[1]}
+                    </dd>
+                </div>
+            ))
+        }
+    </dl>
+</div>
+
+<style define:vars={{ jaggedBgUrl }}>
+    .prize-shadow {
+        box-shadow: 2.98px 5.1px 3.4px 0px rgba(52, 49, 49, 0.3);
+    }
+
+    .jagged-edge::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 29px;
+
+        position: absolute;
+        top: -29px;
+        left: 0;
+
+        background-image: var(--jaggedBgUrl);
+    }
+</style>

@@ -103,7 +103,7 @@
             {
                 "question": "How does the hardware track at TAMUhack 2026 work?",
                 "answers": [
-                    "TAMUhack's hardware track is back with a twist, where participants collaboratively design, build, and prototype hardware-based solutions within a timeframe of one week. The hardware track will be a week-long hackathon, and hackers are allowed to use personal/outside hardware resources, but it's your responsibility to provide that."
+                    "Participants will collaboratively design, build, and prototype hardware-based solutions within a timeframe of roughly a week. Unlike traditional hackathons, which often focus on software development, our Hardware Hackathon emphasizes physical computing, embedded systems, and hardware design."
                 ]
             },
             {
@@ -122,7 +122,7 @@
                 "question": "I want to participate, but I don't have any hardware. What should I do?",
                 "answers": [
                     "TAMUhack is partnering with IEEE to provide dedicated hardware tracks for hackers. We will be loaning hardware supplies on a first-come-first-serve basis. We will have a dedicated hardware room available throughout the week where you'll be able to rent out our hardware. You'll need to provide your team name and project idea.",
-                    "In addition, TAMUhack is partnering with [Starforge](https://www.starforgefoundry.com/) to provide a space for hackers to 3D print, weld, and more!",
+                    "Additionally, the people at [Starforge](https://www.starforgefoundry.com/) have kindly given us discount codes to help with prototyping. Participants will have reduced costs to use 3D printers, laser cutting, as well as woodworking tools, and a workspace. If you're interested, be on the lookout for these codes in the coming weeks!",
                     "NOTE: Hackers are not limited to just the resources that we provide, using personal/outside hardware resources is allowed."
                 ]
             },
@@ -135,7 +135,7 @@
             {
                 "question": "This sounds exciting! When can I start?",
                 "answers": [
-                    "Teams may begin working on January 19th and have until January 25th, when teams will showcase their project at the venue in specific challenges or the general track."
+                    "Teams may begin working on January 16th and have until January 25th, when teams will showcase their project at the venue in specific challenges or the general track."
                 ]
             }
         ]

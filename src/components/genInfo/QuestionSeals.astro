@@ -338,19 +338,22 @@
 
     if (sealsContainer && smallSeals.length > 0 && speechBubble) {
         sealsContainer.addEventListener('mouseenter', () => {
-            gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-                smallSeals.forEach((seal, index) => {
-                    gsap.to(seal, {
-                        y: -15,
-                        duration: 0.25,
-                        ease: 'power2.out',
-                        yoyo: true,
-                        repeat: -1,
-                        repeatDelay: 0.1,
-                        delay: index * 0.1,
+            gsap.matchMedia().add(
+                '(prefers-reduced-motion: no-preference)',
+                () => {
+                    smallSeals.forEach((seal, index) => {
+                        gsap.to(seal, {
+                            y: -15,
+                            duration: 0.25,
+                            ease: 'power2.out',
+                            yoyo: true,
+                            repeat: -1,
+                            repeatDelay: 0.1,
+                            delay: index * 0.1,
+                        });
                     });
-                });
-            });
+                },
+            );
 
             gsap.to(speechBubble, {
                 x: 5,

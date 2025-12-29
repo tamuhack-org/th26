@@ -1,0 +1,143 @@
+[
+    {
+        "title": "General",
+        "questions": [
+            {
+                "question": "Who can attend?",
+                "answers": [
+                    "Any student aged 18+ can sign up to be a hacker. Regardless of your experience, education, or background, as long as you are excited about learning, building, and having fun, we’d love for you to attend.",
+                    "If you are currently under the age of 18, unfortunately we will not be able to host you at TAMUhack 2026, but we hope to see you next year!"
+                ]
+            },
+            {
+                "question": "When is the deadline to apply to TAMUhack?",
+                "answers": [
+                    "The deadline for registration is January 14, at 23:59. We'll be doing rolling admissions until that date. Our capacity is limited, so make sure to apply early!",
+                    "NOTE: Acceptances will be sent out on a rolling basis. If you are accepted, you must check in before 11 AM or your acceptance will be forfeited. We will have a waitlist line for students who are not accepted. After 11AM, we will admit people from the waitlist line until the MSC capacity has been reached."
+                ]
+            },
+            {
+                "question": "How much experience do I need?",
+                "answers": [
+                    "Absolutely zero! We want you here because you have a passion for creating, not because you’re the most experienced hacker on the block. We’ll have lots of resources including workshops and a bunch of mentors to help beginners get started. There'll also be plenty of people to learn from and help out!"
+                ]
+            },
+            {
+                "question": "How much does it cost?",
+                "answers": [
+                    "Nothing. Nada. Zilch. It’s completely free for all accepted hackers. To make it even better, we’ll be giving out a ton of swag to every hacker, and prizes to our winners."
+                ]
+            },
+            {
+                "question": "What should I bring?",
+                "answers": [
+                    "Please bring a valid student ID in addition to anything that would help you with creating your hack or making you comfortable. A laptop, charger, mouse, keyboard, hardware, light jacket, and any hygienic products should be helpful. Don't bring anything you wouldn't bring on an airplane.",
+                    "NOTE: You are NOT allowed to bring sleeping bags or air mattresses."
+                ]
+            },
+            {
+                "question": "How do teams work?",
+                "answers": [
+                    "Teams are limited to 1-4 hackers. If you have a team in mind, make sure all members submit an application before the deadline. If you don't have a team and would like to be a part of one, no worries! We'll have a dedicated time for team formation before the opening ceremony. Teams are only finalized when the final Devpost submission is due."
+                ]
+            },
+            {
+                "question": "Will there be travel reimbursements?",
+                "answers": [
+                    "We will be providing travel reimbursements to traveling hackers on a case-by-case basis. We'll send out a form after the event asking for proof of travel and Venmo/Zelle info.",
+                    "NOTE: We cannot guarantee being able to cover the full cost of travel. For more details, reach out to us at  [hello@tamuhack.org](mailto:hello@tamuhack.org)."
+                ]
+            },
+            {
+                "question": "Can I stay in the MSC overnight?",
+                "answers": [
+                    "Yes, however, if you leave the MSC after its closing time, you will not be able to re-enter until it re-opens, so plan accordingly. The MSC closes at 12AM and re-opens at 7AM."
+                ]
+            },
+            {
+                "question": "I got waitlisted. What does that mean?",
+                "answers": [
+                    "Due to space limitations of the MSC, we are only able to accept 800 hackers. We will have a waitlist line for students who are not accepted. Starting at 11AM, we will admit people from the waitlist line until the MSC capacity has been reached."
+                ]
+            },
+            {
+                "question": "Will there be workshops or talks?",
+                "answers": [
+                    "Of course! We will have workshops running throughout the whole event."
+                ]
+            },
+            {
+                "question": "Where can I park?",
+                "answers": [
+                    "There are four parking lots available near the MSC for parking during the event. The first is [Lot 67 at 119-179 Olsen Blvd, College Station, TX 77840](https://maps.app.goo.gl/qprPBydxtWRkUfqH7). The second is [Lot 70 at 301 Olsen Bl, College Station, TX 77845](https://maps.app.goo.gl/uXXS4fNmf1TCr3DL9). The third is [Lot 98 at Horticulture Rd, College Station, TX 77845](https://maps.app.goo.gl/fyXauhgrRjqzf2nk6). The fourth is [Lot 114 at 264-272 Adriance Lab Rd, College Station, TX 77845](https://maps.app.goo.gl/ZSKvdRAtPJTXikTXA). All lots are free to park in during the event."
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Submission",
+        "questions": [
+            {
+                "question": "What do I need to submit?",
+                "answers": [
+                    "All teams are REQUIRED to complete a Devpost submission for their project by 11:59 AM on 01/25/26 to be considered for judging. Submitting a video demo on Devpost is MANDATORY!"
+                ]
+            },
+            {
+                "question": "How many tracks can I apply for?",
+                "answers": [
+                    "Depending on whether you applied to software or hardware, your project will be eligible for the 'Best Overall Software' or 'Best Overall Hardware' track. In addition to that, you can apply to any other tracks that your project is eligible for, within your respective category."
+                ]
+            },
+            {
+                "question": "What classifies a project as a 'beginner hack' ?",
+                "answers": [
+                    "A beginner hack is a project where 50% or more of the team members have never participated in a hackathon before. If you're not sure if your project qualifies, just ask us!"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Hardware",
+        "questions": [
+            {
+                "question": "How does the hardware track at TAMUhack 2026 work?",
+                "answers": [
+                    "Participants will collaboratively design, build, and prototype hardware-based solutions within a timeframe of roughly a week. Unlike traditional hackathons, which often focus on software development, our Hardware Hackathon emphasizes physical computing, embedded systems, and hardware design."
+                ]
+            },
+            {
+                "question": "Can I participate in both software and hardware tracks? ",
+                "answers": [
+                    "At this time, a team can only participate in one track, either software or hardware. The different tracks will be judged separately, by specialists in the respective field."
+                ]
+            },
+            {
+                "question": "Where can I specify that I want to participate in the hardware track?",
+                "answers": [
+                    "There is a question on the application form that asks if you want to participate in the hardware track. If you change your mind before applications close, you can log back in and edit your application."
+                ]
+            },
+            {
+                "question": "I want to participate, but I don't have any hardware. What should I do?",
+                "answers": [
+                    "TAMUhack is partnering with IEEE to provide dedicated hardware tracks for hackers. We will be loaning hardware supplies on a first-come-first-serve basis. We will have a dedicated hardware room available throughout the week where you'll be able to rent out our hardware. You'll need to provide your team name and project idea.",
+                    "Additionally, the people at [Starforge](https://www.starforgefoundry.com/) have kindly given us discount codes to help with prototyping. Participants will have reduced costs to use 3D printers, laser cutting, as well as woodworking tools, and a workspace. If you're interested, be on the lookout for these codes in the coming weeks!",
+                    "NOTE: Hackers are not limited to just the resources that we provide, using personal/outside hardware resources is allowed."
+                ]
+            },
+            {
+                "question": "I've never used hardware before, should I still apply?",
+                "answers": [
+                    "Absolutely! Beginners are encouraged to try it out, and mentors will be available to assist with the projects. Throughout hardware week, there will be discord office hours and even mentors in the Zachry Engineering Complex! For more on when exactly these times are, please check out the hardware schedule link"
+                ]
+            },
+            {
+                "question": "This sounds exciting! When can I start?",
+                "answers": [
+                    "Teams may begin working on January 16th and have until January 25th, when teams will showcase their project at the venue in specific challenges or the general track."
+                ]
+            }
+        ]
+    }
+]

@@ -3,6 +3,7 @@
 @theme {
   --font-family-bbh: var(--font-bbh-sans), sans-serif;
   --font-family-stack: var(--font-stack-sans), sans-serif;
+  --font-family-franklin: var(--font-libre-franklin), sans-serif;
 
   --color-brown: #774A4E;
 }

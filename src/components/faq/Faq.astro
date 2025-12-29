@@ -1,0 +1,39 @@
+---
+import FaqCard from './FaqCard.astro';
+import { Picture } from 'astro:assets';
+import faqtitle from '@assets/faq/faq-title.png';
+import everythingmustgo from '@assets/faq/everything-must-go.png';
+import faqicons from '@assets/faq/faq-icons.png';
+---
+
+<section
+    id="faq"
+    class="text-brown mx-auto my-32 grid max-w-screen-2xl gap-16 px-8 sm:px-16 lg:grid-cols-[1fr_3fr]"
+>
+    <h2 class="sr-only">Frequently Asked Questions</h2>
+    <div
+        class="sticky top-4 hidden h-fit flex-col items-center gap-4 p-4 lg:flex"
+    >
+        <Picture src={faqtitle} alt="FAQ image" aria-hidden="true" />
+        <div class="flex flex-col items-center">
+            <div class="w-9/10">
+                <Picture
+                    src={everythingmustgo}
+                    alt="Everything must go"
+                    aria-hidden="true"
+                />
+            </div>
+            <p class="w-8/10 text-center">
+                <span class="sr-only">Everything</span>you need to know about
+                participating in TAMUhack.
+            </p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+            <div class="w-7/10">
+                <Picture src={faqicons} alt="Waste icons" aria-hidden="true" />
+            </div>
+            <p class="text-center" aria-hidden="true">© 2026 TAMUhack Team</p>
+        </div>
+    </div>
+    <FaqCard />
+</section>

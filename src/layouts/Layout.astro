@@ -25,6 +25,7 @@ import Footer from '@components/footer/Footer.astro';
             ]}
         />
         <Font cssVariable="--font-bbh-sans" preload />
+        <Font cssVariable="--font-libre-franklin" />
     </head>
     <body>
         <div class="relative mx-auto max-w-500">
@@ -50,7 +51,7 @@ import Footer from '@components/footer/Footer.astro';
             --background: #fff6e5;
 
             background-color: var(--background);
-            overflow-x: hidden;
+            overflow-x: clip;
         }
     </style>
 </html>

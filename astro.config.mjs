@@ -3,6 +3,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import icon from "astro-icon";
+
 // https://astro.build/config
 export default defineConfig({
   experimental: {
@@ -19,10 +21,21 @@ export default defineConfig({
         name: "BBH Sans Hegarty",
         cssVariable: "--font-bbh-sans",
         display: "block"
-      }
+      },
+      {
+        provider: fontProviders.fontsource(),
+        name: "Libre Franklin",
+        cssVariable: "--font-libre-franklin",
+        weights: [600,900],
+        fallbacks: ["sans-serif"],
+        styles: ["normal"],
+      },
     ]
   },
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [icon()]
 });

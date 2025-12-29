@@ -1,0 +1,144 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+    question: { question: string; answers: string[] };
+}
+
+const { question } = Astro.props;
+
+const parseLinks = (text: string) => {
+    return text.replace(
+        /\[(.*?)\]\((.*?)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer" class="font-semibold text-inherit underline">$1</a>',
+    );
+};
+---
+
+<div class="bg-brown anim-line-2 h-px" aria-hidden="true"></div>
+<details class="accordion-item overflow-hidden">
+    <summary
+        class="anim-text-2 flex cursor-pointer list-none justify-between py-3 text-lg"
+    >
+        <h2 class="question">{question.question}</h2>
+        <div class="chevron-icon" aria-hidden="true">
+            <Icon name="tabler:chevron-down" class="text-3xl" />
+        </div>
+    </summary>
+    <div class="accordion-content">
+        <div class="flex flex-col gap-4 pr-5 pb-3 sm:pr-30">
+            {
+                question.answers.map((answer) => (
+                    <p set:html={parseLinks(answer)} />
+                ))
+            }
+        </div>
+    </div>
+</details>
+
+<style>
+    summary::-webkit-details-marker {
+        display: none;
+    }
+</style>
+
+<script>
+    import { gsap } from 'gsap';
+
+    let breakpoint = 40; // in rem
+
+    // use select all since this script will just be written in the dom once by astro
+    // -- kept in this file for reference
+    const details = document.querySelectorAll('details.accordion-item');
+
+    details.forEach((targetDetail) => {
+        const summary = targetDetail.querySelector('summary');
+        const question = targetDetail.querySelector('.question');
+        const content = targetDetail.querySelector('.accordion-content');
+        const icon = targetDetail.querySelector('.chevron-icon');
+
+        if (!summary || !content || !icon || !question) return;
+
+        let isAnimating = false;
+
+        // animate on click
+        summary.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            if (isAnimating) return;
+
+            isAnimating = true;
+
+            const isOpen = targetDetail.hasAttribute('open');
+
+            if (isOpen) {
+                gsap.to(content, {
+                    height: 0,
+                    duration: 0.25,
+                    ease: 'power2.out',
+                    onComplete: () => {
+                        targetDetail.removeAttribute('open');
+                        isAnimating = false;
+                        if (!targetDetail.matches(':hover')) {
+                            gsap.to([question, content], {
+                                x: 0,
+                                duration: 0.3,
+                                ease: 'power2.out',
+                            });
+                        }
+                    },
+                });
+
+                gsap.to(icon, { rotateX: 0, duration: 0.25 });
+            } else {
+                targetDetail.setAttribute('open', 'true');
+
+                gsap.fromTo(
+                    content,
+                    { height: 0 },
+                    {
+                        height: 'auto',
+                        duration: 0.25,
+                        ease: 'power2.out',
+                        onComplete: () => {
+                            isAnimating = false;
+                        },
+                    },
+                );
+
+                gsap.to(icon, { rotateX: 180, duration: 0.25 });
+            }
+        });
+
+        gsap.matchMedia().add(`(min-width: ${breakpoint}rem)`, () => {
+            const onEnter = () => {
+                gsap.to([question, content], {
+                    x: 10,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                });
+            };
+
+            const onLeave = () => {
+                const isOpen = targetDetail.hasAttribute('open');
+
+                if (!isOpen) {
+                    gsap.to([question, content], {
+                        x: 0,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    });
+                }
+            };
+            // shift to right on hover
+            targetDetail.addEventListener('mouseenter', onEnter);
+
+            targetDetail.addEventListener('mouseleave', onLeave);
+
+            return () => {
+                targetDetail.removeEventListener('mouseenter', onEnter);
+                targetDetail.removeEventListener('mouseleave', onLeave);
+            };
+        });
+    });
+</script>

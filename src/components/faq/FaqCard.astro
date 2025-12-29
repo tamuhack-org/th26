@@ -1,0 +1,72 @@
+---
+import SectionItem from './SectionItem.astro';
+import sections from './questions.json';
+---
+
+<div
+    class="border-brown font-family-franklin rounded-sm border-4 bg-white p-4 font-semibold"
+>
+    <h2
+        aria-hidden="true"
+        class="anim-text mb-2 text-4xl font-black sm:text-5xl"
+    >
+        Frequently Asked
+    </h2>
+    <div class="bg-brown anim-line h-1 w-full" aria-hiden="true"></div>
+    <p class="anim-text py-1">1 - 4 Participants Per Team</p>
+    <div class="bg-brown anim-line mb-2 h-8 w-full" aria-hidden="true"></div>
+    <h2
+        class="anim-text mb-2 text-3xl font-black sm:text-4xl"
+        aria-hidden="true"
+    >
+        Questions
+    </h2>
+    <div class="anim-line bg-brown h-4 w-full" aria-hidden="true"></div>
+    <h3
+        aria-hidden="true"
+        class="anim-text-2 border-brown py-1 text-right text-xl font-black"
+    >
+        % Daily Value*
+    </h3>
+    {
+        sections.map((section) => (
+            <SectionItem title={section.title} questions={section.questions} />
+        ))
+    }
+    <div class="bg-brown h-4 w-full" aria-hidden="true"></div>
+    <p class="pt-4 pb-2 text-lg">
+        *Can't find what you're looking for? <a
+            href="mailto:hello@tamuhack.com"
+            class="underline">Contact Our Team</a
+        >
+    </p>
+</div>
+<script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.matchMedia().add(
+        '(prefers-reduced-motion: no-preference)',
+        (context) => {
+            const tl = gsap.timeline({
+                defaults: {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'power2.out',
+                },
+                scrollTrigger: {
+                    trigger: '#faq',
+                    start: 'top 80%',
+                },
+            });
+
+            tl.from(['.anim-line', '.anim-text'], {}).from(
+                ['.anim-line-2', '.anim-text-2'],
+                {},
+            );
+        },
+    );
+</script>

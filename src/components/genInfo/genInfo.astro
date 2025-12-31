@@ -18,9 +18,24 @@ import LaptopTigers from './LaptopTigers.astro';
     <div class="top-section">
         <span>TAMUhack is a</span>
         <div class="title-row">
-            <img src={banana.src} class="icon" alt="Banana" />
-            <img src={strawberry.src} class="icon" alt="Strawberry" />
-            <img src={blueberry.src} class="icon" alt="Blueberry" />
+            <img
+                src={banana.src}
+                class="icon"
+                alt="Banana"
+                aria-hidden="true"
+            />
+            <img
+                src={strawberry.src}
+                class="icon"
+                alt="Strawberry"
+                aria-hidden="true"
+            />
+            <img
+                src={blueberry.src}
+                class="icon"
+                alt="Blueberry"
+                aria-hidden="true"
+            />
             <span class="event-title">24-hour event</span>
         </div>
 
@@ -28,7 +43,7 @@ import LaptopTigers from './LaptopTigers.astro';
             where teams create innovative <span class="text-blue"
                 >software &</span
             >
-            <br />
+            <br aria-hidden="true" />
             <span class="text-blue">hardware</span> solutions to
         </span>
 
@@ -38,9 +53,11 @@ import LaptopTigers from './LaptopTigers.astro';
             in a community <img
                 src={heart.src}
                 class="icon-heart heart-mobile"
+                aria-hidden="true"
             /> of mentorship. <img
                 src={heart.src}
                 class="icon-heart heart-desktop"
+                aria-hidden="true"
             />
         </span>
     </div>
@@ -59,20 +76,29 @@ import LaptopTigers from './LaptopTigers.astro';
                     xmlns="http://www.w3.org/2000/svg"
                     class="sticker squiggle"
                     id="squiggle"
+                    aria-hidden="true"
                 >
                     <path
                         d="M1.34033 9.15907C4.14758 0.135754 17.3818 -1.46839 20.5901 6.75285C23.7984 14.9741 16.828 20.4078 13.1709 16.9792C9.96261 13.9714 19.5875 6.75269 27.0066 8.75795C34.4258 10.7632 35.2279 22.5937 24.6004 23.3958"
                         stroke="#EF9C26"
                         stroke-width="2.80725"></path>
                 </svg>
-                <img src={starSticker.src} class="sticker sticker-star" />
+                <img
+                    src={starSticker.src}
+                    class="sticker sticker-star"
+                    aria-hidden="true"
+                />
             </div>
 
             <div class="tag-wrapper-yellow">
                 <div class="tag tag-yellow">
                     <p>$15,000+ in prizes</p>
                 </div>
-                <img src={bananaSticker.src} class="sticker sticker-banana" />
+                <img
+                    src={bananaSticker.src}
+                    class="sticker sticker-banana"
+                    aria-hidden="true"
+                />
             </div>
         </div>
         <div class="middle-section-assets">
@@ -88,6 +114,7 @@ import LaptopTigers from './LaptopTigers.astro';
                     src={strawberrysimple.src}
                     class="icon-simple"
                     alt="Strawberry simple"
+                    aria-hidden="true"
                 />
                 <p class="info-text text-red">
                     <a
@@ -104,12 +131,16 @@ import LaptopTigers from './LaptopTigers.astro';
                     src={blueberrysimple.src}
                     class="icon-simple"
                     alt="Blueberry simple"
+                    aria-hidden="true"
                 />
                 <div>
                     <p class="info-text text-blue">
                         <span class="bold-text">Interested in hardware?</span
-                        ><br />Hardware will begin Jan. 16 and<br />teams will
-                        have a week to create<br />their projects.
+                        ><br />Hardware will begin Jan. 16 and<br
+                            aria-hidden="true"
+                        />teams will have a week to create<br
+                            aria-hidden="true"
+                        />their projects.
                     </p>
                     <p class="text-blue text-base sm:text-xl">
                         More details coming soon!

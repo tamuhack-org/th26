@@ -27,6 +27,7 @@ import { Image } from 'astro:assets';
                     src={PostcardBg}
                     alt="Postcard border"
                     class="absolute inset-0 h-full w-full object-cover"
+                    aria-hidden="true"
                 />
                 <div class="relative z-10 p-3">
                     <div
@@ -36,13 +37,18 @@ import { Image } from 'astro:assets';
                             src={stamp}
                             alt="Stamp"
                             class="absolute top-8 right-8 hidden w-16 md:block md:w-20"
+                            aria-hidden="true"
                         />
                         <nav class="relative flex flex-col gap-3 pl-6">
                             <div
                                 id="nav-indicator"
                                 class="absolute top-0 left-0 opacity-0"
                             >
-                                <img src={strawberry.src} class="h-auto w-4" />
+                                <img
+                                    src={strawberry.src}
+                                    class="h-auto w-4"
+                                    aria-hidden="true"
+                                />
                             </div>
                             <a
                                 href="/#"
@@ -145,11 +151,13 @@ import { Image } from 'astro:assets';
         const openMenu = () => {
             tl.play();
             menuBtn.classList.add('scale-105');
+            menuBtn.setAttribute('aria-expanded', 'true');
         };
         const closeMenu = () => {
             tl.reverse();
             isClickedOpen = false;
             menuBtn.classList.remove('scale-105');
+            menuBtn.setAttribute('aria-expanded', 'false');
         };
 
         // Click to toggle

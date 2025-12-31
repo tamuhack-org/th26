@@ -76,13 +76,15 @@ export const prizeslist: Record<string, Prize> = {
             ['Soldering Kit', 39.99],
             ['Compact digital multimeter', 42.99],
         ],
-        description: 'IoT challenge track.',
+        description:
+            'The Best IoT Device Hack challenges participants to innovate within the Internet of Things (IoT) space. Whether designing a new connected device or modifying an existing one, the goal is to enhance everyday experiences or solve pressing challenges through smarter interconnected systems. Projects can span industries from home automation to industrial monitoring, allowing great creativity and flexibility!',
         type: Category.HARDWARE,
     },
     'medical-device': {
         track: 'medical device challenge',
         prizes: [['Marshall Speaker', 179.99]],
-        description: 'Medical device challenge track.',
+        description:
+            'The Best Medical Device Hack is an open-ended challenge aimed at improving or revolutionizing the medical and healthcare fields. Participants can design a new device or enhance an existing one to address real-world medical needs, from patient care to diagnostics. Creativity an impact on the healthcare industry are key.',
         type: Category.HARDWARE,
     },
     'best-beginner-hardware': {

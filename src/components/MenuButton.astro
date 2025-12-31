@@ -163,13 +163,17 @@ import { Image } from 'astro:assets';
             }
         });
 
-        // Hover behavior (only closes if not clicked open)
-        container.addEventListener('mouseenter', openMenu);
-        container.addEventListener('mouseleave', () => {
-            if (!isClickedOpen) {
-                closeMenu();
-            }
-        });
+        const isHoverable = window.matchMedia('(hover: hover)').matches; // check if device supports hover
+
+        if (isHoverable) {
+            // Hover behavior (only closes if not clicked open)
+            container.addEventListener('mouseenter', openMenu);
+            container.addEventListener('mouseleave', () => {
+                if (!isClickedOpen) {
+                    closeMenu();
+                }
+            });
+        }
 
         // Focus behavior (only closes if not clicked open)
         container.addEventListener('focusin', openMenu);
@@ -210,9 +214,11 @@ import { Image } from 'astro:assets';
             };
 
             links.forEach((link) => {
-                link.addEventListener('mouseenter', () =>
-                    updateIndicator(link as HTMLElement),
-                );
+                if (isHoverable) {
+                    link.addEventListener('mouseenter', () =>
+                        updateIndicator(link as HTMLElement),
+                    );
+                }
                 link.addEventListener('focus', () =>
                     updateIndicator(link as HTMLElement),
                 );

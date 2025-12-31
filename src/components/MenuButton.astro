@@ -9,6 +9,13 @@ import { Image } from 'astro:assets';
     class="pointer-events-none fixed bottom-6 z-100 flex w-full justify-center sm:bottom-14 sm:left-14 sm:justify-start"
 >
     <div id="menu-container" class="group pointer-events-auto relative">
+        <!-- Button -->
+        <button
+            id="menu-btn"
+            class="menu-button relative z-10 cursor-pointer uppercase transition-all duration-100 hover:scale-105 md:rotate-3"
+        >
+            Menu & Resources
+        </button>
         <div
             id="menu-popup"
             class="invisible absolute bottom-full left-1/2 -translate-x-1/2 pb-6 sm:left-4 sm:translate-x-0 md:rotate-3"
@@ -76,17 +83,8 @@ import { Image } from 'astro:assets';
                 </div>
             </div>
         </div>
-
-        <!-- Button -->
-        <button
-            id="menu-btn"
-            class="menu-button relative z-10 cursor-pointer uppercase transition-all duration-100 hover:scale-105 md:rotate-3"
-        >
-            Menu & Resources
-        </button>
     </div>
 </div>
-
 <style>
     .menu-button {
         display: flex;

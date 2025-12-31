@@ -77,7 +77,9 @@ const getPrizeDetails = (prizeTuple: PrizeTuple): string => {
                                 : 'Placement'}
                             :
                         </span>
-                        {prize[1]}
+                        {typeof prize[1] === 'number'
+                            ? prize[1].toFixed(2)
+                            : prize[1]}
                     </dd>
                 </div>
             ))

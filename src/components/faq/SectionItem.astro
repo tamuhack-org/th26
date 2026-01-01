@@ -15,7 +15,7 @@ const { title, questions } = Astro.props;
         class="anim-text-2 flex justify-between pb-3 text-2xl font-black sm:text-3xl"
     >
         <h2>{title}</h2>
-        <h2 aria-hidden="true">{questions.length}%</h2>
+        <div aria-hidden="true">{questions.length}%</div>
     </div>
     <div class="ml-9">
         {questions.map((question) => <QuestionItem question={question} />)}

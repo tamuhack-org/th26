@@ -349,7 +349,6 @@ import LaptopTigers from './LaptopTigers.astro';
         width: 20%;
         top: 45%;
         left: -8%;
-        transform: translateY(-50%);
     }
 
     .bottom-section {
@@ -487,7 +486,6 @@ import LaptopTigers from './LaptopTigers.astro';
             width: 15%;
             top: 40%;
             left: -5%;
-            transform: translateY(-50%);
         }
     }
 
@@ -650,6 +648,7 @@ import LaptopTigers from './LaptopTigers.astro';
     });
 
     const icons = ['.icon-heart', '.sticker-banana', '.sticker-star'];
+    gsap.set('.sticker-star', { yPercent: -50 });
     gsap.fromTo(
         icons,
         { scale: 1.3, opacity: 0 },

@@ -1,13 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import favicon from '../../public/favicon.png';
+---
+
 <header>
     <a
         id="th26-logo"
         class="relative z-100 ml-2.5 block w-1/10 max-w-16 min-w-10 pt-2.5 sm:ml-8"
         href="https://tamuhack.org"
         target="_blank"
-        ><img
-            src="/favicon.png"
+        ><Image
+            src={favicon}
             alt="TAMUhack 2026 Logo"
             style="width:100%"
+            loading={'eager'}
         /></a
     >
     <a

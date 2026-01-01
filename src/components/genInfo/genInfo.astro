@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 import banana from '@assets/landing/banana.svg';
 import blueberry from '@assets/landing/blueberry.svg';
 import strawberry from '@assets/landing/strawberry.svg';
@@ -50,12 +52,12 @@ import LaptopTigers from './LaptopTigers.astro';
         <span class="tag tag-brown"> real-world problems </span>
 
         <span>
-            in a community <img
-                src={heart.src}
+            in a community <Image
+                src={heart}
                 class="icon-heart heart-mobile"
                 aria-hidden="true"
-            /> of mentorship. <img
-                src={heart.src}
+            /> of mentorship. <Image
+                src={heart}
                 class="icon-heart heart-desktop"
                 aria-hidden="true"
             />

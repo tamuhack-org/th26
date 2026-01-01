@@ -1,19 +1,24 @@
 ---
 import Receipt from './Receipt.astro';
 import { prizeslist } from './prizes.ts';
+
+import Marquee from './Marquee.astro';
 ---
 
-<section id="prizes" class="flex flex-col gap-10 px-8">
-    <Receipt prize={prizeslist['first-place-software']} />
-    <Receipt prize={prizeslist['second-place-software']} />
-    <Receipt prize={prizeslist['third-place-software']} />
-    <Receipt prize={prizeslist['best-design']} />
-    <Receipt prize={prizeslist['best-beginner-software']} />
-    <Receipt prize={prizeslist['american-airlines']} />
-    <Receipt prize={prizeslist['first-place-hardware']} />
-    <Receipt prize={prizeslist['second-place-hardware']} />
-    <Receipt prize={prizeslist['third-place-hardware']} />
-    <Receipt prize={prizeslist['iot']} />
-    <Receipt prize={prizeslist['medical-device']} />
-    <Receipt prize={prizeslist['best-beginner-hardware']} />
+<section id="prizes">
+    <Marquee />
+    <div class="flex flex-col gap-10 px-8">
+        <Receipt prize={prizeslist['first-place-software']} />
+        <Receipt prize={prizeslist['second-place-software']} />
+        <Receipt prize={prizeslist['third-place-software']} />
+        <Receipt prize={prizeslist['best-design']} />
+        <Receipt prize={prizeslist['best-beginner-software']} />
+        <Receipt prize={prizeslist['american-airlines']} />
+        <Receipt prize={prizeslist['first-place-hardware']} />
+        <Receipt prize={prizeslist['second-place-hardware']} />
+        <Receipt prize={prizeslist['third-place-hardware']} />
+        <Receipt prize={prizeslist['iot']} />
+        <Receipt prize={prizeslist['medical-device']} />
+        <Receipt prize={prizeslist['best-beginner-hardware']} />
+    </div>
 </section>

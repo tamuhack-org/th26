@@ -1,0 +1,41 @@
+---
+const word = 'NOW SCANNING';
+const repetitions = Array(11).fill(word);
+---
+
+<div
+	class="mb-10 overflow-hidden bg-[#E3442F] px-2.5 whitespace-nowrap text-white"
+	aria-hidden="true"
+>
+	<div class="animate-marquee flex w-fit">
+		<div>
+			{repetitions.map((text) => <span class="text-item">{text}</span>)}
+		</div>
+		<div>
+			{repetitions.map((text) => <span class="text-item">{text}</span>)}
+		</div>
+	</div>
+</div>
+
+<style>
+	.text-item {
+		flex-shrink: 0;
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		font-weight: bold;
+		padding-right: 2rem;
+	}
+</style>
+
+<script>
+	import { gsap } from 'gsap';
+
+	gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+		gsap.to('.animate-marquee', {
+			xPercent: -50,
+			ease: 'none',
+			duration: 50,
+			repeat: -1,
+		});
+	});
+</script>

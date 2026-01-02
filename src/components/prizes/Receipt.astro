@@ -14,24 +14,20 @@ const jaggedBgUrl = `url(${jaggededge.src})`;
 let barColor = 'bg-[#E3442F]'; // red bar for software -- default
 
 if (prize.placement === 'first') {
+    const animatedGradient =
+        'motion-safe:bg-linear-[90deg,#FF9AA4,#FAD0C4_12%,#FBC2EB_28%,#A18CD1_43%,#8FD3F4_59%,#84FAB0_75%,#FECEC2_89%,#FF9AA4] animate-gradient motion-safe:bg-[length:200%_auto]'; // animated gradient bar for first place
+    let staticGradient = '';
     if (prize.type === Category.HARDWARE) {
-        barColor =
-            'bg-linear-[90deg,#84FAB0_6%,#8FD3F4_26%,#A18CD1_43%,#FBC2EB_61%,#FFE7FD_83%,#FF9ABC]'; // gradient bar for first place hardware prize
+        staticGradient =
+            'motion-reduce:bg-linear-[90deg,#84FAB0_6%,#8FD3F4_26%,#A18CD1_43%,#FBC2EB_61%,#FFE7FD_83%,#FF9ABC]'; // static gradient bar for first place hardware prize
     } else {
-        barColor =
-            'bg-linear-[90deg,#FF9A9E,#FAD0C4_25%,#FBC2EB_39%,#A18CD1_57%,#8FD3F4_79%,#84FAB0_94%]'; // gradient bar for first place software prizes
+        staticGradient =
+            'motion-reduce:bg-linear-[90deg,#FF9A9E,#FAD0C4_25%,#FBC2EB_39%,#A18CD1_57%,#8FD3F4_79%,#84FAB0_94%]'; // static gradient bar for first place software prizes
     }
+    barColor = animatedGradient + ' ' + staticGradient; // gradient bar for first place
 } else if (prize.type === Category.HARDWARE) {
     barColor = 'bg-[#3457C3]'; // blue bar for hardware prizes
 }
-
-const getPrizeDetails = (prizeTuple: PrizeTuple): string => {
-    if (typeof prizeTuple[1] === 'number') {
-        return 'Price:';
-    }
-
-    return 'Placement:';
-};
 ---
 
 <div
@@ -103,5 +99,21 @@ const getPrizeDetails = (prizeTuple: PrizeTuple): string => {
         left: 0;
 
         background-image: var(--jaggedBgUrl);
+    }
+
+    @keyframes gradient-scroll {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 200% 50%;
+        }
+    }
+
+    .animate-gradient {
+        animation: gradient-scroll 10s linear infinite;
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
     }
 </style>

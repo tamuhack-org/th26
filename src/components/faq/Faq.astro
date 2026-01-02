@@ -8,9 +8,12 @@ import faqicons from '@assets/faq/faq-icons.png';
 
 <section
     id="faq"
-    class="text-brown mx-auto my-32 grid max-w-screen-2xl gap-16 px-8 sm:px-16 lg:grid-cols-[1fr_3fr]"
+    class="text-brown mx-auto my-32 grid max-w-screen-2xl gap-8 px-8 sm:px-16 lg:grid-cols-[1fr_3fr] lg:gap-16"
 >
     <h2 class="sr-only">Frequently Asked Questions</h2>
+    <div class="mx-auto lg:hidden" aria-hidden="true">
+        <Picture src={faqtitle} alt="FAQ image" />
+    </div>
     <div
         class="sticky top-4 hidden h-fit flex-col items-center gap-4 p-4 lg:flex"
     >

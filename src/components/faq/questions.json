@@ -12,8 +12,8 @@
             {
                 "question": "When is the deadline to apply to TAMUhack?",
                 "answers": [
-                    "The deadline for registration is January 14, at 23:59. We'll be doing rolling admissions until that date. Our capacity is limited, so make sure to apply early!",
-                    "NOTE: Acceptances will be sent out on a rolling basis. If you are accepted, you must check in before 11 AM or your acceptance will be forfeited. We will have a waitlist line for students who are not accepted. After 11AM, we will admit people from the waitlist line until the MSC capacity has been reached."
+                    "The deadline for registration is January 14th at 11:59 PM. We'll be doing rolling admissions until that date. Our capacity is limited, so make sure to apply early!",
+                    "NOTE: Acceptances will be sent out on a rolling basis. If you are accepted, you must check in before 11 AM or your acceptance will be forfeited. We will have a waitlist line for students who are not accepted. After 11 AM, we will admit people from the waitlist line until the MSC capacity has been reached."
                 ]
             },
             {
@@ -51,13 +51,13 @@
             {
                 "question": "Can I stay in the MSC overnight?",
                 "answers": [
-                    "Yes, however, if you leave the MSC after its closing time, you will not be able to re-enter until it re-opens, so plan accordingly. The MSC closes at 12AM and re-opens at 7AM."
+                    "Yes, however, if you leave the MSC after its closing time, you will not be able to re-enter until it re-opens, so plan accordingly. The MSC closes at 12 AM and re-opens at 7 AM."
                 ]
             },
             {
                 "question": "I got waitlisted. What does that mean?",
                 "answers": [
-                    "Due to space limitations of the MSC, we are only able to accept 800 hackers. We will have a waitlist line for students who are not accepted. Starting at 11AM, we will admit people from the waitlist line until the MSC capacity has been reached."
+                    "Due to space limitations of the MSC, we are only able to accept 800 hackers. We will have a waitlist line for students who are not accepted. Starting at 11 AM, we will admit people from the waitlist line until the MSC capacity has been reached."
                 ]
             },
             {
@@ -80,7 +80,7 @@
             {
                 "question": "What do I need to submit?",
                 "answers": [
-                    "All teams are REQUIRED to complete a Devpost submission for their project by 11:59 AM on 01/25/26 to be considered for judging. Submitting a video demo on Devpost is MANDATORY!"
+                    "All teams are REQUIRED to complete a Devpost submission for their project by 11:59 AM on January 25th to be considered for judging. Submitting a video demo on Devpost is MANDATORY!"
                 ]
             },
             {
@@ -103,11 +103,11 @@
             {
                 "question": "How does the hardware track at TAMUhack 2026 work?",
                 "answers": [
-                    "Participants will collaboratively design, build, and prototype hardware-based solutions within a timeframe of roughly a week. Unlike traditional hackathons, which often focus on software development, our Hardware Hackathon emphasizes physical computing, embedded systems, and hardware design."
+                    "Participants will collaboratively design, build, and prototype hardware-based solutions within a timeframe of roughly a week. Unlike traditional hackathons, which often focus on software development, our hardware track emphasizes physical computing, embedded systems, and hardware design."
                 ]
             },
             {
-                "question": "Can I participate in both software and hardware tracks? ",
+                "question": "Can I participate in both the software and hardware tracks? ",
                 "answers": [
                     "At this time, a team can only participate in one track, either software or hardware. The different tracks will be judged separately, by specialists in the respective field."
                 ]
@@ -129,13 +129,14 @@
             {
                 "question": "I've never used hardware before, should I still apply?",
                 "answers": [
-                    "Absolutely! Beginners are encouraged to try it out, and mentors will be available to assist with the projects. Throughout hardware week, there will be discord office hours and even mentors in the Zachry Engineering Complex!"
+                    "Absolutely! Beginners are encouraged to try it out and mentors will be available to assist with the projects. Throughout the week of the hardware track, we will provide Discord office hours and mentors on-campus."
                 ]
             },
             {
                 "question": "This sounds exciting! When can I start?",
                 "answers": [
-                    "Teams may begin working on January 16th and have until January 25th, when teams will showcase their project at the venue in specific challenges or the general track."
+                    "Teams may begin working on January 16th and have until January 25th, when teams will showcase their project at the venue in specific challenges or the general track.",
+                    "Hardware participants are still required to check in to the event on the 24th and be physically present for judging on the 25th."
                 ]
             }
         ]

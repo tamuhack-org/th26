@@ -13,14 +13,14 @@
             "href": "https://www.gresearch.com/"
         },
         {
-            "name": "Phillips 66",
-            "src": "phillips-66.png",
-            "href": "https://www.phillips66.com/"
+            "name": "Toyota",
+            "src": "toyota.svg",
+            "href": "https://www.toyota.com/"
         },
         {
-            "name": "Toyota",
-            "src": "toyota.png",
-            "href": "https://www.toyota.com/"
+            "name": "Phillips 66",
+            "src": "phillips-66.svg",
+            "href": "https://www.phillips66.com/"
         }
     ],
     "small": [
@@ -31,25 +31,20 @@
         },
         {
             "name": "General Motors",
-            "src": "gm.png",
+            "src": "gm.svg",
             "href": "https://www.gm.com/"
         },
         {
             "name": "L3Harris",
-            "src": "l3harris.png",
+            "src": "l3harris.svg",
             "href": "https://www.l3harris.com/"
         },
+        { "name": "USAA", "src": "usaa.svg", "href": "https://www.usaa.com/" },
         {
             "name": "Mai Shan Yun",
-            "src": "maishanyun.png",
+            "src": "maishanyun.svg",
             "href": "https://www.maishanyun.com/"
-        },
-        {
-            "name": "Pure Buttons",
-            "src": "pure-buttons.svg",
-            "href": "https://mlh.link/MLH-PureButtons-hackathons"
-        },
-        { "name": "USAA", "src": "usaa.png", "href": "https://www.usaa.com/" }
+        }
     ],
     "partners": [
         {
@@ -62,6 +57,11 @@
             "src": "ieee.png",
             "href": "https://ieee-tamu.org/"
         },
-        { "name": "SEC", "src": "sec.png", "href": "https://sec.tamu.edu/" }
+        { "name": "SEC", "src": "sec.png", "href": "https://sec.tamu.edu/" },
+        {
+            "name": "Pure Buttons",
+            "src": "pure-buttons.svg",
+            "href": "https://mlh.link/MLH-PureButtons-hackathons"
+        }
     ]
 }

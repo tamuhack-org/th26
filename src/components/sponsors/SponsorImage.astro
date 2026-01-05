@@ -62,7 +62,10 @@ if (isSvg) {
     }
     const rawSvg = svgImages[fullImagePath] as string;
 
-    svgContent = rawSvg.replace(/<svg/, `<svg class="${width} h-auto block"`); // add custom width and force height to fit around content
+    svgContent = rawSvg.replace(
+        /<svg/,
+        `<svg class="${width} h-auto block" role="img" aria-label="${name} homepage"`,
+    ); // add custom width and force height to fit around content
 } else {
     if (!rasterImages[fullImagePath]) {
         throw new Error(

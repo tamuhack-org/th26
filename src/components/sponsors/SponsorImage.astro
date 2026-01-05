@@ -100,27 +100,40 @@ if (isSvg) {
 <script>
     import { gsap } from 'gsap';
 
-    gsap.utils.toArray('.sponsor-svg').forEach((item: any) => {
-        item.addEventListener('mousemove', (e: MouseEvent) => {
-            const rect = item.getBoundingClientRect();
-            const relX = e.clientX - (rect.left + rect.width / 2);
-            const relY = e.clientY - (rect.top + rect.height / 2);
+    gsap.matchMedia().add('(hover: hover)', () => {
+        const items = gsap.utils.toArray('.sponsor-svg');
 
-            gsap.to(item, {
-                x: relX * 0.15,
-                y: relY * 0.15,
-                duration: 0.4,
-                ease: 'power2.out',
-            });
-        });
+        items.forEach((item: any) => {
+            const onMove = (e: MouseEvent) => {
+                const rect = item.getBoundingClientRect();
+                const relX = e.clientX - (rect.left + rect.width / 2);
+                const relY = e.clientY - (rect.top + rect.height / 2);
 
-        item.addEventListener('mouseleave', () => {
-            gsap.to(item, {
-                x: 0,
-                y: 0,
-                duration: 0.6,
-                ease: 'power3.out',
-            });
+                gsap.to(item, {
+                    x: relX * 0.15,
+                    y: relY * 0.15,
+                    duration: 0.4,
+                    ease: 'power2.out',
+                });
+            };
+
+            const onLeave = () => {
+                gsap.to(item, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.6,
+                    ease: 'power3.out',
+                });
+            };
+
+            item.addEventListener('mousemove', onMove);
+            item.addEventListener('mouseleave', onLeave);
+
+            return () => {
+                item.removeEventListener('mousemove', onMove);
+                item.removeEventListener('mouseleave', onLeave);
+                gsap.set(item, { clearProps: 'all' }); // clear css
+            };
         });
     });
 </script>

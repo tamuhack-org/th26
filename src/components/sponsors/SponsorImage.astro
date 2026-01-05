@@ -16,18 +16,21 @@ interface Props {
 }
 
 const { imagePath, name, href, tier } = Astro.props;
-const images = import.meta.glob<{ default: ImageMetadata }>(
+
+const sponsorsImagePath = '/src/assets/sponsors/';
+const fullImagePath = sponsorsImagePath + imagePath;
+
+const isSvg = imagePath.endsWith('.svg');
+
+const rasterImages = import.meta.glob<{ default: ImageMetadata }>(
     '/src/assets/sponsors/*.{jpeg,jpg,png,gif,svg}',
 );
 
-const sponsorsImagePath = '/src/assets/sponsors/';
-
-const fullImagePath = sponsorsImagePath + imagePath;
-
-if (!images[fullImagePath])
-    throw new Error(
-        `"${fullImagePath}" does not exist in glob: "src/assets/sponsors/*.{jpeg,jpg,png,gif,svg}"`,
-    );
+const svgImages = import.meta.glob('/src/assets/sponsors/*.svg', {
+    query: '?raw', // get raw svg html
+    import: 'default',
+    eager: true,
+});
 
 let width = '';
 let basis = '';
@@ -47,6 +50,26 @@ if (tier === Tier.SMALL) {
 }
 // width overrides
 if (name === 'IEEE TAMU') width = 'w-3/5 md:w-full';
+
+// grab svg content for html
+let svgContent = '';
+
+if (isSvg) {
+    if (!svgImages[fullImagePath]) {
+        throw new Error(
+            `"${fullImagePath}" does not exist in SVG glob: "src/assets/sponsors/*.svg"`,
+        );
+    }
+    const rawSvg = svgImages[fullImagePath] as string;
+
+    svgContent = rawSvg.replace(/<svg/, `<svg class="${width} h-auto block"`); // add custom width and force height to fit around content
+} else {
+    if (!rasterImages[fullImagePath]) {
+        throw new Error(
+            `"${fullImagePath}" does not exist in Raster glob: "src/assets/sponsors/*.{jpeg,jpg,png,gif}"`,
+        );
+    }
+}
 ---
 
 <a
@@ -59,11 +82,17 @@ if (name === 'IEEE TAMU') width = 'w-3/5 md:w-full';
         tier !== Tier.PARTNER ? 'sponsor-svg' : '',
     ]}
 >
-    <Image
-        src={images[fullImagePath]()}
-        alt={`${name} homepage`}
-        class={width}
-    />
+    {
+        isSvg ? (
+            <Fragment set:html={svgContent} />
+        ) : (
+            <Image
+                src={rasterImages[fullImagePath]()}
+                alt={`${name} homepage`}
+                class={width}
+            />
+        )
+    }
 </a>
 <script>
     import { gsap } from 'gsap';

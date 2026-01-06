@@ -1,5 +1,5 @@
 ---
-import FooterTransition from '@assets/footer-transition.svg';
+import ScheduleTransition from '../ScheduleTransition.astro';
 import LinkSection from './LinkSection.astro';
 import {
     resources,
@@ -10,45 +10,7 @@ import {
 ---
 
 <div id="footer-container">
-    <FooterTransition aria-hidden={true} />
-    <script>
-        import { gsap } from 'gsap';
-        import { ScrollTrigger } from 'gsap/ScrollTrigger';
-        import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
-
-        gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
-
-        let mm = gsap.matchMedia(),
-            breakpoint = 40; // in rem
-
-        mm.add(
-            {
-                reduceMotion: '(prefers-reduced-motion: reduce)',
-                isMobile: `(max-width: ${breakpoint}rem)`,
-                isDesktop: `(min-width: ${breakpoint}rem)`,
-            },
-            (context) => {
-                let { reduceMotion, isMobile, isDesktop } =
-                    context.conditions as any;
-
-                if (reduceMotion) return;
-
-                const mainTimeline = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: '#footer-container',
-                        start: 'top 85%',
-                        end: isDesktop ? 'bottom bottom' : '50% bottom',
-                        scrub: 1,
-                    },
-                });
-
-                mainTimeline
-                    .to('.wave-start', { morphSVG: '.wave-end' })
-                    .to('.seal-start', { morphSVG: '.seal-end' }, '<')
-                    .to('.cat-start', { morphSVG: '.cat-end' }, '<');
-            },
-        );
-    </script>
+    <ScheduleTransition />
     <div class="-mt-1 bg-[#3457C3] px-8 py-4 text-white lg:px-16">
         <div class="mx-auto max-w-[2000px]">
             <footer class="items-center lg:flex lg:justify-between">

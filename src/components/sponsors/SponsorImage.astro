@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets';
+
+export const enum Tier {
+    SMALL = 'small',
+    MEDIUM = 'medium',
+    LARGE = 'large',
+    PARTNER = 'partner',
+}
+
+interface Props {
+    imagePath: string;
+    name: string;
+    href: string;
+    tier: Tier;
+}
+
+const { imagePath, name, href, tier } = Astro.props;
+
+const sponsorsImagePath = '/src/assets/sponsors/';
+const fullImagePath = sponsorsImagePath + imagePath;
+
+const isSvg = imagePath.endsWith('.svg');
+
+const rasterImages = import.meta.glob<{ default: ImageMetadata }>(
+    '/src/assets/sponsors/*.{jpeg,jpg,png,gif,svg}',
+);
+
+const svgImages = import.meta.glob('/src/assets/sponsors/*.svg', {
+    query: '?raw', // get raw svg html
+    import: 'default',
+    eager: true,
+});
+
+let width = '';
+let basis = '';
+if (tier === Tier.SMALL) {
+    basis = 'basis-1/2 md:basis-1/5';
+    width = 'w-9/10';
+} else if (tier === Tier.PARTNER) {
+    basis = 'basis-full md:basis-1/3';
+    width = 'w-1/3 md:w-3/5';
+} else if (tier === Tier.MEDIUM) {
+    basis = 'basis-full md:basis-1/3';
+    width = 'w-1/2 md:w-8/10';
+} else {
+    // if tier is large
+    basis = 'basis-full md:basis-1/2';
+    width = 'w-3/4';
+}
+// width overrides
+if (name === 'IEEE TAMU') width = 'w-1/3 md:w-full';
+
+// grab svg content for html
+let svgContent = '';
+
+if (isSvg) {
+    if (!svgImages[fullImagePath]) {
+        throw new Error(
+            `"${fullImagePath}" does not exist in SVG glob: "src/assets/sponsors/*.svg"`,
+        );
+    }
+    const rawSvg = svgImages[fullImagePath] as string;
+
+    svgContent = rawSvg.replace(
+        /<svg/,
+        `<svg class="${width} h-auto block" role="img" aria-label="${name} homepage"`,
+    ); // add custom width and force height to fit around content
+} else {
+    if (!rasterImages[fullImagePath]) {
+        throw new Error(
+            `"${fullImagePath}" does not exist in Raster glob: "src/assets/sponsors/*.{jpeg,jpg,png,gif}"`,
+        );
+    }
+}
+---
+
+<a
+    href={href}
+    target="_blank"
+    rel="noreferrer noopener"
+    class:list={[
+        'flex items-center justify-center',
+        basis,
+        tier !== Tier.PARTNER ? 'sponsor-svg' : '',
+    ]}
+>
+    {
+        isSvg ? (
+            <Fragment set:html={svgContent} />
+        ) : (
+            <Image
+                src={rasterImages[fullImagePath]()}
+                alt={`${name} homepage`}
+                class={width}
+            />
+        )
+    }
+</a>
+<script>
+    import { gsap } from 'gsap';
+
+    gsap.matchMedia().add('(hover: hover)', () => {
+        const items = gsap.utils.toArray('.sponsor-svg');
+
+        items.forEach((item: any) => {
+            const onMove = (e: MouseEvent) => {
+                const rect = item.getBoundingClientRect();
+                const relX = e.clientX - (rect.left + rect.width / 2);
+                const relY = e.clientY - (rect.top + rect.height / 2);
+
+                gsap.to(item, {
+                    x: relX * 0.15,
+                    y: relY * 0.15,
+                    duration: 0.4,
+                    ease: 'power2.out',
+                });
+            };
+
+            const onLeave = () => {
+                gsap.to(item, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.6,
+                    ease: 'power3.out',
+                });
+            };
+
+            item.addEventListener('mousemove', onMove);
+            item.addEventListener('mouseleave', onLeave);
+
+            return () => {
+                item.removeEventListener('mousemove', onMove);
+                item.removeEventListener('mouseleave', onLeave);
+                gsap.set(item, { clearProps: 'all' }); // clear css
+            };
+        });
+    });
+</script>

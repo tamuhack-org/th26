@@ -1,0 +1,72 @@
+{
+    "large": [
+        {
+            "name": "American Airlines",
+            "src": "aa.svg",
+            "href": "https://www.aa.com/homePage.do"
+        }
+    ],
+    "medium": [
+        {
+            "name": "G-resarch",
+            "src": "g-research.svg",
+            "href": "https://www.gresearch.com/"
+        },
+        {
+            "name": "Toyota",
+            "src": "toyota.svg",
+            "href": "https://www.toyota.com/"
+        },
+        {
+            "name": "Phillips 66",
+            "src": "phillips-66.svg",
+            "href": "https://www.phillips66.com/"
+        }
+    ],
+    "small": [
+        {
+            "name": "Capital One",
+            "src": "capitalone.svg",
+            "href": "https://www.capitalone.com/"
+        },
+        {
+            "name": "General Motors",
+            "src": "gm.svg",
+            "href": "https://www.gm.com/"
+        },
+        {
+            "name": "L3Harris",
+            "src": "l3harris.svg",
+            "href": "https://www.l3harris.com/"
+        },
+        { "name": "USAA", "src": "usaa.svg", "href": "https://www.usaa.com/" },
+        {
+            "name": "Mai Shan Yun",
+            "src": "maishanyun.svg",
+            "href": "https://www.maishanyun.com/"
+        }
+    ],
+    "partners": [
+        {
+            "name": "Texas A&M University",
+            "src": "tamu.png",
+            "href": "https://www.tamu.edu/"
+        },
+        {
+            "name": "IEEE TAMU",
+            "src": "ieee.png",
+            "href": "https://ieee-tamu.org/"
+        },
+        { "name": "SEC", "src": "sec.png", "href": "https://sec.tamu.edu/" },
+        {
+            "name": "Figma for Education",
+            "src": "figma.svg",
+            "href": "https://www.figma.com/education/"
+        },
+        {
+            "name": "Pure Buttons",
+            "src": "pure-buttons.svg",
+            "href": "https://mlh.link/MLH-PureButtons-hackathons"
+        }
+    ]
+}

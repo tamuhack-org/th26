@@ -1,0 +1,94 @@
+---
+import rawSponsors from './sponsors.json';
+import SponsorImage, { Tier } from './SponsorImage.astro';
+
+interface Sponsor {
+    name: string;
+    src: string;
+    href: string;
+}
+
+interface SponsorData {
+    large: Sponsor[];
+    medium: Sponsor[];
+    small: Sponsor[];
+    partners: Sponsor[];
+}
+
+const sponsors: SponsorData = rawSponsors;
+---
+
+<div class="mx-auto mb-16 flex max-w-screen-2xl flex-col items-center gap-16">
+    <h2 class="sponsor-title-wrapper">Thank you to our sponsors...</h2>
+    <div class="flex w-full flex-col items-center md:gap-4">
+        <div class="sponsor-section-wrapper">
+            {
+                sponsors['large'].map((largeSponsor) => (
+                    <SponsorImage
+                        imagePath={largeSponsor.src}
+                        name={largeSponsor.name}
+                        href={largeSponsor.href}
+                        tier={Tier.LARGE}
+                    />
+                ))
+            }
+        </div>
+        <div class="sponsor-section-wrapper">
+            {
+                sponsors['medium'].map((mediumSponsor) => (
+                    <SponsorImage
+                        imagePath={mediumSponsor.src}
+                        name={mediumSponsor.name}
+                        href={mediumSponsor.href}
+                        tier={Tier.MEDIUM}
+                    />
+                ))
+            }
+        </div>
+        <div class="sponsor-section-wrapper px-5">
+            {
+                sponsors['small'].map((smallSponsor) => (
+                    <SponsorImage
+                        imagePath={smallSponsor.src}
+                        name={smallSponsor.name}
+                        href={smallSponsor.href}
+                        tier={Tier.SMALL}
+                    />
+                ))
+            }
+        </div>
+    </div>
+    <h2 class="sponsor-title-wrapper">and partners...</h2>
+    <div class="sponsor-section-wrapper gap-y-16 md:gap-y-16">
+        {
+            sponsors['partners'].map((smallSponsor) => (
+                <SponsorImage
+                    imagePath={smallSponsor.src}
+                    name={smallSponsor.name}
+                    href={smallSponsor.href}
+                    tier={Tier.PARTNER}
+                />
+            ))
+        }
+    </div>
+</div>
+<style>
+    .sponsor-title-wrapper {
+        font-family: var(--font-bbh-sans);
+        color: #774a4e;
+        padding-inline: 2rem;
+        text-align: center;
+        font-size: 3rem;
+        line-height: 1;
+        @media (min-width: 40rem) {
+            padding-inline: 4rem;
+            font-size: 3.75rem;
+        }
+    }
+    .sponsor-section-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+</style>

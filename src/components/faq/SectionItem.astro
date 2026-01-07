@@ -7,6 +7,8 @@ interface Props {
 }
 
 const { title, questions } = Astro.props;
+
+import lemon from '@assets/faq/lemon.svg';
 ---
 
 <div class="bg-brown anim-line-2 h-1 w-full" aria-hidden="true"></div>
@@ -19,7 +21,7 @@ const { title, questions } = Astro.props;
             title === 'Hardware' && (
                 <div
                     class="flex-1 bg-repeat-x"
-                    style={`background-image: url('../../../lemon.svg');`}
+                    style={`background-image: url('${lemon.src}');`}
                 />
             )
         }

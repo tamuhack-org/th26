@@ -2,4 +2,11 @@
 import saturdayStarTitle from '@assets/schedule/saturday-star.svg';
 import sundayStarTitle from '@assets/schedule/sunday-star.svg';
 import Image from 'astro/components/Image.astro';
+
+const { day, events } = Astro.props;
+
+const dayToTitleImage = {
+    "Saturday": saturdayStarTitle,
+    "Sunday": sundayStarTitle,
+};
 ---

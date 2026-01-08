@@ -42,14 +42,15 @@ console.log(events);
                             hour12: true,
                             timeZone: 'America/Chicago',
                         };
-                        const formattedTime = eventDate.toLocaleString(
-                            'en-US',
-                            options,
-                        );
+                        
+                        // Convert to lowercase and remove the space
+                        const formattedTime = eventDate
+                            .toLocaleString('en-US', options)
+                            .toLowerCase()      // "9:00 am"
+                            .replace(/\s+/g, ''); // "9:00am"
+
                         return (
-                            <div
-                                class="flex justify-between gap-4"
-                            >
+                            <div class="flex justify-between gap-4">
                                 <h3 class="text-[20px] font-semibold text-[#77534D] text-nowrap">
                                     {formattedTime}
                                 </h3>
@@ -57,11 +58,11 @@ console.log(events);
                                     <h3 class="text-[20px] font-semibold text-[#77534D] text-wrap">
                                         {event.eventName}
                                     </h3>
-                                {event.location && (
-                                    <p class="mt-1 text-[16px] text-[#77534D]">
-                                        {event.location}
-                                    </p>
-                                )}
+                                    {event.location && (
+                                        <p class="mt-1 text-[16px] text-[#77534D]">
+                                            {event.location}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         );

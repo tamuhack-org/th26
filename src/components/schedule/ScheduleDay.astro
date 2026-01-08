@@ -4,6 +4,7 @@ import sundayStarTitle from '@assets/schedule/sunday-star.svg';
 import packageShadow from '@assets/schedule/package-shadow.svg';
 import scheduleFlower from '@assets/schedule/schedule-flower.svg';
 import tomatoSticker from '@assets/schedule/tomato-sticker.png';
+import plasticWrap from '@assets/schedule/plastic.png';
 import Image from 'astro/components/Image.astro';
 
 const { day, events } = Astro.props;
@@ -16,6 +17,12 @@ const { day, events } = Astro.props;
         src={packageShadow} 
         alt="Package shadow" 
         class="absolute inset-0 translate-x-[12.5%] translate-y-[10%] w-full h-full object-fill pointer-events-none z-0"
+    />
+    <!-- plastic wrap -->
+    <Image 
+        src={plasticWrap} 
+        alt="Plastic wrap" 
+        class="absolute inset-0 w-full h-full object-fill pointer-events-none z-20 rounded-[36px]"
     />
     {day === 'Sunday' && 
         <Image

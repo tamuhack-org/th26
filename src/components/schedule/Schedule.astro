@@ -36,14 +36,14 @@ const sundayEvents = data
 
 <section>
     <ScheduleTransition />
-    <div class="bg-[#3457C3]">
+    <div class="bg-[#3457C3] pb-16">
         <div class="flex flex-col items-center max-w-screen-2xl w-full mx-auto px-8 sm:px-16">
             <div class="flex justify-between items-end w-full mb-12">
                 <Image src={shoppingCart} alt="Shopping cart" class="w-[12.5%]" />
                 <Image src={lemonSchedule} alt="Schedule" class="w-md rotate-10" />
             </div>
             <!-- schedule row -->
-             <div class="flex justify-between w-full">
+             <div class="flex justify-between w-full gap-16 lg:gap-32">
                 <ScheduleDay day="Saturday" events={saturdayEvents} />
                 <ScheduleDay day="Sunday" events={sundayEvents} />
              </div>

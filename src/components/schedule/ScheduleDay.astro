@@ -48,17 +48,17 @@ console.log(events);
                         );
                         return (
                             <div
-                                class="flex justify-between"
+                                class="flex justify-between gap-4"
                             >
-                                <h3 class="text-lg font-semibold text-[#77534D]">
+                                <h3 class="text-[20px] font-semibold text-[#77534D] text-nowrap">
                                     {formattedTime}
                                 </h3>
                                 <div class="flex flex-col text-end">
-                                    <h3 class="text-lg font-semibold text-[#77534D]">
+                                    <h3 class="text-[20px] font-semibold text-[#77534D] text-wrap">
                                         {event.eventName}
                                     </h3>
                                 {event.location && (
-                                    <p class="mt-1 text-sm text-[#77534D]">
+                                    <p class="mt-1 text-[16px] text-[#77534D]">
                                         {event.location}
                                     </p>
                                 )}

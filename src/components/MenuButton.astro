@@ -31,59 +31,60 @@ import { Image } from 'astro:assets';
                     loading={'eager'}
                 />
                 <div class="relative z-10 p-3">
-                    <div
-                        class="flex gap-16 border-2 border-[#77534D] bg-[#FFFAF0] p-6"
-                    >
-                        <Image
-                            src={stamp}
-                            alt="Stamp"
-                            class="absolute top-8 right-8 hidden w-16 md:block md:w-20"
-                            aria-hidden="true"
-                            loading={'eager'}
-                        />
-                        <nav class="relative flex flex-col gap-3 pl-6">
-                            <div
-                                id="nav-indicator"
-                                class="absolute top-0 left-0 opacity-0"
-                            >
-                                <img
-                                    src={strawberry.src}
-                                    class="h-auto w-4"
-                                    alt="Strawberry"
-                                    aria-hidden="true"
-                                />
+                    <div class="border-2 border-[#77534D] bg-[#FFFAF0] p-6">
+                        <div id="nav-view" class="flex gap-16">
+                            <Image
+                                src={stamp}
+                                alt="Stamp"
+                                class="absolute top-8 right-8 hidden w-16 md:block md:w-20"
+                                aria-hidden="true"
+                                loading={'eager'}
+                            />
+                            <nav class="relative flex flex-col gap-3 pl-6">
+                                <div
+                                    id="nav-indicator"
+                                    class="absolute top-0 left-0 opacity-0"
+                                >
+                                    <img
+                                        src={strawberry.src}
+                                        class="h-auto w-4"
+                                        alt="Strawberry"
+                                        aria-hidden="true"
+                                    />
+                                </div>
+                                <a
+                                    href="/#"
+                                    class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                    >home</a
+                                >
+                                <a
+                                    href="#general-info"
+                                    class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                    >general info</a
+                                >
+                                <a
+                                    href="#faq"
+                                    class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                    >faq</a
+                                >
+                                <a
+                                    class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
+                                    >schedule</a
+                                >
+                                <a
+                                    class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
+                                    >prizes</a
+                                >
+                            </nav>
+                            <div class="hidden w-0.5 bg-[#77534D] md:block">
                             </div>
-                            <a
-                                href="/#"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
-                                >home</a
+                            <div
+                                class="hidden flex-1 flex-col gap-6 pt-28 md:flex"
                             >
-                            <a
-                                href="#general-info"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
-                                >general info</a
-                            >
-                            <a
-                                href="#faq"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
-                                >faq</a
-                            >
-                            <a
-                                href="#schedule"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
-                                >schedule</a
-                            >
-                            <a
-                                href="#prizes"
-                                class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
-                                >prizes</a
-                            >
-                        </nav>
-                        <div class="hidden w-0.5 bg-[#77534D] md:block"></div>
-                        <div class="hidden flex-1 flex-col gap-6 pt-28 md:flex">
-                            <div class="h-0.5 w-full bg-[#77534D]"></div>
-                            <div class="h-0.5 w-full bg-[#77534D]"></div>
-                            <div class="h-0.5 w-full bg-[#77534D]"></div>
+                                <div class="h-0.5 w-full bg-[#77534D]"></div>
+                                <div class="h-0.5 w-full bg-[#77534D]"></div>
+                                <div class="h-0.5 w-full bg-[#77534D]"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

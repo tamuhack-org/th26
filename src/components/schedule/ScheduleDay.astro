@@ -28,7 +28,7 @@ const { day, events } = Astro.props;
                     />
                 </div>
                 <!-- render events -->
-                <div class="w-full px-4 pb-6 space-y-4">
+                <div class="w-full px-6 pb-6 space-y-4">
                     {events.map((event) => {
                         const eventDate = new Date(event.date);
                         const options = {

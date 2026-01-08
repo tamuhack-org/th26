@@ -5,9 +5,22 @@ import Image from 'astro/components/Image.astro';
 
 const { day, events } = Astro.props;
 
+console.log(events);
+
+/**
+ *  {
+    id: 'cmg2uhnpe000511jy2acuwh65',
+    date: '2025-10-18T21:30:00.000Z',
+    eventName: 'NextJS + UI Libraries w/ ACC',
+    description: '',
+    location: 'MSC 2500',
+    tags: []
+  },
+ */
+
 ---
 
-<div class="bg-white px-4 py-3 rounded-[36px]">
+<div class="bg-white px-4 py-3 rounded-[36px] h-fit">
     <div class="bg-[#C7B8B8] p-2.5 rounded-[36px]">
         <div class="bg-[#D2C7C7] p-[18px] rounded-[36px]">
             <div class="flex flex-col items-center bg-white rounded-3xl">
@@ -19,6 +32,40 @@ const { day, events } = Astro.props;
                         class="w-48 md:w-64 drop-shadow-2xl"
                     />
                 </div>
+                <!-- render events -->
+                <div class="w-full px-4 pb-6 space-y-4">
+                    {events.map((event) => {
+                        const eventDate = new Date(event.date);
+                        const options = {
+                            hour: 'numeric',
+                            minute: 'numeric',
+                            hour12: true,
+                            timeZone: 'America/Chicago',
+                        };
+                        const formattedTime = eventDate.toLocaleString(
+                            'en-US',
+                            options,
+                        );
+                        return (
+                            <div
+                                class="flex justify-between"
+                            >
+                                <h3 class="text-lg font-semibold text-[#77534D]">
+                                    {formattedTime}
+                                </h3>
+                                <div class="flex flex-col text-end">
+                                    <h3 class="text-lg font-semibold text-[#77534D]">
+                                        {event.eventName}
+                                    </h3>
+                                {event.location && (
+                                    <p class="mt-1 text-sm text-[#77534D]">
+                                        {event.location}
+                                    </p>
+                                )}
+                                </div>
+                            </div>
+                        );
+                    })}
             </div>
         </div>
     </div>

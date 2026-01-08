@@ -6,12 +6,7 @@ import scheduleFlower from '@assets/schedule/schedule-flower.svg';
 import tomatoSticker from '@assets/schedule/tomato-sticker.png';
 import plasticWrap from '@assets/schedule/plastic.png';
 import Image from 'astro/components/Image.astro';
-
-interface ScheduleEvent {
-    date: string;
-    eventName: string;
-    location?: string;
-}
+import type { ScheduleEvent } from './Schedule.astro';
 
 interface Props {
     day: 'Saturday' | 'Sunday';

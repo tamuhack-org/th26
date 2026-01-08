@@ -2,6 +2,7 @@
 import ScheduleTransition from "@components/ScheduleTransition.astro";
 import shoppingCart from "@assets/schedule/cart.svg";
 import lemonSchedule from "@assets/schedule/lemon-schedule.png";
+import packageShadow from "@assets/schedule/package-shadow.svg";
 import Image from "astro/components/Image.astro";
 import ScheduleDay from "./ScheduleDay.astro";
 
@@ -49,7 +50,27 @@ const sundayEvents = data
             <!-- schedule row -->
              <div class="flex justify-between w-full gap-16 lg:gap-32">
                 <ScheduleDay day="Saturday" events={saturdayEvents} />
-                <ScheduleDay day="Sunday" events={sundayEvents} />
+                <div class="flex flex-col gap-16">
+                    <ScheduleDay day="Sunday" events={sundayEvents} />
+                    <!-- Empty container element -->
+                    <div class="relative w-full h-fit">
+                        <!-- Shadow behind the card -->
+                        <Image 
+                            src={packageShadow} 
+                            alt="Package shadow" 
+                            class="absolute inset-0 translate-x-[12.5%] translate-y-[10%] w-full h-full object-fill pointer-events-none z-0"
+                        />
+                        <div class="relative z-10 bg-white px-4 py-3 rounded-[36px] h-fit">
+                            <div class="bg-[#C7B8B8] p-2.5 rounded-[36px]">
+                                <div class="bg-[#D2C7C7] p-[18px] rounded-[36px]">
+                                    <div class="flex flex-col items-center bg-white rounded-3xl min-h-32 min-w-48">
+                                        <!-- Empty content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
              </div>
              <div class="flex items-center justify-center w-full">
                 <Image src={shoppingCart} alt="Shopping cart" class="w-[60%] rotate-180 mt-20" />

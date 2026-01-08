@@ -7,30 +7,34 @@ import ScheduleDay from "./ScheduleDay.astro";
 
 export const prerender = false
 
+interface ScheduleEvent {
+    date: string;
+    [key: string]: unknown;
+}
 
 const response = await fetch('https://team.tamuhack.org/api/hh25');
-const data = await response.json();
+const data: ScheduleEvent[] = await response.json();
 
 // Filter events by day based on the date field
 const saturdayEvents = data
-    .filter((item) => {
+    .filter((item: ScheduleEvent) => {
         const date = new Date(item.date);
         const dayInCST = new Date(
             date.toLocaleString('en-US', { timeZone: 'America/Chicago' }),
         ).getDay();
         return dayInCST === 6; // 6 = Saturday
     })
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+    .sort((a: ScheduleEvent, b: ScheduleEvent) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
 const sundayEvents = data
-    .filter((item) => {
+    .filter((item: ScheduleEvent) => {
         const date = new Date(item.date);
         const dayInCST = new Date(
             date.toLocaleString('en-US', { timeZone: 'America/Chicago' }),
         ).getDay();
         return dayInCST === 0; // 0 = Sunday
     })
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+    .sort((a: ScheduleEvent, b: ScheduleEvent) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
 ---
 

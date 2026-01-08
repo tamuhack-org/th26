@@ -1,12 +1,21 @@
 ---
 import ScheduleTransition from "@components/ScheduleTransition.astro";
+import shoppingCart from "@assets/schedule/cart.svg";
 import lemonSchedule from "@assets/schedule/lemon-schedule.png";
 import Image from "astro/components/Image.astro";
 ---
 
 <section>
     <ScheduleTransition />
-    <div class="flex justify-between items-center bg-[#3457C3] px-8 sm:px-16">
-        <Image src={lemonSchedule} alt="Schedule" class="w-sm rotate-10" />
+    <div class="bg-[#3457C3] flex flex-col items-center w-full mx-auto">
+        <!-- header -->
+        <div class="flex justify-between items-end px-8 sm:px-16 w-full max-w-screen-2xl">
+            <Image src={shoppingCart} alt="Shopping cart" class="w-[12.5%]" />
+            <Image src={lemonSchedule} alt="Schedule" class="w-md rotate-10" />
+        </div>
+        <!-- schedule row -->
+         <div class="flex ">
+
+         </div>
     </div>
 </section>

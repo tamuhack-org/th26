@@ -5,17 +5,20 @@ import Image from 'astro/components/Image.astro';
 
 const { day, events } = Astro.props;
 
-const dayToTitleImage = {
-    "Saturday": saturdayStarTitle,
-    "Sunday": sundayStarTitle,
-};
 ---
 
 <div class="bg-white px-4 py-3 rounded-[36px]">
     <div class="bg-[#C7B8B8] p-2.5 rounded-[36px]">
         <div class="bg-[#D2C7C7] p-[18px] rounded-[36px]">
             <div class="flex flex-col items-center bg-white rounded-3xl">
-
+                <!-- title image -->
+                <div class="mt-6 mb-4">
+                    <Image
+                        src={day === 'Saturday' ? saturdayStarTitle : sundayStarTitle}
+                        alt={`${day} Schedule`}
+                        class="w-48 md:w-64"
+                    />
+                </div>
             </div>
         </div>
     </div>

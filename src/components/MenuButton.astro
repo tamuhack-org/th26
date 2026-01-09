@@ -1,6 +1,5 @@
 ---
 import PostcardBg from '@assets/landing/postcard-bg.svg';
-import stamp from '@assets/landing/stamp.svg';
 import strawberry from '@assets/genInfo/strawberry.svg';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
@@ -37,13 +36,6 @@ import Resources from './Resources.astro';
                         class="relative overflow-hidden rounded-4xl border-2 border-[#77534D] bg-[#FFFAF0] p-6 shadow-2xl md:rounded-none md:shadow-none"
                     >
                         <div id="nav-view" class="flex gap-16">
-                            <Image
-                                src={stamp}
-                                alt="Stamp"
-                                class="absolute top-8 right-8 hidden w-16 md:block md:w-20"
-                                aria-hidden="true"
-                                loading={'eager'}
-                            />
                             <nav class="relative flex flex-col gap-3 pl-6">
                                 <div
                                     id="nav-indicator"

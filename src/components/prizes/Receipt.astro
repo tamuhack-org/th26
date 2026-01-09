@@ -1,7 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import jaggededge from '@assets/prizes/jagged-edge.png';
 import PrizesBarcode from '@assets/prizes/prizes-barcode.svg';
-import { Category, type Prize, } from './prizes.ts';
+import { Category, type Prize } from './prizes.ts';
 
 interface Props {
     prize: Prize;
@@ -30,9 +31,11 @@ if (prize.placement === 'first') {
 }
 ---
 
-<div
-    class="text-brown prize-shadow jagged-edge relative flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
->
+<div class="prize-container flex flex-col items-center">
+    {prize.asset && <Image src={prize.asset} alt="" class="prize-asset" />}
+    <div
+        class="receipt text-brown prize-shadow jagged-edge relative flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
+    >
     <div class:list={['h-1.5', barColor]} aria-hidden="true"></div>
 
     <h2 class="sr-only">
@@ -81,6 +84,7 @@ if (prize.placement === 'first') {
             ))
         }
     </dl>
+    </div>
 </div>
 
 <style define:vars={{ jaggedBgUrl }}>
@@ -117,3 +121,25 @@ if (prize.placement === 'first') {
         }
     }
 </style>
+
+<script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.utils.toArray<HTMLElement>('.receipt').forEach((receipt) => {
+            gsap.from(receipt, {
+                yPercent: -100,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: receipt.closest('.prize-container'),
+                    start: 'top 85%',
+                },
+            });
+        });
+    });
+</script>

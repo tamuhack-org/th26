@@ -11,6 +11,7 @@ export interface Prize {
     prizes: PrizeTuple[];
     description: string;
     type: Category;
+    asset?: ImageMetadata;
 }
 
 export const prizeslist: Record<string, Prize> = {

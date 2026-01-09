@@ -56,29 +56,13 @@ import Resources from './Resources.astro';
                                         aria-hidden="true"
                                     />
                                 </div>
-                                <a
-                                    href="/#"
-                                    class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
-                                    >home</a
-                                >
-                                <a
-                                    href="#general-info"
-                                    class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
+                                <a href="/#" class="enabled-link">home</a>
+                                <a href="#general-info" class="enabled-link"
                                     >general info</a
                                 >
-                                <a
-                                    href="#faq"
-                                    class="text-lg font-medium text-[#77534D] transition-colors hover:text-[#D7A953] md:text-xl"
-                                    >faq</a
-                                >
-                                <a
-                                    class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
-                                    >schedule</a
-                                >
-                                <a
-                                    class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
-                                    >prizes</a
-                                >
+                                <a href="#faq" class="enabled-link">faq</a>
+                                <a class="disabled-link">schedule</a>
+                                <a class="disabled-link">prizes</a>
                                 <button
                                     id="btn-to-resources"
                                     class="cursor-pointer text-left text-lg font-bold text-[#3457C3] md:hidden"
@@ -144,6 +128,31 @@ import Resources from './Resources.astro';
         font-size: 18px;
         font-weight: 500;
         color: rgb(119, 83, 77);
+    }
+
+    a {
+        font-size: var(--text-lg);
+        line-height: var(--text-lg--line-height);
+        font-weight: 500;
+        color: #77534d;
+        @media (width >= 48rem) {
+            font-size: var(--text-xl);
+            line-height: var(--text-xl--line-height);
+        }
+    }
+
+    .enabled-link {
+        transition: color var(--default-transition-duration)
+            var(--default-transition-timing-function);
+
+        &:hover {
+            color: #d7a95d;
+        }
+    }
+
+    .disabled-link {
+        pointer-events: none;
+        opacity: 50%;
     }
 </style>
 

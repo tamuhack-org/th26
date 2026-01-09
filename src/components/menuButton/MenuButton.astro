@@ -170,9 +170,15 @@ import Resources from './Resources.astro';
         btnToResources &&
         btnBack
     ) {
+        const resourceViewInitial = {
+            autoAlpha: 0,
+            x: 30,
+            visibility: 'hidden',
+        };
+
         gsap.set(popup, { autoAlpha: 0 });
         gsap.set(popupContent, { scale: 0.8, y: 20 });
-        gsap.set(resourceView, { autoAlpha: 0, x: 20 });
+        gsap.set(resourceView, { ...resourceViewInitial });
 
         let isMenuOpen = false;
         let isClickedOpen = false;
@@ -195,7 +201,7 @@ import Resources from './Resources.astro';
             '<',
         );
 
-        const switchView = (target: 'resources' | 'main') => {
+        const switchView = (target: 'resources' | 'nav') => {
             isTransitioningViews = true;
             const isToResources = target === 'resources';
 
@@ -203,12 +209,16 @@ import Resources from './Resources.astro';
             const inView = isToResources ? resourceView : navView;
             const focusTarget = isToResources ? btnBack : btnToResources;
 
+            const switchViewConfig = {
+                duration: 0.3,
+                ease: 'power2.inOut',
+                overwrite: 'auto' as const,
+            };
+
             gsap.to(outView, {
                 x: isToResources ? -30 : 30,
                 autoAlpha: 0,
-                duration: 0.3,
-                ease: 'power2.inOut',
-                overwrite: 'auto',
+                ...switchViewConfig,
                 onComplete: () => {
                     outView.style.setProperty('visibility', 'hidden');
                     outView.setAttribute('aria-hidden', 'true');
@@ -225,10 +235,8 @@ import Resources from './Resources.astro';
                 {
                     x: 0,
                     autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.inOut',
+                    ...switchViewConfig,
                     delay: 0.1,
-                    overwrite: 'auto',
                     onComplete: () => {
                         isTransitioningViews = false;
                         inView.setAttribute('aria-hidden', 'false');
@@ -246,11 +254,7 @@ import Resources from './Resources.astro';
                 x: 0,
                 visibility: 'visible',
             });
-            gsap.set(resourceView, {
-                autoAlpha: 0,
-                x: 30,
-                visibility: 'hidden',
-            });
+            gsap.set(resourceView, { ...resourceViewInitial });
             isTransitioningViews = false;
 
             tl.play();
@@ -275,7 +279,7 @@ import Resources from './Resources.astro';
         });
         btnBack.addEventListener('click', (e) => {
             e.stopPropagation();
-            switchView('main');
+            switchView('nav');
         });
 
         // Click to toggle

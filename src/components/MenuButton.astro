@@ -23,17 +23,19 @@ import Resources from './Resources.astro';
             class="invisible absolute bottom-full left-1/2 -translate-x-1/2 pb-6 sm:left-4 sm:translate-x-0 md:rotate-3"
         >
             <div
-                class="popup-content relative w-72 origin-bottom shadow-2xl md:w-[500px]"
+                class="popup-content relative w-72 origin-bottom md:w-[500px] md:shadow-2xl"
             >
                 <Image
                     src={PostcardBg}
                     alt="Postcard border"
-                    class="absolute inset-0 h-full w-full object-cover"
+                    class="absolute inset-0 hidden h-full w-full object-cover md:block"
                     aria-hidden="true"
                     loading={'eager'}
                 />
-                <div class="relative z-10 p-3">
-                    <div class="border-2 border-[#77534D] bg-[#FFFAF0] p-6">
+                <div class="relative z-10 md:p-3">
+                    <div
+                        class="relative overflow-hidden rounded-4xl border-2 border-[#77534D] bg-[#FFFAF0] p-6 shadow-2xl md:rounded-none md:shadow-none"
+                    >
                         <div id="nav-view" class="flex gap-16">
                             <Image
                                 src={stamp}

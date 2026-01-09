@@ -12,7 +12,7 @@ import {
     <footer class="items-center lg:flex lg:justify-between lg:gap-16">
         <div class="text-center opacity-90 lg:text-start">
             <p
-                class="color-brown mb-4 inline-block -rotate-[0.5deg] rounded-lg bg-[#ef9c26] px-5 py-2 text-lg font-semibold whitespace-nowrap shadow-[5px_5px_10px_rgba(0,0,0,0.5)] sm:text-3xl"
+                class="tag-news color-brown mb-4 inline-block -rotate-[0.5deg] rounded-lg bg-[#ef9c26] px-5 py-2 text-lg font-semibold whitespace-nowrap shadow-[5px_5px_10px_rgba(0,0,0,0.5)] sm:text-3xl"
             >
                 Sign up to our newsletter
             </p>
@@ -96,3 +96,25 @@ import {
         </p>
     </footer>
 </div>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
+    console.clear();
+
+    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.tag-news', {
+            scrollTrigger: {
+                trigger: '.tag-news',
+                start: 'top 65%',
+            },
+            rotate: 10,
+            y: -40,
+            opacity: 0,
+            transformOrigin: '50% 0%',
+            duration: 0.5,
+            ease: 'power2.out',
+        });
+    });
+</script>

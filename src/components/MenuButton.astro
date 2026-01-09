@@ -3,6 +3,8 @@ import PostcardBg from '@assets/landing/postcard-bg.svg';
 import stamp from '@assets/landing/stamp.svg';
 import strawberry from '@assets/genInfo/strawberry.svg';
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Resources from './Resources.astro';
 ---
 
 <div
@@ -75,16 +77,41 @@ import { Image } from 'astro:assets';
                                     class="pointer-events-none text-lg font-medium text-[#77534D] opacity-50 transition-colors md:text-xl"
                                     >prizes</a
                                 >
+                                <button
+                                    id="btn-to-resources"
+                                    class="cursor-pointer text-left text-lg font-bold text-[#3457C3] md:hidden"
+                                    aria-label="View resources"
+                                >
+                                    <span class="underline underline-offset-4"
+                                        >resources</span
+                                    >
+                                    <Icon
+                                        name="tabler:arrow-narrow-right"
+                                        class="inline fill-[#3457C3] text-3xl"
+                                    />
+                                </button>
                             </nav>
                             <div class="hidden w-0.5 bg-[#77534D] md:block">
                             </div>
-                            <div
-                                class="hidden flex-1 flex-col gap-6 pt-28 md:flex"
-                            >
-                                <div class="h-0.5 w-full bg-[#77534D]"></div>
-                                <div class="h-0.5 w-full bg-[#77534D]"></div>
-                                <div class="h-0.5 w-full bg-[#77534D]"></div>
+                            <div class="hidden md:block">
+                                <Resources />
                             </div>
+                        </div>
+                        <div
+                            id="resource-view"
+                            class="invisible absolute inset-0 flex flex-col p-6 opacity-0"
+                            aria-hidden="true"
+                        >
+                            <button
+                                id="btn-back"
+                                class="mb-4 cursor-pointer self-start text-sm font-bold text-[#3457C3] underline underline-offset-4"
+                            >
+                                <Icon
+                                    name="tabler:arrow-narrow-left"
+                                    class="inline fill-[#3457C3] text-2xl"
+                                />Back
+                            </button>
+                            <Resources />
                         </div>
                     </div>
                 </div>
@@ -125,10 +152,28 @@ import { Image } from 'astro:assets';
     const popup = document.getElementById('menu-popup');
     const popupContent = popup?.querySelector('.popup-content');
     const menuBtn = document.getElementById('menu-btn');
+    const navView = document.getElementById('nav-view');
+    const resourceView = document.getElementById('resource-view');
+    const btnToResources = document.getElementById('btn-to-resources');
+    const btnBack = document.getElementById('btn-back');
 
-    if (container && popup && popupContent && menuBtn) {
+    if (
+        container &&
+        popup &&
+        popupContent &&
+        menuBtn &&
+        navView &&
+        resourceView &&
+        btnToResources &&
+        btnBack
+    ) {
         gsap.set(popup, { autoAlpha: 0 });
         gsap.set(popupContent, { scale: 0.8, y: 20 });
+        gsap.set(resourceView, { autoAlpha: 0, x: 20 });
+
+        let isMenuOpen = false;
+        let isClickedOpen = false;
+        let isTransitioningViews = false;
 
         const tl = gsap.timeline({ paused: true });
 
@@ -147,19 +192,88 @@ import { Image } from 'astro:assets';
             '<',
         );
 
-        let isClickedOpen = false;
+        const switchView = (target: 'resources' | 'main') => {
+            isTransitioningViews = true;
+            const isToResources = target === 'resources';
+
+            const outView = isToResources ? navView : resourceView;
+            const inView = isToResources ? resourceView : navView;
+            const focusTarget = isToResources ? btnBack : btnToResources;
+
+            gsap.to(outView, {
+                x: isToResources ? -30 : 30,
+                autoAlpha: 0,
+                duration: 0.3,
+                ease: 'power2.inOut',
+                overwrite: 'auto',
+                onComplete: () => {
+                    outView.style.setProperty('visibility', 'hidden');
+                    outView.setAttribute('aria-hidden', 'true');
+                },
+            });
+
+            gsap.fromTo(
+                inView,
+                {
+                    x: isToResources ? 30 : -30,
+                    autoAlpha: 0,
+                    visibility: 'visible',
+                },
+                {
+                    x: 0,
+                    autoAlpha: 1,
+                    duration: 0.3,
+                    ease: 'power2.inOut',
+                    delay: 0.1,
+                    overwrite: 'auto',
+                    onComplete: () => {
+                        isTransitioningViews = false;
+                        inView.setAttribute('aria-hidden', 'false');
+                        focusTarget.focus();
+                    },
+                },
+            );
+        };
 
         const openMenu = () => {
+            if (isMenuOpen) return;
+
+            gsap.set(navView, {
+                autoAlpha: 1,
+                x: 0,
+                visibility: 'visible',
+            });
+            gsap.set(resourceView, {
+                autoAlpha: 0,
+                x: 30,
+                visibility: 'hidden',
+            });
+            isTransitioningViews = false;
+
             tl.play();
             menuBtn.classList.add('scale-105');
             menuBtn.setAttribute('aria-expanded', 'true');
+            isMenuOpen = true;
         };
         const closeMenu = () => {
+            if (!isMenuOpen) return;
+
             tl.reverse();
             isClickedOpen = false;
+            isMenuOpen = false;
+
             menuBtn.classList.remove('scale-105');
             menuBtn.setAttribute('aria-expanded', 'false');
         };
+
+        btnToResources.addEventListener('click', (e) => {
+            e.stopPropagation();
+            switchView('resources');
+        });
+        btnBack.addEventListener('click', (e) => {
+            e.stopPropagation();
+            switchView('main');
+        });
 
         // Click to toggle
         menuBtn.addEventListener('click', (e) => {
@@ -187,6 +301,7 @@ import { Image } from 'astro:assets';
         // Focus behavior (only closes if not clicked open)
         container.addEventListener('focusin', openMenu);
         container.addEventListener('focusout', (e) => {
+            if (isTransitioningViews) return;
             if (
                 !isClickedOpen &&
                 !container.contains(e.relatedTarget as Node)

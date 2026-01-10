@@ -35,16 +35,16 @@ const { day, events } = Astro.props;
             class="absolute -bottom-8 -right-8 w-24 h-24 object-fill pointer-events-none z-20 hidden lg:block"
         />
     }
-    <div class="relative z-10 bg-white px-4 py-3 rounded-[36px] h-fit shadow-2xl">
-        <div class="bg-[#C7B8B8] p-2.5 rounded-[36px]">
-            <div class="bg-[#D2C7C7] p-[18px] rounded-[36px]">
+    <div class="relative z-10 bg-white px-3 lg:px-4 py-3 rounded-[36px] h-fit shadow-2xl">
+        <div class="bg-[#C7B8B8] p-2 lg:p-2.5 rounded-[36px]">
+            <div class="bg-[#D2C7C7] p-4 lg:p-[18px] rounded-[36px]">
                 <div class="flex flex-col items-center bg-white rounded-3xl">
                     <!-- title image -->
                     <div class="my-6">
                         <Image
                             src={day === 'Saturday' ? saturdayStarTitle : sundayStarTitle}
                             alt={`${day} Schedule`}
-                            class={`w-48 md:w-64 drop-shadow-2xl ${day === 'Saturday' ? '-rotate-2' : 'rotate-2'}`}
+                            class={`lg:w-64 drop-shadow-2xl ${day === 'Saturday' ? '-rotate-2' : 'rotate-2'}`}
                         />
                     </div>
                     <!-- render events -->
@@ -66,15 +66,15 @@ const { day, events } = Astro.props;
 
                             return (
                                 <div class="flex justify-between gap-4">
-                                    <h3 class="text-[20px] font-semibold text-[#77534D] text-nowrap">
+                                    <h3 class="text-base sm:text-[20px] font-semibold text-[#77534D] text-nowrap">
                                         {formattedTime}
                                     </h3>
                                     <div class="flex flex-col text-end">
-                                        <h3 class="text-[20px] font-semibold text-[#77534D] text-wrap">
+                                        <h3 class="text-base sm:text-[20px] font-semibold text-[#77534D] text-wrap">
                                             {event.eventName}
                                         </h3>
                                         {event.location && (
-                                            <p class="mt-1 text-[16px] text-[#77534D]">
+                                            <p class="mt-1 text-sm sm:text-[16px] text-[#77534D]">
                                                 {event.location}
                                             </p>
                                         )}

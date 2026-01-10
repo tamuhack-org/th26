@@ -3,7 +3,15 @@ export const enum Category {
     HARDWARE = 'hardware',
 }
 
-export type PrizeTuple = [string, number | string]; // [prize name, prize price or placement to receive prize]
+export type PrizeTuple = [string, number | string];
+
+export type PrizeAssetKey =
+    | 'macbook'
+    | 'ipad'
+    | 'keyboard'
+    | 'scooter'
+    | 'printer'
+    | 'headphones';
 
 export interface Prize {
     placement?: string;
@@ -11,7 +19,7 @@ export interface Prize {
     prizes: PrizeTuple[];
     description: string;
     type: Category;
-    asset?: ImageMetadata;
+    assetKey?: PrizeAssetKey;
 }
 
 export const prizeslist: Record<string, Prize> = {
@@ -21,6 +29,7 @@ export const prizeslist: Record<string, Prize> = {
         prizes: [['Macbook Air M2', 799.0]],
         description: 'First place software track.',
         type: Category.SOFTWARE,
+        assetKey: 'macbook',
     },
     'second-place-software': {
         placement: 'second',
@@ -28,6 +37,7 @@ export const prizeslist: Record<string, Prize> = {
         prizes: [['iPad A16', 350.0]],
         description: 'Second place software track.',
         type: Category.SOFTWARE,
+        assetKey: 'ipad',
     },
     'third-place-software': {
         placement: 'third',
@@ -35,6 +45,7 @@ export const prizeslist: Record<string, Prize> = {
         prizes: [['SteelSeries Gaming Keyboard', 219.99]],
         description: 'Third place software track.',
         type: Category.SOFTWARE,
+        assetKey: 'keyboard',
     },
     'best-design': {
         track: 'best design',
@@ -56,6 +67,7 @@ export const prizeslist: Record<string, Prize> = {
         prizes: [['Gotrax Electric Scooter', 299.0]],
         description: 'First place hardware track.',
         type: Category.HARDWARE,
+        assetKey: 'scooter',
     },
     'second-place-hardware': {
         placement: 'second',
@@ -63,6 +75,7 @@ export const prizeslist: Record<string, Prize> = {
         prizes: [['Neptune 3 Pro 3D Printer', 213.0]],
         description: 'Second place hardware track.',
         type: Category.HARDWARE,
+        assetKey: 'printer',
     },
     'third-place-hardware': {
         placement: 'third',
@@ -70,6 +83,7 @@ export const prizeslist: Record<string, Prize> = {
         prizes: [['Sony WH-CH720N', 179.99]],
         description: 'Third place hardware track.',
         type: Category.HARDWARE,
+        assetKey: 'headphones',
     },
     iot: {
         track: 'IoT Challenge',

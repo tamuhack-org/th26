@@ -1,89 +1,105 @@
 ---
-import { Image } from 'astro:assets';
 import jaggededge from '@assets/prizes/jagged-edge.png';
 import PrizesBarcode from '@assets/prizes/prizes-barcode.svg';
-import { Category, type Prize } from './prizes.ts';
+import { Category, type Prize, type PrizeAssetKey } from './prizes.ts';
+
+import Macbook from '@assets/prizes/macbook.svg';
+import Ipad from '@assets/prizes/ipad.svg';
+import Keyboard from '@assets/prizes/keyboard.svg';
+import Scooter from '@assets/prizes/scooter.svg';
+import Printer from '@assets/prizes/printer.svg';
+import Headphones from '@assets/prizes/headphones.svg';
+
+const assetMap: Record<PrizeAssetKey, typeof Macbook> = {
+    macbook: Macbook,
+    ipad: Ipad,
+    keyboard: Keyboard,
+    scooter: Scooter,
+    printer: Printer,
+    headphones: Headphones,
+};
 
 interface Props {
     prize: Prize;
 }
 
 const { prize } = Astro.props;
+const PrizeAsset = prize.assetKey ? assetMap[prize.assetKey] : null;
 
 const jaggedBgUrl = `url(${jaggededge.src})`;
 
-let barColor = 'bg-[#E3442F]'; // red bar for software -- default
+let barColor = 'bg-[#E3442F]';
 
 if (prize.placement === 'first') {
     const animatedGradient =
-        'motion-safe:bg-linear-[90deg,#FF9AA4,#FAD0C4_12%,#FBC2EB_28%,#A18CD1_43%,#8FD3F4_59%,#84FAB0_75%,#FECEC2_89%,#FF9AA4] animate-gradient motion-safe:bg-[length:200%_auto]'; // animated gradient bar for first place
+        'motion-safe:bg-linear-[90deg,#FF9AA4,#FAD0C4_12%,#FBC2EB_28%,#A18CD1_43%,#8FD3F4_59%,#84FAB0_75%,#FECEC2_89%,#FF9AA4] animate-gradient motion-safe:bg-[length:200%_auto]';
     let staticGradient = '';
     if (prize.type === Category.HARDWARE) {
         staticGradient =
-            'motion-reduce:bg-linear-[90deg,#84FAB0_6%,#8FD3F4_26%,#A18CD1_43%,#FBC2EB_61%,#FFE7FD_83%,#FF9ABC]'; // static gradient bar for first place hardware prize
+            'motion-reduce:bg-linear-[90deg,#84FAB0_6%,#8FD3F4_26%,#A18CD1_43%,#FBC2EB_61%,#FFE7FD_83%,#FF9ABC]';
     } else {
         staticGradient =
-            'motion-reduce:bg-linear-[90deg,#FF9A9E,#FAD0C4_25%,#FBC2EB_39%,#A18CD1_57%,#8FD3F4_79%,#84FAB0_94%]'; // static gradient bar for first place software prizes
+            'motion-reduce:bg-linear-[90deg,#FF9A9E,#FAD0C4_25%,#FBC2EB_39%,#A18CD1_57%,#8FD3F4_79%,#84FAB0_94%]';
     }
-    barColor = animatedGradient + ' ' + staticGradient; // gradient bar for first place
+    barColor = animatedGradient + ' ' + staticGradient;
 } else if (prize.type === Category.HARDWARE) {
-    barColor = 'bg-[#3457C3]'; // blue bar for hardware prizes
+    barColor = 'bg-[#3457C3]';
 }
 ---
 
 <div class="prize-container flex flex-col items-center">
-    {prize.asset && <Image src={prize.asset} alt="" class="prize-asset" />}
+    {PrizeAsset && <PrizeAsset class="prize-asset" aria-hidden="true" />}
     <div
-        class="receipt text-brown prize-shadow jagged-edge relative flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
+        class="receipt text-brown prize-shadow jagged-edge relative mt-5 flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
     >
-    <div class:list={['h-1.5', barColor]} aria-hidden="true"></div>
+        <div class:list={['h-1.5', barColor]} aria-hidden="true"></div>
 
-    <h2 class="sr-only">
-        {(prize.placement ? prize.placement + ' place ' : '') + prize.track}
-    </h2>
+        <h2 class="sr-only">
+            {(prize.placement ? prize.placement + ' place ' : '') + prize.track}
+        </h2>
 
-    <div class="flex justify-between">
-        <div
-            class="font-family-bbh text-xl capitalize min-[28rem]:text-2xl"
+        <div class="flex justify-between">
+            <div
+                class="font-family-bbh text-xl capitalize min-[28rem]:text-2xl"
+                aria-hidden="true"
+            >
+                <h2 class="first-letter:uppercase" aria-hidden="true">
+                    {prize.placement ? prize.placement + ' place' : ''}
+                </h2>
+                <h2 aria-hidden="true">{prize.track}</h2>
+            </div>
+            <div class="mt-2 flex-none" aria-hidden="true">
+                <PrizesBarcode class="w-18.5 text-amber-900" />
+            </div>
+        </div>
+        <p class="text-center text-sm">{prize.description}</p>
+        <p
+            class="pointer-events-none overflow-hidden text-sm whitespace-nowrap"
             aria-hidden="true"
         >
-            <h2 class="first-letter:uppercase" aria-hidden="true">
-                {prize.placement ? prize.placement + ' place' : ''}
-            </h2>
-            <h2 aria-hidden="true">{prize.track}</h2>
-        </div>
-        <div class="mt-2 flex-none" aria-hidden="true">
-            <PrizesBarcode class="w-18.5 text-amber-900" />
-        </div>
-    </div>
-    <p class="text-center text-sm">{prize.description}</p>
-    <p
-        class="pointer-events-none overflow-hidden text-sm whitespace-nowrap"
-        aria-hidden="true"
-    >
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        -
-    </p>
-    <dl aria-label="List of prizes">
-        {
-            prize.prizes.map((prize) => (
-                <div class="flex justify-between uppercase">
-                    <dt>{prize[0]}</dt>
-                    <dd>
-                        <span class="sr-only">
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            - - -
+        </p>
+        <dl aria-label="List of prizes">
+            {
+                prize.prizes.map((prize) => (
+                    <div class="flex justify-between uppercase">
+                        <dt>{prize[0]}</dt>
+                        <dd>
+                            <span class="sr-only">
+                                {typeof prize[1] === 'number'
+                                    ? 'Price'
+                                    : 'Placement'}
+                                :
+                            </span>
                             {typeof prize[1] === 'number'
-                                ? 'Price'
-                                : 'Placement'}
-                            :
-                        </span>
-                        {typeof prize[1] === 'number'
-                            ? prize[1].toFixed(2)
-                            : prize[1]}
-                    </dd>
-                </div>
-            ))
-        }
-    </dl>
+                                ? prize[1].toFixed(2)
+                                : prize[1]}
+                        </dd>
+                    </div>
+                ))
+            }
+        </dl>
     </div>
 </div>
 

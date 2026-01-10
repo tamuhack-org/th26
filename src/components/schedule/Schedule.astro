@@ -3,6 +3,8 @@ import ScheduleTransition from "@components/ScheduleTransition.astro";
 import shoppingCart from "@assets/schedule/cart.svg";
 import lemonSchedule from "@assets/schedule/lemon-schedule.png";
 import plasticWrap from "@assets/schedule/plastic.png";
+import sadSeal from "@assets/schedule/sad-seal.svg";
+import timeTag from "@assets/schedule/time-tag.svg";
 import Image from "astro/components/Image.astro";
 import ScheduleDay from "./ScheduleDay.astro";
 
@@ -48,14 +50,19 @@ const sundayEvents = data
                 <Image src={lemonSchedule} alt="Schedule" class="w-md rotate-10" />
             </div>
             <!-- schedule row -->
-             <div class="flex justify-between w-full gap-16 lg:gap-32 items-stretch">
+             <div class="flex justify-between w-full gap-16 lg:gap-32 items-start">
                 <div class="w-1/2">
                     <ScheduleDay day="Saturday" events={saturdayEvents} />
                 </div>
-                <div class="flex flex-col gap-16 w-1/2">
+                <div class="flex flex-col gap-16 w-1/2 self-stretch">
                     <ScheduleDay day="Sunday" events={sundayEvents} />
                     <!-- Empty container element -->
-                    <div class="relative w-full flex-1">
+                    <div class="relative w-full flex-1 min-h-0">
+                        <Image 
+                            src={timeTag} 
+                            alt="Time tag" 
+                            class="absolute right-0 bottom-0 z-30 object-contain pointer-events-none"
+                        />
                         <Image 
                             src={plasticWrap} 
                             alt="Plastic wrap" 
@@ -64,8 +71,8 @@ const sundayEvents = data
                         <div class="relative z-10 bg-white px-4 py-3 rounded-[36px] h-full shadow-2xl">
                             <div class="bg-[#C7B8B8] p-2.5 rounded-[36px] h-full">
                                 <div class="bg-[#D2C7C7] p-[18px] rounded-[36px] h-full">
-                                    <div class="flex flex-col items-center bg-white rounded-3xl h-full">
-                                        <!-- Empty content -->
+                                    <div class="flex flex-col items-center justify-center bg-white rounded-3xl h-full pr-24">
+                                        <Image src={sadSeal} alt="Sad seal" class="object-cover w-[90%] -rotate-20" />
                                     </div>
                                 </div>
                             </div>

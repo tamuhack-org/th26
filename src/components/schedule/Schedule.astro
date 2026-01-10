@@ -13,7 +13,7 @@ export interface ScheduleEvent {
     [key: string]: unknown;
 }
 
-const response = await fetch('https://team.tamuhack.org/api/hh25');
+const response = await fetch('https://team.tamuhack.org/api/th26');
 const data: ScheduleEvent[] = await response.json();
 
 // Filter events by day based on the date field

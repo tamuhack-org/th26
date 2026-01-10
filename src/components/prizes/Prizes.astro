@@ -1,24 +1,70 @@
 ---
 import Receipt from './Receipt.astro';
 import { prizeslist } from './prizes.ts';
-
 import Marquee from './Marquee.astro';
+const softwarePrizes = [
+    prizeslist['first-place-software'],
+    prizeslist['second-place-software'],
+    prizeslist['third-place-software'],
+    prizeslist['best-design'],
+    prizeslist['best-beginner-software'],
+    prizeslist['american-airlines'],
+];
+const hardwarePrizes = [
+    prizeslist['first-place-hardware'],
+    prizeslist['second-place-hardware'],
+    prizeslist['third-place-hardware'],
+    prizeslist['iot'],
+    prizeslist['medical-device'],
+    prizeslist['best-beginner-hardware'],
+];
 ---
 
 <section id="prizes">
     <Marquee />
-    <div class="flex flex-col gap-10 px-8">
-        <Receipt prize={prizeslist['first-place-software']} />
-        <Receipt prize={prizeslist['second-place-software']} />
-        <Receipt prize={prizeslist['third-place-software']} />
-        <Receipt prize={prizeslist['best-design']} />
-        <Receipt prize={prizeslist['best-beginner-software']} />
-        <Receipt prize={prizeslist['american-airlines']} />
-        <Receipt prize={prizeslist['first-place-hardware']} />
-        <Receipt prize={prizeslist['second-place-hardware']} />
-        <Receipt prize={prizeslist['third-place-hardware']} />
-        <Receipt prize={prizeslist['iot']} />
-        <Receipt prize={prizeslist['medical-device']} />
-        <Receipt prize={prizeslist['best-beginner-hardware']} />
+    <!-- Max width based roughly off two receipts  -->
+    <div class="mx-auto max-w-208 bg-[#554948] px-6 py-10">
+        <div>
+            <h3 class="mb-8 text-center text-2xl font-bold text-white">
+                Software
+            </h3>
+            <div class="flex flex-col">
+                {
+                    softwarePrizes.map((prize, index) => (
+                        <div
+                            class:list={[
+                                '-mt-12 flex first:mt-0',
+                                index % 2 === 0
+                                    ? 'justify-end'
+                                    : 'justify-start',
+                            ]}
+                        >
+                            <Receipt prize={prize} />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+        <div class="mt-10">
+            <h3 class="mb-8 text-center text-2xl font-bold text-white">
+                Hardware
+            </h3>
+            <div class="flex flex-col">
+                {
+                    hardwarePrizes.map((prize, index) => (
+                        <div
+                            class:list={[
+                                '-mt-12 flex first:mt-0',
+                                index % 2 === 0
+                                    ? 'justify-end'
+                                    : 'justify-start',
+                            ]}
+                        >
+                            <Receipt prize={prize} />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
     </div>
 </section>

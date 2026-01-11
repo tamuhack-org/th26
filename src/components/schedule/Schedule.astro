@@ -52,13 +52,12 @@ const sundayEvents = data
                 <Image src={lemonSchedule} alt="Schedule" class="w-md rotate-10 drop-shadow-xl" />
             </div>
             <!-- schedule row -->
-            <div class="flex flex-col lg:flex-row justify-between w-full gap-16 lg:gap-32 items-start">
+            <div class="flex flex-col lg:flex-row justify-between w-full gap-16 lg:gap-32 items-start mb-16">
                 <div class="w-full lg:w-1/2">
                     <ScheduleDay day="Saturday" events={saturdayEvents} />
                 </div>
                 <div class="flex flex-col gap-16 w-full lg:w-1/2 self-stretch">
                     <ScheduleDay day="Sunday" events={sundayEvents} />
-                    <!-- Empty container element -->
                     <div class="relative w-full flex-1 min-h-0">
                         <Image 
                             src={timeTag} 
@@ -83,7 +82,7 @@ const sundayEvents = data
                 </div>
             </div>
             <div class="items-center justify-center w-full hidden lg:flex">
-                <Image src={shoppingCartBottom} alt="Shopping cart" class="w-[60%] max-w-160 mt-36 mb-24" />
+                <Image src={shoppingCartBottom} alt="Shopping cart" class="w-[60%] max-w-160 mt-20 mb-24" />
             </div>
             <div class="hidden lg:block absolute -bottom-8 -left-8 pointer-events-none z-30 max-w-screen-2xl">
             <!-- SVG plant decoration -->

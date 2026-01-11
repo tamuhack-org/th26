@@ -8,6 +8,7 @@ import sadSeal from "@assets/schedule/sad-seal.svg";
 import timeTag from "@assets/schedule/time-tag.svg";
 import Image from "astro/components/Image.astro";
 import ScheduleDay from "./ScheduleDay.astro";
+import SchedulePlant from "./SchedulePlant.astro";
 
 export const prerender = false
 
@@ -85,7 +86,7 @@ const sundayEvents = data
             </div>
             <div class="hidden lg:block absolute -bottom-8 -left-8 pointer-events-none z-30 max-w-screen-2xl">
             <!-- SVG plant decoration -->
-            <!-- <SchedulePlant /> -->
+            <SchedulePlant />
             </div>
         </div>
     </div>

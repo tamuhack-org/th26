@@ -258,9 +258,6 @@ const sundayEvents = data
                 const flower2 = plantSvg.querySelector('.plant-flower-2');
                 const flower3 = plantSvg.querySelector('.plant-flower-3');
 
-                // Get the main stem path (the filled path, not the stroke)
-                const stemPath = stem?.querySelector('path[fill^="url"]');
-
                 // Set initial states
                 gsap.set([leafTop, flower, flower2, flower3], {
                     opacity: 0,

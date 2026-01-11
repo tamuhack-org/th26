@@ -47,7 +47,7 @@ const sundayEvents = data
     <div class="bg-[#3457C3]">
         <div class="relative flex flex-col items-center max-w-screen-2xl w-full mx-auto px-8 sm:px-16">
             <div class="flex justify-center items-center lg:justify-between lg:items-end w-full mb-12 mt-8 lg:mt-0">
-                <Image src={shoppingCart} alt="Shopping cart" class="w-[15%] hidden lg:block" id="cart-top" />
+                <Image src={shoppingCart} alt="Shopping cart" class="cart-top w-[15%] hidden lg:block" id="cart-top" />
                 <Image src={lemonSchedule} alt="Schedule" class="w-md rotate-10 drop-shadow-xl" />
             </div>
             <!-- schedule row -->
@@ -81,7 +81,7 @@ const sundayEvents = data
                 </div>
             </div>
             <div class="items-center justify-center w-full hidden lg:flex">
-                <Image src={shoppingCartBottom} alt="Shopping cart" class="w-[60%] max-w-160 mt-20 mb-24" id="cart-bottom" />
+                <Image src={shoppingCartBottom} alt="Shopping cart" class="cart-bottom w-[60%] max-w-160 mt-20 mb-24" id="cart-bottom" />
             </div>
             <div class="hidden lg:block absolute -bottom-8 -left-8 pointer-events-none z-30 max-w-screen-2xl">
             <!-- SVG plant decoration -->
@@ -91,37 +91,36 @@ const sundayEvents = data
     </div>
 </section>
 
-<script>
-    import gsap from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+<style>
+    @supports (animation-timeline: view()) {
+        .cart-top {
+            animation: cart-top-slide linear both;
+            animation-timeline: view();
+            animation-range: entry 0% exit 50%;
+        }
 
-    gsap.registerPlugin(ScrollTrigger);
+        .cart-bottom {
+            animation: cart-bottom-slide linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 50%;
+        }
 
-    // Top cart - moves to the right when scrolling, exits off screen
-    gsap.to('#cart-top', {
-        xPercent: 900,
-        ease: 'none',
-        force3D: true,
-        willChange: 'transform',
-        scrollTrigger: {
-            trigger: '#schedule-container',
-            start: 'top end',
-            end: 'center top',
-            scrub: true,
-        },
-    });
+        @keyframes cart-top-slide {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(900%);
+            }
+        }
 
-    // Bottom cart - starts off screen to the right, moves in to its current position
-    gsap.from('#cart-bottom', {
-        xPercent: 100,
-        ease: 'none',
-        force3D: true,
-        willChange: 'transform',
-        scrollTrigger: {
-            trigger: '#cart-bottom',
-            start: 'top bottom',
-            end: 'top center',
-            scrub: true,
-        },
-    });
-</script>
+        @keyframes cart-bottom-slide {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    }
+</style>

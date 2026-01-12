@@ -1,16 +1,16 @@
 ---
-import ScheduleTransition from "@components/ScheduleTransition.astro";
-import shoppingCart from "@assets/schedule/cart.svg";
-import shoppingCartBottom from "@assets/schedule/cart-bot.svg";
-import lemonSchedule from "@assets/schedule/lemon-schedule.png";
-import plasticWrap from "@assets/schedule/plastic.png";
-import sadSeal from "@assets/schedule/sad-seal.svg";
-import timeTag from "@assets/schedule/time-tag.svg";
-import Image from "astro/components/Image.astro";
-import ScheduleDay from "./ScheduleDay.astro";
-import SchedulePlant from "./SchedulePlant.astro";
+import ScheduleTransition from '@components/ScheduleTransition.astro';
+import shoppingCart from '@assets/schedule/cart.png';
+import shoppingCartBottom from '@assets/schedule/cart-bot.svg';
+import lemonSchedule from '@assets/schedule/lemon-schedule.png';
+import plasticWrap from '@assets/schedule/plastic.png';
+import sadSeal from '@assets/schedule/sad-seal.svg';
+import timeTag from '@assets/schedule/time-tag.svg';
+import Image from 'astro/components/Image.astro';
+import ScheduleDay from './ScheduleDay.astro';
+import SchedulePlant from './SchedulePlant.astro';
 
-export const prerender = false
+export const prerender = false;
 
 export interface ScheduleEvent {
     date: string;
@@ -29,7 +29,10 @@ const saturdayEvents = data
         ).getDay();
         return dayInCST === 6; // 6 = Saturday
     })
-    .sort((a: ScheduleEvent, b: ScheduleEvent) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort(
+        (a: ScheduleEvent, b: ScheduleEvent) =>
+            new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
 
 const sundayEvents = data
     .filter((item: ScheduleEvent) => {
@@ -39,41 +42,73 @@ const sundayEvents = data
         ).getDay();
         return dayInCST === 0; // 0 = Sunday
     })
-    .sort((a: ScheduleEvent, b: ScheduleEvent) => new Date(a.date).getTime() - new Date(b.date).getTime());
-
+    .sort(
+        (a: ScheduleEvent, b: ScheduleEvent) =>
+            new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
 ---
 
-<section class="w-screen relative left-1/2 -translate-x-1/2" id="schedule-container">
+<section
+    class="relative left-1/2 w-screen -translate-x-1/2"
+    id="schedule-container"
+>
     <ScheduleTransition />
-    <div class="bg-[#3457C3] -mt-1" id="schedule">
-        <div class="relative flex flex-col items-center max-w-screen-2xl w-full mx-auto px-8 sm:px-16">
-            <div class="flex justify-center items-center lg:justify-between lg:items-end w-full mb-12 mt-8 lg:mt-1">
-                <Image src={shoppingCart} alt="Shopping cart" class="cart-top w-[17.5%] hidden lg:block" id="cart-top" />
-                <Image src={lemonSchedule} alt="Schedule" class="w-md rotate-10 drop-shadow-xl" />
+    <div class="-mt-1 bg-[#3457C3]" id="schedule">
+        <div
+            class="relative mx-auto flex w-full max-w-screen-2xl flex-col items-center px-8 sm:px-16"
+        >
+            <div
+                class="mt-8 mb-12 flex w-full items-center justify-center lg:mt-1 lg:items-end lg:justify-between"
+            >
+                <Image
+                    src={shoppingCart}
+                    alt="Shopping cart"
+                    class="cart-top ml-16 hidden lg:block"
+                    id="cart-top"
+                />
+                <Image
+                    src={lemonSchedule}
+                    alt="Schedule"
+                    class="w-md rotate-10 drop-shadow-xl"
+                />
             </div>
             <!-- schedule row -->
-            <div class="flex flex-col lg:flex-row justify-between w-full gap-16 lg:gap-32 items-start mb-16">
+            <div
+                class="mb-16 flex w-full flex-col items-start justify-between gap-16 lg:flex-row lg:gap-32"
+            >
                 <div class="w-full lg:w-1/2">
                     <ScheduleDay day="Saturday" events={saturdayEvents} />
                 </div>
-                <div class="flex flex-col gap-16 w-full lg:w-1/2 self-stretch">
+                <div class="flex w-full flex-col gap-16 self-stretch lg:w-1/2">
                     <ScheduleDay day="Sunday" events={sundayEvents} />
-                    <div class="relative w-full flex-1 min-h-0">
-                        <Image 
-                            src={timeTag} 
-                            alt="Time tag" 
-                            class="absolute right-0 bottom-0 z-30 object-contain pointer-events-none rotate-4 w-fit h-full translate-y-1/8 drop-shadow-lg"
+                    <div class="relative min-h-0 w-full flex-1">
+                        <Image
+                            src={timeTag}
+                            alt="Time tag"
+                            class="pointer-events-none absolute right-0 bottom-0 z-30 h-full w-fit translate-y-1/8 rotate-4 object-contain drop-shadow-lg"
                         />
-                        <Image 
-                            src={plasticWrap} 
-                            alt="Plastic wrap" 
-                            class="absolute inset-0 w-full h-full object-fill pointer-events-none z-20 rounded-[36px]"
+                        <Image
+                            src={plasticWrap}
+                            alt="Plastic wrap"
+                            class="pointer-events-none absolute inset-0 z-20 h-full w-full rounded-[36px] object-fill"
                         />
-                        <div class="relative z-10 bg-white px-4 py-3 rounded-[36px] h-full shadow-2xl">
-                            <div class="bg-[#C7B8B8] p-2.5 rounded-[36px] h-full">
-                                <div class="bg-[#D2C7C7] p-[18px] rounded-[36px] h-full">
-                                    <div class="flex flex-col items-center justify-center bg-white rounded-3xl h-full xl:pr-24">
-                                        <Image src={sadSeal} alt="Sad seal" class="object-cover w-[90%] -rotate-20" />
+                        <div
+                            class="relative z-10 h-full rounded-[36px] bg-white px-4 py-3 shadow-2xl"
+                        >
+                            <div
+                                class="h-full rounded-[36px] bg-[#C7B8B8] p-2.5"
+                            >
+                                <div
+                                    class="h-full rounded-[36px] bg-[#D2C7C7] p-[18px]"
+                                >
+                                    <div
+                                        class="flex h-full flex-col items-center justify-center rounded-3xl bg-white xl:pr-24"
+                                    >
+                                        <Image
+                                            src={sadSeal}
+                                            alt="Sad seal"
+                                            class="w-[90%] -rotate-20 object-cover"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -81,12 +116,19 @@ const sundayEvents = data
                     </div>
                 </div>
             </div>
-            <div class="items-center justify-center w-full hidden lg:flex">
-                <Image src={shoppingCartBottom} alt="Shopping cart" class="cart-bottom w-[60%] max-w-160 mt-20 mb-24" id="cart-bottom" />
+            <div class="hidden w-full items-center justify-center lg:flex">
+                <Image
+                    src={shoppingCartBottom}
+                    alt="Shopping cart"
+                    class="cart-bottom mt-20 mb-24 w-[60%] max-w-160"
+                    id="cart-bottom"
+                />
             </div>
-            <div class="hidden lg:block absolute -bottom-8 -left-8 pointer-events-none z-30 max-w-screen-2xl">
-            <!-- SVG plant decoration -->
-            <!-- <SchedulePlant /> -->
+            <div
+                class="pointer-events-none absolute -bottom-8 -left-8 z-30 hidden max-w-screen-2xl lg:block"
+            >
+                <!-- SVG plant decoration -->
+                <!-- <SchedulePlant /> -->
             </div>
         </div>
     </div>
@@ -97,7 +139,7 @@ const sundayEvents = data
         .cart-top {
             animation: cart-top-slide linear both;
             animation-timeline: view();
-            animation-range: entry 0% exit 50%;
+            animation-range: entry 200% exit 400%;
         }
 
         .cart-bottom {
@@ -111,7 +153,7 @@ const sundayEvents = data
                 transform: translateX(0);
             }
             to {
-                transform: translateX(900%);
+                transform: translateX(-600%);
             }
         }
 

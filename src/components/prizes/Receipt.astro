@@ -1,0 +1,138 @@
+---
+import PrizesBarcode from '@assets/prizes/prizes-barcode.svg';
+import { Category, type Prize, type PrizeAssetKey } from './prizes.ts';
+
+import Macbook from '@assets/prizes/macbook.svg';
+import Ipad from '@assets/prizes/ipad.svg';
+import Keyboard from '@assets/prizes/keyboard.svg';
+import Scooter from '@assets/prizes/scooter.svg';
+import Printer from '@assets/prizes/printer.svg';
+import Headphones from '@assets/prizes/headphones.svg';
+
+const assetMap: Record<PrizeAssetKey, typeof Macbook> = {
+    macbook: Macbook,
+    ipad: Ipad,
+    keyboard: Keyboard,
+    scooter: Scooter,
+    printer: Printer,
+    headphones: Headphones,
+};
+
+interface Props {
+    prize: Prize;
+}
+
+const { prize } = Astro.props;
+const PrizeAsset = prize.assetKey ? assetMap[prize.assetKey] : null;
+
+let barColor = 'bg-[#E3442F]';
+
+if (prize.placement === 'first') {
+    const animatedGradient =
+        'motion-safe:bg-linear-[90deg,#FF9AA4,#FAD0C4_12%,#FBC2EB_28%,#A18CD1_43%,#8FD3F4_59%,#84FAB0_75%,#FECEC2_89%,#FF9AA4] animate-gradient motion-safe:bg-[length:200%_auto]';
+    let staticGradient = '';
+    if (prize.type === Category.HARDWARE) {
+        staticGradient =
+            'motion-reduce:bg-linear-[90deg,#84FAB0_6%,#8FD3F4_26%,#A18CD1_43%,#FBC2EB_61%,#FFE7FD_83%,#FF9ABC]';
+    } else {
+        staticGradient =
+            'motion-reduce:bg-linear-[90deg,#FF9A9E,#FAD0C4_25%,#FBC2EB_39%,#A18CD1_57%,#8FD3F4_79%,#84FAB0_94%]';
+    }
+    barColor = animatedGradient + ' ' + staticGradient;
+} else if (prize.type === Category.HARDWARE) {
+    barColor = 'bg-[#3457C3]';
+}
+---
+
+<div class="prize-container flex w-full flex-col items-center md:w-auto">
+    {PrizeAsset && <PrizeAsset class="prize-asset" aria-hidden="true" />}
+    <div
+        class="receipt text-brown prize-shadow relative mt-5 flex w-full max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
+    >
+        <svg
+            class="jagged-edge absolute top-0 left-0 w-full -translate-y-full"
+            viewBox="0 0 100 8"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+            <polygon
+                fill="white"
+                points="0,8 0,4 4.2,8 8.3,4 12.5,8 16.7,4 20.8,8 25,4 29.2,8 33.3,4 37.5,8 41.7,4 45.8,8 50,4 54.2,8 58.3,4 62.5,8 66.7,4 70.8,8 75,4 79.2,8 83.3,4 87.5,8 91.7,4 95.8,8 100,4 100,8"
+            ></polygon>
+        </svg>
+        <div class:list={['h-1.5', barColor]} aria-hidden="true"></div>
+
+        <h3 class="sr-only">
+            {(prize.placement ? prize.placement + ' place ' : '') + prize.track}
+        </h3>
+
+        <div class="flex justify-between">
+            <div
+                class="font-family-bbh text-xl capitalize min-[28rem]:text-2xl"
+                aria-hidden="true"
+            >
+                <h3 class="first-letter:uppercase" aria-hidden="true">
+                    {prize.placement ? prize.placement + ' place' : ''}
+                </h3>
+                <h3 aria-hidden="true">{prize.track}</h3>
+            </div>
+            <div class="mt-2 flex-none" aria-hidden="true">
+                <PrizesBarcode class="w-18.5 text-amber-900" />
+            </div>
+        </div>
+        <p class="text-center text-sm">{prize.description}</p>
+        <p
+            class="pointer-events-none overflow-hidden text-sm whitespace-nowrap"
+            aria-hidden="true"
+        >
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            - - -
+        </p>
+        <dl aria-label="List of prizes">
+            {
+                prize.prizes.map((prize) => (
+                    <div class="flex justify-between uppercase">
+                        <dt>{prize[0]}</dt>
+                        <dd>
+                            <span class="sr-only">
+                                {typeof prize[1] === 'number'
+                                    ? 'Price'
+                                    : 'Placement'}
+                                :
+                            </span>
+                            {typeof prize[1] === 'number'
+                                ? prize[1].toFixed(2)
+                                : prize[1]}
+                        </dd>
+                    </div>
+                ))
+            }
+        </dl>
+    </div>
+</div>
+
+<style>
+    .prize-shadow {
+        box-shadow: 2.98px 5.1px 3.4px 0px rgba(52, 49, 49, 0.3);
+    }
+
+    .jagged-edge {
+        height: 29px;
+    }
+
+    @keyframes gradient-scroll {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 200% 50%;
+        }
+    }
+
+    .animate-gradient {
+        animation: gradient-scroll 10s linear infinite;
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
+    }
+</style>

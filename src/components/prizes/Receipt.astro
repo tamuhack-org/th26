@@ -44,10 +44,10 @@ if (prize.placement === 'first') {
 }
 ---
 
-<div class="prize-container flex flex-col items-center">
+<div class="prize-container flex w-full flex-col items-center md:w-auto">
     {PrizeAsset && <PrizeAsset class="prize-asset" aria-hidden="true" />}
     <div
-        class="receipt text-brown prize-shadow relative mt-5 flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
+        class="receipt text-brown prize-shadow relative mt-5 flex w-full max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
     >
         <svg
             class="jagged-edge absolute top-0 left-0 w-full -translate-y-full"

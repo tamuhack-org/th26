@@ -109,15 +109,15 @@ export const prizeslist: Record<string, Prize> = {
             'Best hardware hack created by first-time hackers. To qualify, teams must be at least 50% composed of first-timers at a hackathon.',
         type: Category.HARDWARE,
     },
-    'american-airlines': {
-        track: 'american airlines challenge',
-        prizes: [
-            ['AAdvantage 75k miles', '1st'],
-            ['AAdvantage 50k miles', '2nd'],
-            ['AAdvantage 25k miles', '3rd'],
-        ],
-        description:
-            'Create a solution for the airline industry, be it passenger experience, employee experience, or operational efficiencies.',
-        type: Category.SOFTWARE,
-    },
+    // 'american-airlines': {
+    //     track: 'american airlines challenge',
+    //     prizes: [
+    //         ['AAdvantage 75k miles', '1st'],
+    //         ['AAdvantage 50k miles', '2nd'],
+    //         ['AAdvantage 25k miles', '3rd'],
+    //     ],
+    //     description:
+    //         'Create a solution for the airline industry, be it passenger experience, employee experience, or operational efficiencies.',
+    //     type: Category.SOFTWARE,
+    // },
 };

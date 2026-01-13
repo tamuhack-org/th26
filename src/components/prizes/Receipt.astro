@@ -1,5 +1,4 @@
 ---
-import jaggededge from '@assets/prizes/jagged-edge.png';
 import PrizesBarcode from '@assets/prizes/prizes-barcode.svg';
 import { Category, type Prize, type PrizeAssetKey } from './prizes.ts';
 
@@ -26,8 +25,6 @@ interface Props {
 const { prize } = Astro.props;
 const PrizeAsset = prize.assetKey ? assetMap[prize.assetKey] : null;
 
-const jaggedBgUrl = `url(${jaggededge.src})`;
-
 let barColor = 'bg-[#E3442F]';
 
 if (prize.placement === 'first') {
@@ -50,23 +47,34 @@ if (prize.placement === 'first') {
 <div class="prize-container flex flex-col items-center">
     {PrizeAsset && <PrizeAsset class="prize-asset" aria-hidden="true" />}
     <div
-        class="receipt text-brown prize-shadow jagged-edge relative mt-5 flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
+        class="receipt text-brown prize-shadow relative mt-5 flex max-w-sm flex-col gap-1 rounded-b-2xl bg-white px-4.5 pt-6 pb-4"
     >
+        <svg
+            class="jagged-edge absolute top-0 left-0 w-full -translate-y-full"
+            viewBox="0 0 100 8"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+            <polygon
+                fill="white"
+                points="0,8 0,4 4.2,8 8.3,4 12.5,8 16.7,4 20.8,8 25,4 29.2,8 33.3,4 37.5,8 41.7,4 45.8,8 50,4 54.2,8 58.3,4 62.5,8 66.7,4 70.8,8 75,4 79.2,8 83.3,4 87.5,8 91.7,4 95.8,8 100,4 100,8"
+            ></polygon>
+        </svg>
         <div class:list={['h-1.5', barColor]} aria-hidden="true"></div>
 
-        <h2 class="sr-only">
+        <h3 class="sr-only">
             {(prize.placement ? prize.placement + ' place ' : '') + prize.track}
-        </h2>
+        </h3>
 
         <div class="flex justify-between">
             <div
                 class="font-family-bbh text-xl capitalize min-[28rem]:text-2xl"
                 aria-hidden="true"
             >
-                <h2 class="first-letter:uppercase" aria-hidden="true">
+                <h3 class="first-letter:uppercase" aria-hidden="true">
                     {prize.placement ? prize.placement + ' place' : ''}
-                </h2>
-                <h2 aria-hidden="true">{prize.track}</h2>
+                </h3>
+                <h3 aria-hidden="true">{prize.track}</h3>
             </div>
             <div class="mt-2 flex-none" aria-hidden="true">
                 <PrizesBarcode class="w-18.5 text-amber-900" />
@@ -103,22 +111,13 @@ if (prize.placement === 'first') {
     </div>
 </div>
 
-<style define:vars={{ jaggedBgUrl }}>
+<style>
     .prize-shadow {
         box-shadow: 2.98px 5.1px 3.4px 0px rgba(52, 49, 49, 0.3);
     }
 
-    .jagged-edge::before {
-        content: '';
-        display: block;
-        width: 100%;
+    .jagged-edge {
         height: 29px;
-
-        position: absolute;
-        top: -29px;
-        left: 0;
-
-        background-image: var(--jaggedBgUrl);
     }
 
     @keyframes gradient-scroll {
@@ -137,25 +136,3 @@ if (prize.placement === 'first') {
         }
     }
 </style>
-
-<script>
-    import { gsap } from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-        gsap.utils.toArray<HTMLElement>('.receipt').forEach((receipt) => {
-            gsap.from(receipt, {
-                yPercent: -100,
-                opacity: 0,
-                duration: 0.6,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: receipt.closest('.prize-container'),
-                    start: 'top 85%',
-                },
-            });
-        });
-    });
-</script>

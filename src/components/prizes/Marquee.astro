@@ -1,13 +1,17 @@
 ---
-const word = 'NOW SCANNING';
+interface Props {
+	word: string;
+}
+const { word } = Astro.props;
+
 const repetitions = Array(11).fill(word);
 ---
 
 <div
-	class="mb-10 overflow-hidden bg-[#E3442F] px-2.5 whitespace-nowrap text-white"
+	class="overflow-hidden bg-[#E3442F] px-2.5 whitespace-nowrap text-white"
 	aria-hidden="true"
 >
-	<div class="animate-marquee flex w-fit">
+	<div class="animate-marquee flex w-fit uppercase">
 		<div>
 			{repetitions.map((text) => <span class="text-item">{text}</span>)}
 		</div>

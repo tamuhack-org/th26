@@ -13,92 +13,101 @@ interface Props {
 }
 
 const { day, events } = Astro.props;
-
 ---
 
-<div class="relative w-full h-fit">
+<div class="relative h-fit w-full">
     <!-- plastic wrap -->
-    <Image 
-        src={plasticWrap} 
-        alt="Plastic wrap" 
-        class="absolute inset-0 w-full h-full object-fill pointer-events-none z-20 rounded-[36px]"
+    <Image
+        src={plasticWrap}
+        alt="Plastic wrap"
+        class="pointer-events-none absolute inset-0 z-20 h-full w-full rounded-[36px] object-fill"
     />
-    {day === 'Sunday' && 
-        <Image
-            src={tomatoSticker}
-            alt="Schedule flower"
-            class="absolute -bottom-12 -left-24 w-40 object-fill pointer-events-none z-0 rotate-20 hidden lg:block"
-        />
-        <Image
-            src={scheduleFlower}
-            alt="Schedule flower"
-            class="absolute -bottom-8 -right-8 w-24 h-24 object-fill pointer-events-none z-20 hidden lg:block animate-spin-slow drop-shadow-md"
-        />
+    {
+        day === 'Sunday' && (
+            <>
+                <Image
+                    src={tomatoSticker}
+                    alt="Schedule flower"
+                    class="pointer-events-none absolute -bottom-12 -left-24 z-0 hidden w-40 rotate-20 object-fill lg:block"
+                />
+                <Image
+                    src={scheduleFlower}
+                    alt="Schedule flower"
+                    class="animate-spin-slow pointer-events-none absolute -right-8 -bottom-8 z-20 hidden h-24 w-24 object-fill drop-shadow-md lg:block"
+                />
+            </>
+        )
     }
-    <div class="relative z-10 bg-white px-3 sm:px-4 py-3 rounded-[36px] h-fit shadow-2xl">
-        <div class="bg-[#C7B8B8] p-2 sm:p-2.5 rounded-[36px]">
-            <div class="bg-[#D2C7C7] p-4 sm:p-[18px] rounded-[36px]">
-                <div class="flex flex-col items-center bg-white rounded-3xl">
+    <div
+        class="relative z-10 h-fit rounded-[36px] bg-white px-3 py-3 shadow-2xl sm:px-4"
+    >
+        <div class="rounded-[36px] bg-[#C7B8B8] p-2 sm:p-2.5">
+            <div class="rounded-[36px] bg-[#D2C7C7] p-4 sm:p-[18px]">
+                <div class="flex flex-col items-center rounded-3xl bg-white">
                     <!-- title image -->
                     <div class="my-6">
                         <Image
-                            src={day === 'Saturday' ? saturdayStarTitle : sundayStarTitle}
+                            src={day === 'Saturday'
+                                ? saturdayStarTitle
+                                : sundayStarTitle}
                             alt={`${day} Schedule`}
                             class={`w-48 sm:w-84 lg:w-64 drop-shadow-2xl ${day === 'Saturday' ? '-rotate-2' : 'rotate-2'}`}
                         />
                     </div>
                     <!-- render events -->
-                    <div class="w-full px-6 pb-6 space-y-4">
-                        {events.map((event: ScheduleEvent) => {
-                            const eventDate = new Date(event.date);
-                            const options: Intl.DateTimeFormatOptions = {
-                                hour: 'numeric',
-                                minute: 'numeric',
-                                hour12: true,
-                                timeZone: 'America/Chicago',
-                            };
-                            
-                            // Convert to lowercase and remove the space
-                            const formattedTime = eventDate
-                                .toLocaleString('en-US', options)
-                                .toLowerCase()      // "9:00 am"
-                                .replace(/\s+/g, ''); // "9:00am"
+                    <div class="w-full space-y-4 px-6 pb-6">
+                        {
+                            events.map((event: ScheduleEvent) => {
+                                const eventDate = new Date(event.date);
+                                const options: Intl.DateTimeFormatOptions = {
+                                    hour: 'numeric',
+                                    minute: 'numeric',
+                                    hour12: true,
+                                    timeZone: 'America/Chicago',
+                                };
+                                // Convert to lowercase and remove the space
+                                const formattedTime = eventDate
+                                    .toLocaleString('en-US', options)
+                                    .toLowerCase() // "9:00 am"
+                                    .replace(/\s+/g, ''); // "9:00am"
 
-                            return (
-                                <div class="flex justify-between gap-4">
-                                    <h3 class="text-base sm:text-[20px] font-semibold text-[#77534D] text-nowrap">
-                                        {formattedTime}
-                                    </h3>
-                                    <div class="flex flex-col text-end">
-                                        <h3 class="text-base sm:text-[20px] font-semibold text-[#77534D] text-wrap">
-                                            {event.eventName}
+                                return (
+                                    <div class="flex justify-between gap-4">
+                                        <h3 class="text-base font-semibold text-nowrap text-[#77534D] sm:text-[20px]">
+                                            {formattedTime}
                                         </h3>
-                                        {event.location && (
-                                            <p class="mt-1 text-sm sm:text-[16px] text-[#77534D]">
-                                                {event.location}
-                                            </p>
-                                        )}
+                                        <div class="flex flex-col text-end">
+                                            <h3 class="text-base font-semibold text-wrap text-[#77534D] sm:text-[20px]">
+                                                {event.eventName}
+                                            </h3>
+                                            {event.location && (
+                                                <p class="mt-1 text-sm text-[#77534D] sm:text-[16px]">
+                                                    {event.location}
+                                                </p>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<style>
-    @keyframes spin-slow {
-        from {
-            transform: rotate(0deg);
+    <style>
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
-        to {
-            transform: rotate(360deg);
+
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
         }
-    }
-    
-    .animate-spin-slow {
-        animation: spin-slow 8s linear infinite;
-    }
-</style>
+    </style>
+</div>

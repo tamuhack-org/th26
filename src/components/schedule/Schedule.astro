@@ -82,27 +82,11 @@ const sundayEvents = data
                 <div class="flex w-full flex-col gap-16 self-stretch lg:w-1/2">
                     <ScheduleDay day="Sunday" events={sundayEvents} />
                     <div class="relative min-h-0 w-full flex-1">
-                        <div
-                            class="align-center absolute right-12 bottom-0 z-35 flex h-3/4 w-1/3 rotate-4 flex-col items-center justify-between overflow-hidden rounded-lg bg-white drop-shadow-xl"
-                        >
-                            <div
-                                class="flex h-1/3 w-full items-center justify-center bg-[#E3442F]"
-                            >
-                                <span class="text-3xl text-white sm:text-4xl">
-                                    times</span
-                                >
-                            </div>
-                            <span
-                                class="p-3 text-center text-[#1F3A69] sm:text-lg"
-                                >are subject to change. Check back for live
-                                updates!
-                            </span>
-                            <Image
-                                src={barcode}
-                                alt="barcode"
-                                class="pointer-events-none px-3 pb-3"
-                            />
-                        </div>
+                        <Image
+                            src={timeTag}
+                            alt="Time tag"
+                            class="pointer-events-none absolute right-0 bottom-0 z-30 h-full w-fit translate-y-1/8 rotate-4 object-contain drop-shadow-lg"
+                        />
                         <Image
                             src={plasticWrap}
                             alt="Plastic wrap"

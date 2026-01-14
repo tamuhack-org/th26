@@ -6,7 +6,7 @@
                 "question": "Who can attend?",
                 "answers": [
                     "Any student aged 18+ can sign up to be a hacker. Regardless of your experience, education, or background, as long as you are excited about learning, building, and having fun, we’d love for you to attend.",
-                    "If you are currently under the age of 18, unfortunately we will not be able to host you at TAMUhack 2026, but we hope to see you next year!"
+                    "If you are currently under the age of 18 AND do not attend Texas A&M, unfortunately we will not be able to host you at TAMUhack 2026, but we hope to see you next year!"
                 ]
             },
             {
@@ -121,7 +121,7 @@
             {
                 "question": "I want to participate, but I don't have any hardware. What should I do?",
                 "answers": [
-                    "TAMUhack is partnering with IEEE to provide dedicated hardware tracks for hackers. We will be loaning hardware supplies on a first-come-first-serve basis. We will have a dedicated hardware room available throughout the week where you'll be able to rent out our hardware. You'll need to provide your team name and project idea.",
+                    "TAMUhack is partnering with IEEE to provide dedicated hardware components for hackers. We will be loaning hardware supplies on a first-come-first-serve basis. We will have a dedicated hardware room available throughout the week where you'll be able to rent out our hardware. You'll need to provide your team name and project idea.",
                     "Additionally, the people at [Starforge](https://www.starforgefoundry.com/) have kindly given us discount codes to help with prototyping. Participants will have reduced costs to use 3D printers, laser cutting, as well as woodworking tools, and a workspace. If you're interested, be on the lookout for these codes in the coming weeks!",
                     "NOTE: Hackers are not limited to just the resources that we provide, using personal/outside hardware resources is allowed."
                 ]

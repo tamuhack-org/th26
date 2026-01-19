@@ -62,11 +62,6 @@
             "name": "Figma for Education",
             "src": "figma.svg",
             "href": "https://www.figma.com/education/"
-        },
-        {
-            "name": "Pure Buttons",
-            "src": "pure-buttons.svg",
-            "href": "https://mlh.link/MLH-PureButtons-hackathons"
         }
     ]
 }

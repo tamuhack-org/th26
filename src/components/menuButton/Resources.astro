@@ -6,10 +6,9 @@ import ResourceList from './ResourceList.astro';
 import { resources } from './resources.ts';
 ---
 
-<div class="mb-4 flex flex-col gap-4">
+<div class="resources-wrapper mb-4 flex flex-col gap-4">
 	<div class="flex gap-1" role="tablist">
 		<button
-			id="tab-getting-started"
 			class="stamp-btn cursor-pointer transition-transform hover:scale-105 active:scale-95"
 			data-tab="getting-started"
 			data-index="0"
@@ -19,7 +18,6 @@ import { resources } from './resources.ts';
 		</button>
 
 		<button
-			id="tab-platforms"
 			class="stamp-btn cursor-pointer transition-transform hover:scale-105 active:scale-95"
 			data-tab="platforms"
 			data-index="1"
@@ -29,7 +27,6 @@ import { resources } from './resources.ts';
 		</button>
 
 		<button
-			id="tab-workshops"
 			class="stamp-btn cursor-pointer transition-transform hover:scale-105 active:scale-95"
 			data-tab="workshops"
 			data-index="2"
@@ -39,21 +36,21 @@ import { resources } from './resources.ts';
 		</button>
 	</div>
 
-	<div id="resources-mask" class="relative w-full overflow-hidden">
+	<div class="resources-mask relative w-full overflow-hidden">
 		<div
-			id="content-getting-started"
+			data-content="getting-started"
 			class="resource-content relative w-full"
 		>
 			<ResourceList ResourceCategory={resources['getting-started']} />
 		</div>
 		<div
-			id="content-platforms"
+			data-content="platforms"
 			class="resource-content invisible absolute top-0 left-0 w-full opacity-0"
 		>
 			<ResourceList ResourceCategory={resources['platforms']} />
 		</div>
 		<div
-			id="content-workshops"
+			data-content="workshops"
 			class="resource-content invisible absolute top-0 left-0 w-full opacity-0"
 		>
 			<ResourceList ResourceCategory={resources['workshops']} />
@@ -85,58 +82,104 @@ import { resources } from './resources.ts';
 		},
 	};
 
-	const buttons = document.querySelectorAll('.stamp-btn');
-	const mask = document.getElementById('resources-mask');
-	const allContents = document.querySelectorAll('.resource-content');
+	const wrappers = document.querySelectorAll('.resources-wrapper');
 
-	let currentIndex = 0;
-	let isAnimating = false;
+	wrappers.forEach((wrapper) => {
+		const buttons = wrapper.querySelectorAll('.stamp-btn');
+		const mask = wrapper.querySelector('.resources-mask');
+		const allContents = wrapper.querySelectorAll('.resource-content');
 
-	if (mask && allContents.length > 0) {
-		let maxHeight = 0;
-		allContents.forEach((content) => {
-			const h = (content as HTMLElement).offsetHeight;
-			if (h > maxHeight) maxHeight = h;
-		});
+		let currentIndex = 0;
+		let isAnimating = false;
 
-		gsap.set(mask, { height: maxHeight });
-	}
+		if (mask && allContents.length > 0) {
+			let maxHeight = 0;
+			allContents.forEach((content) => {
+				const h = (content as HTMLElement).offsetHeight;
+				if (h > maxHeight) maxHeight = h;
+			});
+			gsap.set(mask, { height: maxHeight });
+		}
 
-	const initBtn = document.getElementById('tab-getting-started');
-	if (initBtn) {
-		const bg = initBtn.querySelector('.stamp-bg');
-		const text = initBtn.querySelectorAll(
-			'.stamp-text path, .stamp-text circle, .stamp-text rect',
-		);
-		const config = COLOR_CONFIG['getting-started'];
-
-		gsap.set(bg, { fill: config.activeBg, stroke: config.activeBg });
-		gsap.set(text, { fill: config.activeText, stroke: config.activeText });
-	}
-
-	buttons.forEach((btn) => {
-		btn.addEventListener('click', () => {
-			const targetTab = btn.getAttribute('data-tab');
-			const targetIndex = parseInt(btn.getAttribute('data-index') || '0');
-
-			if (targetIndex === currentIndex || isAnimating || !targetTab)
-				return;
-			isAnimating = true;
-
-			const direction = targetIndex > currentIndex ? 'right' : 'left';
-
-			const currentBtn = buttons[currentIndex];
-			const currentTabKey = currentBtn.getAttribute('data-tab');
-			const currentContent = document.getElementById(
-				`content-${currentTabKey}`,
+		const initBtn = wrapper.querySelector('[data-tab="getting-started"]');
+		if (initBtn) {
+			const bg = initBtn.querySelector('.stamp-bg');
+			const text = initBtn.querySelectorAll(
+				'.stamp-text path, .stamp-text circle, .stamp-text rect',
 			);
-			const nextContent = document.getElementById(`content-${targetTab}`);
+			const config = COLOR_CONFIG['getting-started'];
 
-			currentIndex = targetIndex;
+			gsap.set(bg, { fill: config.activeBg, stroke: config.activeBg });
+			gsap.set(text, {
+				fill: config.activeText,
+				stroke: config.activeText,
+			});
+		}
 
-			animateStampSwitch(currentBtn, btn, currentTabKey, targetTab);
-			animateContentSwipe(currentContent, nextContent, direction);
+		buttons.forEach((btn) => {
+			btn.addEventListener('click', (e) => {
+				e.stopPropagation();
+
+				const targetTab = btn.getAttribute('data-tab');
+				const targetIndex = parseInt(
+					btn.getAttribute('data-index') || '0',
+				);
+
+				if (targetIndex === currentIndex || isAnimating || !targetTab)
+					return;
+				isAnimating = true;
+
+				const direction = targetIndex > currentIndex ? 'right' : 'left';
+
+				const currentBtn = buttons[currentIndex];
+				const currentTabKey = currentBtn.getAttribute('data-tab');
+
+				// Select content using data attribute, scoped to this wrapper
+				const currentContent = wrapper.querySelector(
+					`[data-content="${currentTabKey}"]`,
+				);
+				const nextContent = wrapper.querySelector(
+					`[data-content="${targetTab}"]`,
+				);
+
+				currentIndex = targetIndex;
+
+				animateStampSwitch(currentBtn, btn, currentTabKey, targetTab);
+				animateContentSwipe(currentContent, nextContent, direction);
+			});
 		});
+
+		function animateContentSwipe(oldContent, newContent, direction) {
+			if (!newContent) return;
+			const tl = gsap.timeline({
+				onComplete: () => {
+					isAnimating = false;
+					gsap.set(oldContent, { clearProps: 'transform' });
+					gsap.set(newContent, { clearProps: 'transform' });
+				},
+			});
+			const xDist = 40;
+			const xOut = direction === 'right' ? -xDist : xDist;
+			const xIn = direction === 'right' ? xDist : -xDist;
+
+			tl.to(oldContent, {
+				x: xOut,
+				autoAlpha: 0,
+				duration: 0.2,
+				ease: 'power2.out',
+			});
+			tl.fromTo(
+				newContent,
+				{ x: xIn, autoAlpha: 0, visibility: 'visible' },
+				{
+					x: 0,
+					autoAlpha: 1,
+					duration: 0.2,
+					ease: 'power2.out',
+				},
+				'<',
+			);
+		}
 	});
 
 	function animateStampSwitch(oldBtn, newBtn, oldKey, newKey) {
@@ -190,40 +233,5 @@ import { resources } from './resources.ts';
 			stroke: newConfig.activeText,
 			duration: 0.3,
 		});
-	}
-
-	function animateContentSwipe(oldContent, newContent, direction) {
-		if (!newContent) return;
-
-		const tl = gsap.timeline({
-			onComplete: () => {
-				isAnimating = false;
-				gsap.set(oldContent, { clearProps: 'transform' });
-				gsap.set(newContent, { clearProps: 'transform' });
-			},
-		});
-
-		const xDist = 40;
-		const xOut = direction === 'right' ? -xDist : xDist;
-		const xIn = direction === 'right' ? xDist : -xDist;
-
-		tl.to(oldContent, {
-			x: xOut,
-			autoAlpha: 0,
-			duration: 0.2,
-			ease: 'power2.out',
-		});
-
-		tl.fromTo(
-			newContent,
-			{ x: xIn, autoAlpha: 0, visibility: 'visible' },
-			{
-				x: 0,
-				autoAlpha: 1,
-				duration: 0.2,
-				ease: 'power2.out',
-			},
-			'<',
-		);
 	}
 </script>

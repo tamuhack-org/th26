@@ -13,8 +13,9 @@ import ApplyMentor from './ApplyMentor.astro';
 
 <section
     id="landing"
-    class="mt-5 grid min-h-svh grid-cols-1 grid-rows-[auto_1fr] sm:grid-cols-2"
+    class="relative mt-5 grid min-h-svh grid-cols-1 grid-rows-[auto_1fr] sm:grid-cols-2"
 >
+    <canvas id="snow-canvas"></canvas>
     <div
         class="flex flex-col gap-6 self-start justify-self-center sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:row-end-2 sm:-ml-[15%]"
     >
@@ -165,3 +166,146 @@ import ApplyMentor from './ApplyMentor.astro';
         });
     });
 </script>
+
+<script>
+    (function() {
+        var requestAnimationFrame = window.requestAnimationFrame || (window as any).mozRequestAnimationFrame || (window as any).webkitRequestAnimationFrame || (window as any).msRequestAnimationFrame ||
+        function(callback: FrameRequestCallback) {
+            window.setTimeout(callback, 1000 / 60);
+        };
+        window.requestAnimationFrame = requestAnimationFrame;
+    })();
+
+    interface Flake {
+        speed: number;
+        velY: number;
+        velX: number;
+        x: number;
+        y: number;
+        size: number;
+        stepSize: number;
+        step: number;
+        opacity: number;
+    }
+
+    const landingSection = document.getElementById("landing") as HTMLElement;
+    const canvas = document.getElementById("snow-canvas") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d")!;
+    const flakeCount = 200;
+    let mX = -100;
+    let mY = -100;
+    const flakes: Flake[] = [];
+
+    function resizeCanvas() {
+        canvas.width = landingSection.offsetWidth;
+        canvas.height = landingSection.offsetHeight;
+    }
+
+    resizeCanvas();
+
+    function snow() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < flakeCount; i++) {
+            const flake = flakes[i];
+            const x = mX;
+            const y = mY;
+            const minDist = 150;
+            const x2 = flake.x;
+            const y2 = flake.y;
+
+            const dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
+
+            if (dist < minDist) {
+                const force = minDist / (dist * dist);
+                const xcomp = (x - x2) / dist;
+                const ycomp = (y - y2) / dist;
+                const deltaV = force / 2;
+
+                flake.velX -= deltaV * xcomp;
+                flake.velY -= deltaV * ycomp;
+            } else {
+                flake.velX *= 0.98;
+                if (flake.velY <= flake.speed) {
+                    flake.velY = flake.speed;
+                }
+                flake.velX += Math.cos((flake.step += 0.05)) * flake.stepSize;
+            }
+
+            ctx.fillStyle = "rgba(255,255,255," + flake.opacity + ")";
+            flake.y += flake.velY;
+            flake.x += flake.velX;
+
+            if (flake.y >= canvas.height || flake.y <= 0) {
+                reset(flake);
+            }
+
+            if (flake.x >= canvas.width || flake.x <= 0) {
+                reset(flake);
+            }
+
+            ctx.beginPath();
+            ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        requestAnimationFrame(snow);
+    }
+
+    function reset(flake: Flake) {
+        flake.x = Math.floor(Math.random() * canvas.width);
+        flake.y = 0;
+        flake.size = Math.random() * 3 + 2;
+        flake.speed = Math.random() * 1 + 0.5;
+        flake.velY = flake.speed;
+        flake.velX = 0;
+        flake.opacity = Math.random() * 0.5 + 0.3;
+    }
+
+    function init() {
+        for (let i = 0; i < flakeCount; i++) {
+            const x = Math.floor(Math.random() * canvas.width);
+            const y = Math.floor(Math.random() * canvas.height);
+            const size = Math.random() * 3 + 2;
+            const speed = Math.random() * 1 + 0.5;
+            const opacity = Math.random() * 0.5 + 0.3;
+
+            flakes.push({
+                speed: speed,
+                velY: speed,
+                velX: 0,
+                x: x,
+                y: y,
+                size: size,
+                stepSize: Math.random() / 30,
+                step: 0,
+                opacity: opacity,
+            });
+        }
+
+        snow();
+    }
+
+    landingSection.addEventListener("mousemove", function (e) {
+        const rect = landingSection.getBoundingClientRect();
+        mX = e.clientX - rect.left;
+        mY = e.clientY - rect.top;
+    });
+
+    window.addEventListener("resize", function () {
+        resizeCanvas();
+    });
+
+    init();
+</script>
+
+<style>
+    #snow-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+    }
+</style>

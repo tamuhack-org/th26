@@ -12,16 +12,14 @@ export const resources = [
         name: 'Code of Conduct',
         link: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
     },
-    //   {
-    //       name: 'Misconduct Reporting',
-    //       link: 'https://tamuhack.org/misconduct',
-    // // TODO: update misconduct form
-    //   },
-    //   {
-    //       name: 'Devpost',
-    //       link: 'https://tamuhack-2025.devpost.com/',
-    // //TODO: create devpost
-    //   },
+    {
+        name: 'Misconduct Reporting',
+        link: 'https://tamuhack.org/misconduct',
+    },
+    {
+        name: 'Devpost',
+        link: 'https://tamuhack.org/devpost',
+    },
 ];
 
 export const socials = [
@@ -86,6 +84,6 @@ export const workshops = [
     },
     {
         name: 'Intro to Hardware',
-        link: 'https://docs.google.com/presentation/d/1PGyzuwHUsFabeBiMDdyGySel6rtKnuKERMko81i1Lb0/edit?usp=sharing',
+        link: 'https://docs.google.com/presentation/d/1BFJdytY_PPLiYkMYnhdvmE3nVGFNcUV8Ek00byJFOJI/edit?slide=id.p#slide=id.p',
     },
 ];

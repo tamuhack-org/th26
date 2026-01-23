@@ -1,0 +1,24 @@
+---
+import { type ResourceTuple } from './resources.ts';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	ResourceCategory: ResourceTuple[];
+}
+
+const { ResourceCategory } = Astro.props;
+---
+
+<ul class="ml-2 flex flex-col gap-0.5">
+	{
+		ResourceCategory.map((resource) => (
+				<li class="flex items-center gap-1">
+					<Icon name="tabler:user" class="text-brown text-xl" />
+					<a href={resource[1]} class="text-brown">
+						{resource[0]}
+					</a>
+				</li>
+				<div class="bg-brown mt-0.5 h-0.5 w-full" />
+		))
+	}
+</ul>

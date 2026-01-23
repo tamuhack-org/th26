@@ -1,1 +1,17 @@
-<p>resources</p>
+---
+import GettingStartedStamp from './GettingStartedStamp.astro';
+import PlatformsStamp from './PlatformsStamp.astro';
+import WorkshopsStamp from './WorkshopsStamp.astro';
+
+import ResourceList from './ResourceList.astro';
+import { resources } from './resources.ts';
+---
+
+<div class="flex flex-col gap-4 mb-4">
+	<div class="flex gap-1">
+		<GettingStartedStamp />
+		<PlatformsStamp />
+		<WorkshopsStamp />
+	</div>
+	<ResourceList ResourceCategory={resources['getting-started']} />
+</div>

@@ -2,7 +2,7 @@ export type ResourceTuple = [string, string]; // {resource, link}
 
 export const resources: Record<string, ResourceTuple[]> = {
     'getting-started': [
-        // ['Software Starter Gudie', 'https://google.com'],
+        ['Software Starter Guide', 'https://drive.google.com/file/d/1WQCQ7n3cs56TQ-27GTKu-kNyINmeOrNx/view?usp=sharing'],
         [
             'Hardware Track Info',
             'https://docs.google.com/document/d/1-SP3KaR3kXw6EjFqxGQP-QmemkR21oky-p1kmmRnQI8/edit?usp=sharing',

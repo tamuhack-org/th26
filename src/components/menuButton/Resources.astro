@@ -1,0 +1,237 @@
+---
+import GettingStartedStamp from './GettingStartedStamp.astro';
+import PlatformsStamp from './PlatformsStamp.astro';
+import WorkshopsStamp from './WorkshopsStamp.astro';
+import ResourceList from './ResourceList.astro';
+import { resources } from './resources.ts';
+---
+
+<div class="resources-wrapper mb-4 flex flex-col gap-4">
+	<div class="flex gap-1" role="tablist">
+		<button
+			class="stamp-btn cursor-pointer transition-transform hover:scale-105 active:scale-95"
+			data-tab="getting-started"
+			data-index="0"
+			aria-selected="true"
+		>
+			<GettingStartedStamp />
+		</button>
+
+		<button
+			class="stamp-btn cursor-pointer transition-transform hover:scale-105 active:scale-95"
+			data-tab="platforms"
+			data-index="1"
+			aria-selected="false"
+		>
+			<PlatformsStamp />
+		</button>
+
+		<button
+			class="stamp-btn cursor-pointer transition-transform hover:scale-105 active:scale-95"
+			data-tab="workshops"
+			data-index="2"
+			aria-selected="false"
+		>
+			<WorkshopsStamp />
+		</button>
+	</div>
+
+	<div class="resources-mask relative w-full overflow-hidden">
+		<div
+			data-content="getting-started"
+			class="resource-content relative w-full"
+		>
+			<ResourceList ResourceCategory={resources['getting-started']} />
+		</div>
+		<div
+			data-content="platforms"
+			class="resource-content invisible absolute top-0 left-0 w-full opacity-0"
+		>
+			<ResourceList ResourceCategory={resources['platforms']} />
+		</div>
+		<div
+			data-content="workshops"
+			class="resource-content invisible absolute top-0 left-0 w-full opacity-0"
+		>
+			<ResourceList ResourceCategory={resources['workshops']} />
+		</div>
+	</div>
+</div>
+
+<script>
+	import gsap from 'gsap';
+
+	const COLOR_CONFIG = {
+		'getting-started': {
+			activeBg: '#E3442F',
+			activeText: '#FFFAF0',
+			defaultBg: '#FFFAF0',
+			defaultText: '#E3442F',
+		},
+		platforms: {
+			activeBg: '#EF9C26',
+			activeText: '#774A4E',
+			defaultBg: '#FFFAF0',
+			defaultText: '#EF9C26',
+		},
+		workshops: {
+			activeBg: '#774A4E',
+			activeText: '#EF9C26',
+			defaultBg: '#FFFAF0',
+			defaultText: '#774A4E',
+		},
+	};
+
+	const wrappers = document.querySelectorAll('.resources-wrapper');
+
+	wrappers.forEach((wrapper) => {
+		const buttons = wrapper.querySelectorAll('.stamp-btn');
+		const mask = wrapper.querySelector('.resources-mask');
+		const allContents = wrapper.querySelectorAll('.resource-content');
+
+		let currentIndex = 0;
+		let isAnimating = false;
+
+		if (mask && allContents.length > 0) {
+			let maxHeight = 0;
+			allContents.forEach((content) => {
+				const h = (content as HTMLElement).offsetHeight;
+				if (h > maxHeight) maxHeight = h;
+			});
+			gsap.set(mask, { height: maxHeight });
+		}
+
+		const initBtn = wrapper.querySelector('[data-tab="getting-started"]');
+		if (initBtn) {
+			const bg = initBtn.querySelector('.stamp-bg');
+			const text = initBtn.querySelectorAll(
+				'.stamp-text path, .stamp-text circle, .stamp-text rect',
+			);
+			const config = COLOR_CONFIG['getting-started'];
+
+			gsap.set(bg, { fill: config.activeBg, stroke: config.activeBg });
+			gsap.set(text, {
+				fill: config.activeText,
+				stroke: config.activeText,
+			});
+		}
+
+		buttons.forEach((btn) => {
+			btn.addEventListener('click', (e) => {
+				e.stopPropagation();
+
+				const targetTab = btn.getAttribute('data-tab');
+				const targetIndex = parseInt(
+					btn.getAttribute('data-index') || '0',
+				);
+
+				if (targetIndex === currentIndex || isAnimating || !targetTab)
+					return;
+				isAnimating = true;
+
+				const direction = targetIndex > currentIndex ? 'right' : 'left';
+
+				const currentBtn = buttons[currentIndex];
+				const currentTabKey = currentBtn.getAttribute('data-tab');
+
+				// Select content using data attribute, scoped to this wrapper
+				const currentContent = wrapper.querySelector(
+					`[data-content="${currentTabKey}"]`,
+				);
+				const nextContent = wrapper.querySelector(
+					`[data-content="${targetTab}"]`,
+				);
+
+				currentIndex = targetIndex;
+
+				animateStampSwitch(currentBtn, btn, currentTabKey, targetTab);
+				animateContentSwipe(currentContent, nextContent, direction);
+			});
+		});
+
+		function animateContentSwipe(oldContent, newContent, direction) {
+			if (!newContent) return;
+			const tl = gsap.timeline({
+				onComplete: () => {
+					isAnimating = false;
+					gsap.set(oldContent, { clearProps: 'transform' });
+					gsap.set(newContent, { clearProps: 'transform' });
+				},
+			});
+			const xDist = 40;
+			const xOut = direction === 'right' ? -xDist : xDist;
+			const xIn = direction === 'right' ? xDist : -xDist;
+
+			tl.to(oldContent, {
+				x: xOut,
+				autoAlpha: 0,
+				duration: 0.2,
+				ease: 'power2.out',
+			});
+			tl.fromTo(
+				newContent,
+				{ x: xIn, autoAlpha: 0, visibility: 'visible' },
+				{
+					x: 0,
+					autoAlpha: 1,
+					duration: 0.2,
+					ease: 'power2.out',
+				},
+				'<',
+			);
+		}
+	});
+
+	function animateStampSwitch(oldBtn, newBtn, oldKey, newKey) {
+		const getParts = (el) => ({
+			bg: el.querySelector('.stamp-bg'),
+			fill: el.querySelectorAll('.stamp-fill'),
+			fill_alt: el.querySelectorAll('.stamp-fill-alt'),
+			stroke: el.querySelectorAll('.stamp-stroke'),
+		});
+
+		const oldParts = getParts(oldBtn);
+		const newParts = getParts(newBtn);
+
+		const oldConfig = COLOR_CONFIG[oldKey];
+		const newConfig = COLOR_CONFIG[newKey];
+
+		// Deactivate Old
+		gsap.to(oldParts.bg, {
+			fill: oldConfig.defaultBg,
+			stroke: oldConfig.defaultText,
+			duration: 0.3,
+		});
+		gsap.to(oldParts.fill, {
+			fill: oldConfig.defaultText,
+			duration: 0.3,
+		});
+		gsap.to(oldParts.fill_alt, {
+			fill: oldConfig.defaultBg,
+			duration: 0.3,
+		});
+		gsap.to(oldParts.stroke, {
+			stroke: oldConfig.defaultText,
+			duration: 0.3,
+		});
+
+		// Activate New
+		gsap.to(newParts.bg, {
+			fill: newConfig.activeBg,
+			stroke: newConfig.activeBg,
+			duration: 0.3,
+		});
+		gsap.to(newParts.fill, {
+			fill: newConfig.activeText,
+			duration: 0.3,
+		});
+		gsap.to(newParts.fill_alt, {
+			fill: newConfig.activeBg,
+			duration: 0.3,
+		});
+		gsap.to(newParts.stroke, {
+			stroke: newConfig.activeText,
+			duration: 0.3,
+		});
+	}
+</script>

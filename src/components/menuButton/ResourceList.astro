@@ -14,7 +14,7 @@ const { ResourceCategory } = Astro.props;
 		ResourceCategory.map((resource) => (
 				<li class="flex items-center gap-1">
 					<Icon name="tabler:user" class="text-brown text-xl" />
-					<a href={resource[1]} class="text-brown">
+					<a href={resource[1]} target="_blank" rel="noreferrer noopener" class="text-brown">
 						{resource[0]}
 					</a>
 				</li>

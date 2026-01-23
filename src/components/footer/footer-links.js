@@ -1,9 +1,8 @@
 export const resources = [
-    //   {
-    //       name: 'Hacker Guide',
-    //       link: 'https://drive.google.com/file/d/1gUGimWC_s4eOu4OGOS6Hj2IqaOg9oWPt/view',
-    // // TODO: update link
-    //   },
+    {
+        name: 'Hacker Guide',
+        link: 'https://tamuhack.org/guide',
+    },
     {
         name: 'HelpR',
         link: 'https://helpr.tamuhack.org/',

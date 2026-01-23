@@ -33,63 +33,69 @@ import Resources from './Resources.astro';
                 />
                 <div class="relative z-10 md:p-3">
                     <div
-                        class="relative overflow-hidden rounded-4xl border-2 border-[#77534D] bg-[#FFFAF0] p-6 shadow-2xl md:rounded-none md:shadow-none"
+                        class="relative overflow-hidden rounded-4xl border-2 border-[#77534D] bg-[#FFFAF0] shadow-2xl md:rounded-none md:shadow-none"
                     >
-                        <div id="nav-view" class="flex gap-16">
-                            <nav class="relative flex flex-col gap-3 pl-6">
-                                <div
-                                    id="nav-indicator"
-                                    class="absolute top-0 left-0 opacity-0"
-                                >
-                                    <img
-                                        src={strawberry.src}
-                                        class="h-auto w-4"
-                                        alt="Strawberry"
-                                        aria-hidden="true"
-                                    />
-                                </div>
-                                <a href="/#" class="enabled-link">home</a>
-                                <a href="#general-info" class="enabled-link"
-                                    >general info</a
-                                >
-                                <a href="#faq" class="enabled-link">faq</a>
-                                <a class="disabled-link">schedule</a>
-                                <a class="disabled-link">prizes</a>
-                                <button
-                                    id="btn-to-resources"
-                                    class="cursor-pointer text-left text-lg font-bold text-[#3457C3] md:hidden"
-                                    aria-label="View resources"
-                                >
-                                    <span class="underline underline-offset-4"
-                                        >resources</span
-                                    >
-                                    <Icon
-                                        name="tabler:arrow-narrow-right"
-                                        class="inline fill-[#3457C3] text-3xl"
-                                    />
-                                </button>
-                            </nav>
-                            <div class="hidden w-0.5 bg-[#77534D] md:block">
-                            </div>
-                            <div class="hidden md:block">
-                                <Resources />
-                            </div>
-                        </div>
-                        <div
-                            id="resource-view"
-                            class="invisible absolute inset-0 flex flex-col p-6 opacity-0"
-                            aria-hidden="true"
-                        >
-                            <button
-                                id="btn-back"
-                                class="mb-4 cursor-pointer self-start text-sm font-bold text-[#3457C3] underline underline-offset-4"
+                        <div id="views-wrapper" class="relative w-full">
+                            <div
+                                id="nav-view"
+                                class="absolute top-0 left-0 flex w-full gap-6 p-6"
                             >
-                                <Icon
-                                    name="tabler:arrow-narrow-left"
-                                    class="inline fill-[#3457C3] text-2xl"
-                                />Back
-                            </button>
-                            <Resources />
+                                <nav class="relative flex flex-col gap-3 pl-6">
+                                    <div
+                                        id="nav-indicator"
+                                        class="absolute top-0 left-0 opacity-0"
+                                    >
+                                        <img
+                                            src={strawberry.src}
+                                            class="h-auto w-4"
+                                            alt="Strawberry"
+                                            aria-hidden="true"
+                                        />
+                                    </div>
+                                    <a href="/#" class="enabled-link">home</a>
+                                    <a href="#general-info" class="enabled-link"
+                                        >general info</a
+                                    >
+                                    <a href="#faq" class="enabled-link">faq</a>
+                                    <a class="disabled-link">schedule</a>
+                                    <a class="disabled-link">prizes</a>
+                                    <button
+                                        id="btn-to-resources"
+                                        class="cursor-pointer text-left text-lg font-bold text-[#3457C3] md:hidden"
+                                        aria-label="View resources"
+                                    >
+                                        <span
+                                            class="underline underline-offset-4"
+                                            >resources</span
+                                        >
+                                        <Icon
+                                            name="tabler:arrow-narrow-right"
+                                            class="inline fill-[#3457C3] text-3xl"
+                                        />
+                                    </button>
+                                </nav>
+                                <div class="hidden w-0.5 bg-[#77534D] md:block">
+                                </div>
+                                <div class="hidden md:block">
+                                    <Resources />
+                                </div>
+                            </div>
+                            <div
+                                id="resource-view"
+                                class="invisible absolute top-0 left-0 flex w-full flex-col px-4 py-6 opacity-0"
+                                aria-hidden="true"
+                            >
+                                <Resources />
+                                <button
+                                    id="btn-back"
+                                    class="text-brown mb-4 cursor-pointer self-start text-lg font-bold underline underline-offset-4 transition-colors hover:text-[#d7a95d]"
+                                >
+                                    <Icon
+                                        name="tabler:arrow-narrow-left"
+                                        class="inline fill-[#3457C3] text-2xl"
+                                    />back
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -155,8 +161,11 @@ import Resources from './Resources.astro';
     const popup = document.getElementById('menu-popup');
     const popupContent = popup?.querySelector('.popup-content');
     const menuBtn = document.getElementById('menu-btn');
+
+    const viewsWrapper = document.getElementById('views-wrapper');
     const navView = document.getElementById('nav-view');
     const resourceView = document.getElementById('resource-view');
+
     const btnToResources = document.getElementById('btn-to-resources');
     const btnBack = document.getElementById('btn-back');
 
@@ -165,14 +174,17 @@ import Resources from './Resources.astro';
         popup &&
         popupContent &&
         menuBtn &&
+        viewsWrapper &&
         navView &&
         resourceView &&
         btnToResources &&
         btnBack
     ) {
+        const initialHeight = navView.offsetHeight;
+        gsap.set(viewsWrapper, { height: initialHeight });
+
         const resourceViewInitial = {
             autoAlpha: 0,
-            x: 30,
             visibility: 'hidden',
         };
 
@@ -185,7 +197,6 @@ import Resources from './Resources.astro';
         let isTransitioningViews = false;
 
         const tl = gsap.timeline({ paused: true });
-
         tl.to(popup, {
             duration: 0.1,
             autoAlpha: 1,
@@ -202,46 +213,47 @@ import Resources from './Resources.astro';
         );
 
         const switchView = (target: 'resources' | 'nav') => {
+            if (isTransitioningViews) return;
             isTransitioningViews = true;
-            const isToResources = target === 'resources';
 
+            const isToResources = target === 'resources';
             const outView = isToResources ? navView : resourceView;
             const inView = isToResources ? resourceView : navView;
             const focusTarget = isToResources ? btnBack : btnToResources;
 
-            const switchViewConfig = {
-                duration: 0.3,
-                ease: 'power2.inOut',
-                overwrite: 'auto' as const,
-            };
+            const targetHeight = inView.offsetHeight;
 
-            gsap.to(outView, {
-                x: isToResources ? -30 : 30,
-                autoAlpha: 0,
-                ...switchViewConfig,
+            const switchTl = gsap.timeline({
                 onComplete: () => {
-                    outView.style.setProperty('visibility', 'hidden');
+                    isTransitioningViews = false;
                     outView.setAttribute('aria-hidden', 'true');
+                    inView.setAttribute('aria-hidden', 'false');
+                    focusTarget.focus();
                 },
             });
 
-            gsap.fromTo(
+            // fade out curr text
+            switchTl.to(outView, {
+                autoAlpha: 0,
+                duration: 0.1,
+                ease: 'power1.out',
+            });
+
+            // resize wrapper
+            switchTl.to(viewsWrapper, {
+                height: targetHeight,
+                duration: 0.2,
+                ease: 'power2.inOut',
+            });
+
+            // fade in new text
+            switchTl.fromTo(
                 inView,
+                { autoAlpha: 0 },
                 {
-                    x: isToResources ? 30 : -30,
-                    autoAlpha: 0,
-                    visibility: 'visible',
-                },
-                {
-                    x: 0,
                     autoAlpha: 1,
-                    ...switchViewConfig,
-                    delay: 0.1,
-                    onComplete: () => {
-                        isTransitioningViews = false;
-                        inView.setAttribute('aria-hidden', 'false');
-                        focusTarget.focus();
-                    },
+                    duration: 0.1,
+                    ease: 'power1.in',
                 },
             );
         };
@@ -249,26 +261,21 @@ import Resources from './Resources.astro';
         const openMenu = () => {
             if (isMenuOpen) return;
 
-            gsap.set(navView, {
-                autoAlpha: 1,
-                x: 0,
-                visibility: 'visible',
-            });
+            gsap.set(navView, { autoAlpha: 1, visibility: 'visible' });
             gsap.set(resourceView, { ...resourceViewInitial });
-            isTransitioningViews = false;
+            gsap.set(viewsWrapper, { height: navView.offsetHeight });
 
             tl.play();
             menuBtn.classList.add('scale-105');
             menuBtn.setAttribute('aria-expanded', 'true');
             isMenuOpen = true;
         };
+
         const closeMenu = () => {
             if (!isMenuOpen) return;
-
             tl.reverse();
             isClickedOpen = false;
             isMenuOpen = false;
-
             menuBtn.classList.remove('scale-105');
             menuBtn.setAttribute('aria-expanded', 'false');
         };
@@ -282,7 +289,6 @@ import Resources from './Resources.astro';
             switchView('nav');
         });
 
-        // Click to toggle
         menuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (isClickedOpen) {
@@ -293,10 +299,9 @@ import Resources from './Resources.astro';
             }
         });
 
-        const isHoverable = window.matchMedia('(hover: hover)').matches; // check if device supports hover
+        const isHoverable = window.matchMedia('(hover: hover)').matches;
 
         if (isHoverable) {
-            // Hover behavior (only closes if not clicked open)
             container.addEventListener('mouseenter', openMenu);
             container.addEventListener('mouseleave', () => {
                 if (!isClickedOpen) {
@@ -305,7 +310,6 @@ import Resources from './Resources.astro';
             });
         }
 
-        // Focus behavior (only closes if not clicked open)
         container.addEventListener('focusin', openMenu);
         container.addEventListener('focusout', (e) => {
             if (isTransitioningViews) return;
@@ -317,14 +321,13 @@ import Resources from './Resources.astro';
             }
         });
 
-        // Click outside to close
         document.addEventListener('click', (e) => {
             if (isClickedOpen && !container.contains(e.target as Node)) {
                 closeMenu();
             }
         });
 
-        // Nav indicator logic
+        // --- Nav Indicator Logic ---
         const nav = popup.querySelector('nav');
         const indicator = document.getElementById('nav-indicator');
         const links = nav?.querySelectorAll('a');

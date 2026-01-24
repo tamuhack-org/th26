@@ -5,27 +5,27 @@
             {
                 "question": "Who can attend?",
                 "answers": [
-                    "Any student aged 18+ can sign up to be a hacker. Regardless of your experience, education, or background, as long as you are excited about learning, building, and having fun, we’d love for you to attend.",
+                    "Any student aged 18+ can sign up to be a hacker. Regardless of your experience, education, or background, as long as you are excited about learning, building, and having fun, we'd love for you to attend.",
                     "If you are currently under the age of 18 AND do not attend Texas A&M, unfortunately we will not be able to host you at TAMUhack 2026, but we hope to see you next year!"
                 ]
             },
             {
-                "question": "When is the deadline to apply to TAMUhack?",
+                "question": "What are the venue hours?",
                 "answers": [
-                    "The deadline for registration is January 14th at 11:59 PM. We'll be doing rolling admissions until that date. Our capacity is limited, so make sure to apply early!",
-                    "NOTE: Acceptances will be sent out on a rolling basis. If you are accepted, you must check in before 11 AM or your acceptance will be forfeited. We will have a waitlist line for students who are not accepted. After 11 AM, we will admit people from the waitlist line until the MSC capacity has been reached."
+                    "The venue (MSC) will be open on Saturday, January 24th from 7 AM to 7 PM only. The venue will be closed on Sunday.",
+                    "NOTE: There is NO overnight stay this year. Once the venue closes at 7 PM, all communication and support will move to Discord."
                 ]
             },
             {
                 "question": "How much experience do I need?",
                 "answers": [
-                    "Absolutely zero! We want you here because you have a passion for creating, not because you’re the most experienced hacker on the block. We’ll have lots of resources including workshops and a bunch of mentors to help beginners get started. There'll also be plenty of people to learn from and help out!"
+                    "Absolutely zero! We want you here because you have a passion for creating, not because you're the most experienced hacker on the block. We'll have lots of resources including workshops and a bunch of mentors to help beginners get started. There'll also be plenty of people to learn from and help out!"
                 ]
             },
             {
                 "question": "How much does it cost?",
                 "answers": [
-                    "Nothing. Nada. Zilch. It’s completely free for all accepted hackers. To make it even better, we’ll be giving out a ton of swag to every hacker, and prizes to our winners."
+                    "Nothing. Nada. Zilch. It's completely free for all accepted hackers. To make it even better, we'll be giving out a ton of swag to every hacker, and prizes to our winners."
                 ]
             },
             {
@@ -36,22 +36,33 @@
                 ]
             },
             {
+                "question": "Will food be provided?",
+                "answers": [
+                    "Yes! We will provide lunch and dinner on Saturday.",
+                    "Lunch: Piada & Kung Fu Tea",
+                    "Dinner: MSY & Tiff's Treats"
+                ]
+            },
+            {
+                "question": "Where can I find accommodations?",
+                "answers": [
+                    "Hackers should be prepared to find their own accommodations. If you need help, let us know at [hello@tamuhack.com](mailto:hello@tamuhack.com). We may have hotel partnerships coming up, so keep an eye on your email for updates.",
+                    "NOTE: Be aware of cancellation policies if you book accommodations yourself."
+                ]
+            },
+            {
                 "question": "How do teams work?",
                 "answers": [
-                    "Teams are limited to 1-4 hackers. If you have a team in mind, make sure all members submit an application before the deadline. If you don't have a team and would like to be a part of one, no worries! We'll have a dedicated time for team formation before the opening ceremony. Teams are only finalized when the final Devpost submission is due."
+                    "Teams are limited to 1-4 hackers. If you have a team in mind, make sure all members submit an application before the deadline. If you don't have a team and would like to be a part of one, no worries! We'll have a dedicated time for team formation before the opening ceremony. Teams are only finalized when the final Devpost submission is due.",
+                    "We ARE allowing virtual teammates with the following conditions: at least half of your team must be present in person, and virtual teammates cannot be on the waitlist. Virtual teammates should RSVP 'No' on the registration portal.",
+                    "If you have virtual teammates, email us at [hello@tamuhack.com](mailto:hello@tamuhack.com) with the names of people attending in person and the emails used for registration."
                 ]
             },
             {
                 "question": "Will there be travel reimbursements?",
                 "answers": [
                     "We will be providing travel reimbursements to traveling hackers on a case-by-case basis. We'll send out a form after the event asking for proof of travel and Venmo/Zelle info.",
-                    "NOTE: We cannot guarantee being able to cover the full cost of travel. For more details, reach out to us at  [hello@tamuhack.org](mailto:hello@tamuhack.org)."
-                ]
-            },
-            {
-                "question": "Can I stay in the MSC overnight?",
-                "answers": [
-                    "Yes, however, if you leave the MSC after its closing time, you will not be able to re-enter until it re-opens, so plan accordingly. The MSC closes at 12 AM and re-opens at 7 AM."
+                    "NOTE: We cannot guarantee being able to cover the full cost of travel. For more details, reach out to us at [hello@tamuhack.org](mailto:hello@tamuhack.org)."
                 ]
             },
             {
@@ -61,9 +72,16 @@
                 ]
             },
             {
-                "question": "Will there be workshops or talks?",
+                "question": "Will there be workshops or activities?",
                 "answers": [
-                    "Of course! We will have workshops running throughout the whole event."
+                    "Yes! We will have Mentor Hours from 12-5 PM in the main room where you can get help on your project. We'll also have a Craft Corner from 12-5 PM in the food room, and a talent show mini-event.",
+                    "Some workshops may be recorded or available online. Check the schedule on our website for the latest updates."
+                ]
+            },
+            {
+                "question": "What if the schedule changes?",
+                "answers": [
+                    "The schedule may be updated up until day-of. The updated tentative schedule will be pushed to the website on Friday. Check Discord for real-time updates during the event."
                 ]
             },
             {
@@ -80,7 +98,14 @@
             {
                 "question": "What do I need to submit?",
                 "answers": [
-                    "All teams are REQUIRED to complete a Devpost submission for their project by 11:59 AM on January 25th to be considered for judging. Submitting a video demo on Devpost is MANDATORY!"
+                    "All teams are REQUIRED to complete a Devpost submission for their project to be considered for judging. Submitting a 2-minute video demo on Devpost is MANDATORY!"
+                ]
+            },
+            {
+                "question": "How does judging work?",
+                "answers": [
+                    "Judging begins at 2 PM on Saturday and will be conducted virtually. Participants will create their own Zoom rooms, and judges will pop in and out to evaluate projects.",
+                    "The specific setup and instructions will be communicated in person at the event."
                 ]
             },
             {
@@ -90,7 +115,7 @@
                 ]
             },
             {
-                "question": "What classifies a project as a 'beginner hack' ?",
+                "question": "What classifies a project as a 'beginner hack'?",
                 "answers": [
                     "A beginner hack is a project where 50% or more of the team members have never participated in a hackathon before. If you're not sure if your project qualifies, just ask us!"
                 ]
@@ -107,7 +132,15 @@
                 ]
             },
             {
-                "question": "Can I participate in both the software and hardware tracks? ",
+                "question": "When is hardware judging?",
+                "answers": [
+                    "Due to venue changes, hardware demos and judging will NOT take place on the main event weekend. Hardware judging has been moved to Thursday, January 29th from 6-9 PM in ILCB 229, with a virtual judging session available for those who cannot attend in person.",
+                    "Hardware participants are still required to check in on Saturday, January 24th and are encouraged to attend for food, merch, and day-of activities.",
+                    "NOTE: You will have extra time to refine and prepare your projects before judging!"
+                ]
+            },
+            {
+                "question": "Can I participate in both the software and hardware tracks?",
                 "answers": [
                     "At this time, a team can only participate in one track, either software or hardware. The different tracks will be judged separately, by specialists in the respective field."
                 ]
@@ -133,10 +166,10 @@
                 ]
             },
             {
-                "question": "This sounds exciting! When can I start?",
+                "question": "When can I start working on my hardware project?",
                 "answers": [
-                    "Teams may begin working on January 16th and have until January 25th, when teams will showcase their project at the venue in specific challenges or the general track.",
-                    "Hardware participants are still required to check in to the event on the 24th and be physically present for judging on the 25th."
+                    "Teams may begin working on January 16th. Hardware judging will take place on Thursday, January 29th.",
+                    "Hardware participants are still required to check in to the event on January 24th."
                 ]
             }
         ]

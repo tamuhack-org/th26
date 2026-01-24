@@ -153,7 +153,7 @@ export const prizeslist: Record<string, Prize> = {
             ['$150 Amazon Gift Card (one per team)', '3rd'],
         ],
         description:
-            'Create an e-commerce recommendation engine for a caravan marketplace that ensures every search returns meaningful results, even when inventory is limited or constraints are strict.\n- Query Expansion & Fallback Recommendations\n- Inventory-Aware Semantic Search\n- Zero-Match Scenarios\n- Personalization\n- Comparable & Substitute Models\n- Budget & Location Awareness\n\nDeliverable:\nA prototype recommendation engine that combines semantic search, personalization, constraint relaxation, and inventory-aware logic to maximize user satisfaction.',
+            'Create an e-commerce recommendation engine for a caravan marketplace that ensures every search returns meaningful results, even when inventory is limited or constraints are strict.\n\n- Query Expansion & Fallback Recommendations\n- Inventory-Aware Semantic Search\n- Zero-Match Scenarios\n- Personalization\n- Comparable & Substitute Models\n- Budget & Location Awareness\n\nDeliverable:\nA prototype recommendation engine that combines semantic search, personalization, constraint relaxation, and inventory-aware logic to maximize user satisfaction.',
         type: Category.SOFTWARE,
     },
     msy: {

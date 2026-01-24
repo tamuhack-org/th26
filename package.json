@@ -10,6 +10,7 @@
         "format": "prettier --write \"**/*.{astro,md,ts,tsx,js,jsx,json}\""
     },
     "dependencies": {
+        "@astrojs/cloudflare": "^12.6.12",
         "@fontsource/bbh-sans-hegarty": "^5.2.1",
         "@fontsource/libre-franklin": "^5.2.8",
         "@fontsource/stack-sans-text": "^5.2.1",

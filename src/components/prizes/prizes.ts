@@ -158,9 +158,16 @@ export const prizeslist: Record<string, Prize> = {
     },
     msy: {
         track: 'Mai Shan Yun Challenge',
-        prizes: [['Gift Card', '75.00']],
+        prizes: [['Mai Shan Yun Gift Card', '75.00']],
         description:
             'Develop an inventory and operations management system for Mai Shan Yun that supports core restaurant functions such as taking and modifying customer orders, configuring table layouts, sending order updates to kitchen printers, and adding or removing menu items. Winning teams may have the opportunity to continue working with the restaurant to refine and deploy their solution in a live environment.',
+        type: Category.SOFTWARE,
+    },
+    figma: {
+        track: 'Figma Challenge',
+        prizes: [['Bag of Figma Merch', '40.00']],
+        description:
+            '"Best Use of Figma" would go to the team who most creatively uses Figma in their hackathon process. This could be using the design software to wireframe or prototype an initial or final concept. To be considered, attach a shared link to the Figma design that can be accessed by anyone and a screen recording (in case there are sharing issues and we cannot access your work). Members of the Figma Education team will review all submissions, and all will be sent to Figma HQ!! Please direct any questions to a Figma Campus Leader!',
         type: Category.SOFTWARE,
     },
 };

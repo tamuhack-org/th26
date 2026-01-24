@@ -168,11 +168,15 @@ import ApplyMentor from './ApplyMentor.astro';
 </script>
 
 <script>
-    (function() {
-        var requestAnimationFrame = window.requestAnimationFrame || (window as any).mozRequestAnimationFrame || (window as any).webkitRequestAnimationFrame || (window as any).msRequestAnimationFrame ||
-        function(callback: FrameRequestCallback) {
-            window.setTimeout(callback, 1000 / 60);
-        };
+    (function () {
+        var requestAnimationFrame =
+            window.requestAnimationFrame ||
+            (window as any).mozRequestAnimationFrame ||
+            (window as any).webkitRequestAnimationFrame ||
+            (window as any).msRequestAnimationFrame ||
+            function (callback: FrameRequestCallback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
         window.requestAnimationFrame = requestAnimationFrame;
     })();
 
@@ -188,9 +192,9 @@ import ApplyMentor from './ApplyMentor.astro';
         opacity: number;
     }
 
-    const landingSection = document.getElementById("landing") as HTMLElement;
-    const canvas = document.getElementById("snow-canvas") as HTMLCanvasElement;
-    const ctx = canvas.getContext("2d")!;
+    const landingSection = document.getElementById('landing') as HTMLElement;
+    const canvas = document.getElementById('snow-canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d')!;
     const flakeCount = 100;
     let mX = -100;
     let mY = -100;
@@ -232,7 +236,7 @@ import ApplyMentor from './ApplyMentor.astro';
                 flake.velX += Math.cos((flake.step += 0.05)) * flake.stepSize;
             }
 
-            ctx.fillStyle = "rgba(255,255,255," + flake.opacity + ")";
+            ctx.fillStyle = 'rgba(255,255,255,' + flake.opacity + ')';
             flake.y += flake.velY;
             flake.x += flake.velX;
 
@@ -285,13 +289,13 @@ import ApplyMentor from './ApplyMentor.astro';
         snow();
     }
 
-    landingSection.addEventListener("mousemove", function (e) {
+    landingSection.addEventListener('mousemove', function (e) {
         const rect = landingSection.getBoundingClientRect();
         mX = e.clientX - rect.left;
         mY = e.clientY - rect.top;
     });
 
-    window.addEventListener("resize", function () {
+    window.addEventListener('resize', function () {
         resizeCanvas();
     });
 

@@ -5,9 +5,7 @@ import Sticker from './Sticker.astro';
 ---
 
 <div class="apply-mentor-container relative z-50 flex gap-3">
-    <div
-        class="cursor-not-allowed opacity-50"
-    >
+    <div class="cursor-not-allowed opacity-50">
         <span class="sr-only">Apply (Coming Soon)</span>
         <Sticker
             imageSrc={applyButton}
@@ -45,7 +43,7 @@ import Sticker from './Sticker.astro';
                 scale: 1,
                 duration: 0.3,
                 ease: 'power2.out',
-                opacity: (index) => index === 0 ? 0.5 : 1,
+                opacity: (index) => (index === 0 ? 0.5 : 1),
                 rotate: -8,
                 delay: 2.35,
                 stagger: 0.2,

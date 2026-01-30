@@ -6,7 +6,7 @@ import Sticker from './Sticker.astro';
 
 <div class="apply-mentor-container relative z-50 flex gap-3">
     <div class="cursor-not-allowed opacity-50">
-        <span class="sr-only">Apply (Coming Soon)</span>
+        <span class="sr-only">Apply</span>
         <Sticker
             imageSrc={applyButton}
             label="Apply button"
@@ -15,11 +15,8 @@ import Sticker from './Sticker.astro';
             class="pointer-events-none w-28 xl:w-36"
         />
     </div>
-    <a
-        class="mt-12 cursor-pointer xl:mt-15"
-        href="https://tamuhack.org/mentor"
-        target="_blank"
-        rel="noopener"
+    <div
+        class="mt-12 cursor-not-allowed xl:mt-15 opacity-50"
     >
         <span class="sr-only">Mentor</span>
         <Sticker
@@ -29,7 +26,7 @@ import Sticker from './Sticker.astro';
             backColor="#DEC299"
             class="w-28 xl:w-36"
         />
-    </a>
+    </div>
 </div>
 
 <script>
